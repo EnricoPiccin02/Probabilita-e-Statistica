@@ -1,0 +1,168 @@
+\documentclass[a4paper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\selectlanguage{italian}
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{circuitikz}
+\usetikzlibrary{positioning, circuits.logic.US}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary {shapes.gates.logic.US, shapes.gates.logic.IEC, calc}
+\tikzset {branch/.style={fill, shape = circle, minimum size = 3pt, inner sep = 0pt}}
+\usetikzlibrary{matrix,calc}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{pgf-pie}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color, soul}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{subfig}
+\graphicspath{ {./img/} }
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corollario}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+% Specifiche
+\geometry{
+ a4paper,
+ top=20mm,
+ left=30mm,
+ right=30mm,
+ bottom=30mm
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\nouppercase{\leftmark}}
+\fancyfoot[CE, CO]{\thepage}
+\addtolength{\headheight}{1em}
+\addtolength{\footskip}{-0.5em}
+
+\newcommand{\quotes}[1]{``#1''}
+\renewcommand\tabularxcolumn[1]{>{\vspace{\fill}}m{#1}<{\vspace{\fill}}}
+\renewcommand\arraystretch{}
+\newcolumntype{P}{>{\centering\arraybackslash}X}
+
+\title{\textbf{Università di Trieste\\ \vspace{1em}
+Laurea in ingegneria elettronica e informatica}}
+\author{Enrico Piccin - Corso di Probabilità e Statistica - Prof. Marco Barchiesi}
+\date{Anno Accademico 2021/2022 - 3 Marzo 2022}
+
+\begin{document}
+
+\vspace{-10mm}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\noindent
+\begin{center}
+  3 Marzo 2022
+\end{center}
+
+\section{Introduzione}
+Si supponga di stare in un \textbf{universo deterministico}, ovvero tale per cui tutto ciò che accadrà in futuro è determinato dalla situazione nel preciso istante in cui si sta vivendo.\\
+Dal punto di vista fisico, si supponga di voler analizzare un certo fenomeno, a patto di conoscere
+\begin{enumerate}
+  \item la legge che regola tale fenomeno
+  \item i dati iniziali (riferiti allo stato iniziale del fenomeno)
+  \item le condizioni esterne al fenomeno oggetto di interesse
+\end{enumerate}
+è sempre possibile predire quello che accadrà nel futuro relativamente al fenomeno oggetto di studio.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri il \textbf{lancio di un dado}. Taluno è un fenomeno oggetto di studio e, come tale, deve essere analizzato conoscendo
+\begin{enumerate}
+  \item la legge che regola il fenomeno: la legge di caduta dei gravi
+  \item i dati iniziali del problema: peso del dado, altezza inziale, forza di attrazione gravitazionale, etc.
+  \item le condizioni esterne: vento, umidità, stabilità dell'aria, etc.
+\end{enumerate}
+Naturalmente, attraverso queste informazioni, è possibile predire il comportamento del dado: quando esso viene lasciato, cade e si schianta al suolo.\\
+Tuttavia, se ora si volesse anche sapere su che faccia il dado atterrerà, non si ha a disposizione un legge fisica che ne regola tale fenomeno, in quanto la legge di caduta dei gravi presuppone il corpo come puntiforme; inoltre il movimento dell'aria influenza significativamente la rotazione del corpo.\\
+Pertanto, per la determinazione dell'esito di tale fenomeno, non si hanno a disposizione informazioni sufficienti: non si conosce la legge che regola il fenomeno, i dati iniziali sono scarsamente influenti e le condizioni esterne sono troppo variabili. Ciò fa sì che l'output finale di tale fenomeno sia completamente sconosciuto, in quanto l'evento oggetto d'analisi è totalmente \textbf{casuale}, o più propriamente \textbf{aleatorio}.\\
+Si noti, ovviamente, che anche per fenomeni apparentemente facili da predire, le condizioni iniziali che vengono poste per lo studio degli stessi comportano sempre un margine di incertezza e, quindi, di aleatorietà: non si può sempre sapere con precisione assoluta lo stato iniziale del sistema oggetto di studio.\\
+Per cercare di far fronte a tale incertezza si può
+\begin{itemize}
+  \item impiegare una legge molto più particolareggiata (più vicina alla perfezione) che regola il fenomeno interessato; misurare con maggiore precisione i dati iniziali e definire con più raffinatezza le conidizione esterne; tuttavia, tale procedimento comporterebbe un lavoro molto oneroso e scarsamente proficuo;
+  \item cercare di capire quali sono i possibili output del fenomeno (ossia le $6$ facce del dado) e associare a ciascuno di tali output un valore che fornisca un'informazione di carattere quantitativo in riferimento alla possibilità che esso sia l'effettivo output del fenomeno interessato.
+\end{itemize}
+Da quest'ultima alternativa segue la definizione di \textbf{probabilità}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PROBABILITÀ}}\\
+    \parbox{\linewidth}{La \textbf{probabilità} è un modo per \textbf{quantificare} quanto un possibile risultato sia \textbf{facilmente ottenibile}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri il ancio di un dado a $6$ facce e si prendano in considerazione dei possibili risultati
+\begin{enumerate}
+  \item esce il numero $6$
+  \item esce un numero pari
+  \item esce un numero $\leq 6$
+  \item esce un numero $\leq 4$
+  \item esce un numero $\geq 7$
+\end{enumerate}
+Si capisce facilmente come il primo risultato (o evento) sia molto elementare, in quanto prende in considerazione una sola faccia del dado, mentre i restanti sono dei risultati (o eventi) più complessi, che si ottengono tramite aggregazione dei risultati elementari.\\
+Dal punto di vista matematica, per l'analisi di questo fenomeno, si definisce un insieme $\Omega$ dei possibili risultati elementari del lancio di un dado, ovvero
+\[\Omega = \left\{1,2,3,4,5,6\right\}\]
+Naturalmente, ora, i risultati che sono stati esposti in principio non sono altro che dei \textbf{sottoinsiemi} dell'insieme $\Omega$ appena definito, come mostrato di seguito:
+\begin{enumerate}
+  \item \(A = \left\{6\right\}\)
+  \item \(A = \left\{2,4,6\right\}\)
+  \item \(A = \left\{1,2,3,4,5,6\right\} = \Omega\)
+  \item \(A = \left\{1,2,3,4\right\}\)
+  \item \(A = \varnothing\)
+\end{enumerate}
+Per attribuire a ciascuno di tali risultati un valore quantitativo che ne descriva la possibilità di verificarsi, si definisce $p = p(A)$ come la \textbf{probabilità associata al risultato $A$}, ovverosia un numero all'interno di una scala che, per convenzione, viene indicata nell'intervallo $\left[0,1\right]$, che quantifica la facilità con cui il risultato si presenta.\\
+Per esempio, la probabilità che esca un numero maggiore di $7$ nel lancio di un dado a $6$ facce è ovviamente nulla, in quanto a tale evento viene associato l'insieme vuoto. Questo significa che tale risultato (o evento) è \textbf{impossibile}, pertanto si assegna ad esso un valore di probabilità di fondo scala, ovvero
+\[p(\varnothing) = 0\]
+Analogamente, la probabilità che esca un numero minore o uguale a $6$ nel lancio di un dado è ovviamente massima, in quanto a tale evento viene associato l'insieme $\Omega$ stesso. Questo significa che tale risultato (o evento) è \textbf{certo}, pertanto si assegna ad esso un valore di probabilità di fine scala, ovvero
+\[p(\Omega) = 1\]
+È facile capire che se si considerano due eventi a cui sono associati due sottinsiemi $A$ e $B$ disgiunti, tali per cui $A \cap B = \varnothing$, allora si avrà che
+\[p(A \cup B) = p(A) + p(B)\]
+Inoltre, se il dado è regolare, ha senso ed è plausibile associare lo stesso valore di probabilità a ciascuno degli eventi elementari, ovvero
+\[p \left(\left\{1\right\}\right) = p \left(\left\{2\right\}\right) = p \left(\left\{3\right\}\right) = p \left(\left\{4\right\}\right) = p \left(\left\{5\right\}\right) = p \left(\left\{6\right\}\right)\]
+e se ora si sommano le probabilità di tutti gli eventi elementari, non si può non ottenere la probabilità dell'evento certo, ovvero
+\[p \left(\left\{1\right\}\right) + p \left(\left\{2\right\}\right) + p \left(\left\{3\right\}\right) + p \left(\left\{4\right\}\right) + p \left(\left\{5\right\}\right) + p \left(\left\{6\right\}\right) = p(\Omega) = 1\]
+Per implicazione logica, siccome la somma delle probabilità degli eventi elementari è pari a $1$ ed essi sono \textbf{equiprobabili}, deve essere necessariamente che
+\[p \left(\left\{1\right\}\right) = p \left(\left\{2\right\}\right) = p \left(\left\{3\right\}\right) = p \left(\left\{4\right\}\right) = p \left(\left\{5\right\}\right) = p \left(\left\{6\right\}\right) = \frac{1}{6}\]
+A partire da tale evidenza, è possibile ora andare ad associare agli eventi complessi, aggregati di eventi elementari, una probabilità, come di seguito esposto
+\[p \left(\left\{2,4,6\right\}\right) = p \left(\left\{2\right\}\right) + p \left(\left\{4\right\}\right) + p \left(\left\{6\right\}\right) = \frac{3}{6} = \frac{1}{2}\]
+e similmente
+\[p \left(\left\{1,2,3,4\right\}\right) = p \left(\left\{1\right\}\right) + p \left(\left\{2\right\}\right) + p \left(\left\{3\right\}\right) + p \left(\left\{4\right\}\right) = \frac{4}{6} = \frac{2}{3}\]
+Naturalmente, ora, se si dovesse definire la probabilità associata alla somma di due eventi non disgiunti, non si può ricorrere alla formula precedentemente esposta, in quanto bisogna anche tenere conto delle sovrapposizioni. Infatti
+\[\frac{7}{6} = p \left(\left\{2,4,6\right\}\right) + p \left(\left\{1,2,3,4\right\}\right) \neq p \left(\left\{1,2,3,4,6\right\}\right) = \frac{5}{6}\]
+questo perché, per quanto si è detto, i due sottoinsieme associati ai rispettivi risultati non sono disgiunti, in quanto \(\left\{2,4,6\right\} \cap \left\{1,2,3,4\right\} = \left\{2,4\right\}\)
+
+\vspace{1em}
+\subsection{Matematica della probabilità}
+Il compito della probabilità è quello di fornire delle regole, a partire dalle quali riuscire ad attribuire una valutazione quantitativa della possibilità di verificarsi di eventi più complessi, \textbf{basandosi sulla probabilità associata ad eventi più elementari}.\\
+Non è, invece, compito della probabilità quello di attribuire i valori di probabilità agli eventi elementari (si pensi, banalmente, alla differenza tra un dado regolare e un dado truccato): infatti, tale compito è affidato alla statistica, in quanto molto più legato alla praticità e alla modalità dei assegnazione.\\
+Una volta appresa l'assegnazione della probabilità agli eventi elemantari, interviene la probabilità: in particolare, la struttura matematica alla base del calcolo della probabilità prevede tre importanti elementi
+\begin{enumerate}
+  \item un insieme $\Omega$ (che per il momento si considera finito);
+  \item una famiglia $A$ (non vuota) di sottoinsiemi di $\Omega$ (spesso la famiglia di tutti i sottoinsieme); mentre gli elementi di $\Omega$ sono chiamati risultati elementari, gli elementi sottoinsiemi di $\Omega$ appartenenti a tale famiglia sono chiamati risultati complessi, ottenuti come aggregazione di risultati elementari;
+  \item un'applicazione
+  \[p : A \longrightarrow \left[0,1\right]\]
+  che ad ogni sottoinsieme appartenente alla famiglia $A$ associa un valore compreso tra $0$ e $1$.
+\end{enumerate}
+Gli elementi di $\Omega$ sono detti \textbf{eventi elementari}, per cui $\Omega$ è detto \textbf{spazio degli eventi elementari}, mentre gli elementi della famiglia $A$ prendono il nome di \textbf{risultati} (o eventi) \textbf{casuali} (o semplicemente eventi, configurazioni, traiettorie, campioni), per cui $A$ prende il nome di \textbf{spazio degli eventi casuali}.\\
+L'applicazione $p$ è detta \textbf{probabilità}, mentre l'immagine attraverso $p$ di un evento $A$, ovvero $p(A)$ viene chiamata \textbf{probabilità dell'evento $A$}.
+
+\end{document}
