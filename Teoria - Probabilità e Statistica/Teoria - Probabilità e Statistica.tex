@@ -159,10 +159,569 @@ Una volta appresa l'assegnazione della probabilità agli eventi elemantari, inte
   \item un insieme $\Omega$ (che per il momento si considera finito);
   \item una famiglia $A$ (non vuota) di sottoinsiemi di $\Omega$ (spesso la famiglia di tutti i sottoinsieme); mentre gli elementi di $\Omega$ sono chiamati risultati elementari, gli elementi sottoinsiemi di $\Omega$ appartenenti a tale famiglia sono chiamati risultati complessi, ottenuti come aggregazione di risultati elementari;
   \item un'applicazione
-  \[p : A \longrightarrow \left[0,1\right]\]
-  che ad ogni sottoinsieme appartenente alla famiglia $A$ associa un valore compreso tra $0$ e $1$.
+  \[p : \mathcal{A} \longrightarrow \left[0,1\right]\]
+  che ad ogni sottoinsieme appartenente alla famiglia $\mathcal{A}$ associa un valore compreso tra $0$ e $1$.
 \end{enumerate}
 Gli elementi di $\Omega$ sono detti \textbf{eventi elementari}, per cui $\Omega$ è detto \textbf{spazio degli eventi elementari}, mentre gli elementi della famiglia $A$ prendono il nome di \textbf{risultati} (o eventi) \textbf{casuali} (o semplicemente eventi, configurazioni, traiettorie, campioni), per cui $A$ prende il nome di \textbf{spazio degli eventi casuali}.\\
+Se due eventi hanno un'intersezione nulla (come numeri pari e numeri dispari), si dice che essi sono \textbf{mutualmente esclusivi}.\\
 L'applicazione $p$ è detta \textbf{probabilità}, mentre l'immagine attraverso $p$ di un evento $A$, ovvero $p(A)$ viene chiamata \textbf{probabilità dell'evento $A$}.
 
+\vspace{1em}
+\subsection{Regole della famiglia di eventi complessi}
+La famiglia di eventi complessi $\mathcal{A}$, così come l'applicazione $p$, è sempre subordinata alla presenza di alcune importanti condizioni:
+\begin{enumerate}
+  \item tra gli elementi della famiglia degli eventi complessi $\mathcal{A}$ ci deve essere sempre l'\textbf{evento certo}:
+  \[\Omega \in \mathcal{A}\]
+
+  \item tra gli elementi della famiglia degli eventi complessi $\mathcal{A}$ ci deve essere sempre l'\textbf{evento impossibile}:
+  \[\varnothing \in \mathcal{A}\]
+
+  \item se tra gli elementi della famiglia degli eventi complessi $\mathcal{A}$ si considerano gli eventi $A$ e $B$, ad $\mathcal{A}$ deve appartenere anche la loro \textbf{unione} e la loro \textbf{intersezione}:
+  \[A \cup B \in \mathcal{A} \hspace{0.5em} \text{e} \hspace{0.5em} A \cap B \in \mathcal{A}\]
+
+  \item se tra gli elementi della famiglia degli eventi complessi $\mathcal{A}$ si considera l'evento $A$, ad $\mathcal{A}$ deve appartenere anche il suo opposto:
+  \[A^c \in \mathcal{A}\]
+\end{enumerate}
+Nella pratica, se si lavora con uno spazio degli eventi che è finito, come famiglia dei risultati si considera l'insieme di tutti i risultati possibili, ovvero la famiglia costituita da tutti i sottoinsiemi di $\Omega$ (essendo $\Omega$ \textbf{finito}, l'insieme dei sottoinsiemi di $\Omega$ è ancora una famiglia finita con cui si può lavorare). Quando, invece, $\Omega$ è infinito, non si potrà lavorare con tutti i sottoinsiemi di $\Omega$, ma si dovrà procedere a considerare una sua restrizione (potrebbe, infatti, non essere possibile considerare l'insieme di tutti sottoinsiemi dello spazio degli eventi elementari).\\
+Una famiglia $\mathcal{A}$ che soddisfa i quatto punti di cui sopra prende il nome di \textbf{algebra}: l'insieme delle parti è un esempio di algebra.
+
+\vspace{1em}
+\subsection{Regole dell'applicazione di probabilità}
+L'applicazione $p$ tale per cui
+\[p : \mathcal{A} \longrightarrow \left[0,1\right]\]
+deve soddisfare, anch'essa, determinate regole:
+\begin{enumerate}
+  \item l'\textbf{evento certo} deve avere \textbf{probabilità massima}, ovvero
+  \[p(\Omega) = 1\]
+  \item l'\textbf{evento impossibile} deve avere \textbf{probabilità nulla}, ovvero
+  \[p(\varnothing) = 0\]
+  \item se due eventi $A$ e $B$ sono mutualmente esclusivi, ovvero tali che i sottoinsimi di $\Omega$ associati siano disgiunti, ovvero $A \cap B = \varnothing$, allora si ha che
+  \[p(A) + p(B) = p(A \cup B)\]
+  tale proprietà prende il nome di \textbf{additività} (sempre, però, relativamente a eventi disgiunti).
+\end{enumerate}
+Un'applicazione $p$ definita come segue
+\[p : \mathcal{A} \longrightarrow [0,1]\]
+che soddisfa le tre proprietà di cui sopra prende il nome di \textbf{misura di probabilità}.\\
+
+
+\vspace{1em}
+\subsection{Spazio di probabilità}
+Dopo aver introdotto il concetto di \textbf{algebra} e \textbf{probabilità} è possibile fornire la definizione di \textbf{spazio di probabilità finito}, (finito in quanto lo spazio degli eventi elementari $\Omega$ è finito):
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SPAZIO DI PROBABILITÀ FINITO}}\\
+    \parbox{\linewidth}{Per definizione si chiama \textbf{spazio di probabilità finito} una \textbf{terna} $\left(\Omega,\mathcal{A},p\right)$ dove
+    \begin{itemize}
+      \item $\Omega$ è un insieme \textbf{finito} che identifica tutti e soli gli eventi elementari;
+      \item $\mathcal{A}$ è un'algebra di sottoinsiemi di $\Omega$ (che, in quanto algebra, soddisfa le $4$ regole precedentemente esposte), generalmente data da tutti i sottoinsiemi di $\
+      Omega$;
+      \item $p$ è una probabilità su $\mathcal{A}$ (che, essendo una probabilità, soddisfa le $3$ regole precedentemente esposte).
+    \end{itemize}
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\subsubsection{Proprietà degli spazi di probabilità finiti}
+Le proprietà degli spazi di probabilità finiti discendono dalle richieste, ossia dalle regole, definite in merito alla famiglia degli eventi complessi $\mathcal{A}$, la quale deve essere un'\textbf{algebra} e sulla funzione $p$, la quale deve essere una \textbf{probabilità}:
+
+\begin{enumerate}
+  \item \textbf{Proprietà additiva e subadditiva}: di seguito si espone la definizione di proprietà additiva e subadditiva della probabilità:
+
+  % Tabella per le definizione di concetti, etc...
+  \vspace{1em}
+  \rowcolors{1}{black!5}{black!5}
+  \setlength{\tabcolsep}{14pt}
+  \renewcommand{\arraystretch}{2}
+  \noindent
+  \begin{tabularx}{0.94\textwidth}{@{}|P|@{}}
+      \hline
+      {\textbf{PROPRIETÀ ADDITIVA E SUBADDITIVA}}\\
+      \parbox{\linewidth}{Se $A_1,...,A_n \in \mathcal{A}$ e sono a due a due \textbf{disgiunti} (ovvero mutualmente esclusivi), allora
+      \[\sum_{k=1}^n p \left(A_k\right) = p \left(\bigcup_{k=1}^n A_k\right)\]
+      ciò significa che  la probabilità è \textbf{additiva}.\\
+      Se gli eventi non sono a due a due digiunti, allora è possibile solo affermare che
+      \[\sum_{k=1}^n p \left(A_k\right) \geq p \left(\bigcup_{k=1}^n A_k\right)\]
+      In particolare, è sempre verificato che
+      \[p(A) + p(B) \geq p(A \cup B), \hspace{0.5em} \forall A,B \in \mathcal{A}\]
+      ciò significa che  la probabilità è \textbf{subadditiva}.
+      \vspace{3mm}}\\
+      \hline
+  \end{tabularx}
+
+  \vspace{1em}
+  \noindent
+  \textbf{Dimostrazione $\boldsymbol{1}$}: La proprietà di additività e subadditività si dimostra per \textbf{induzione}: si chiami $B$ l'evento così ottenuto
+  \[B = \bigcup_{k=1}^{n-1}A_k\]
+  Dal momento che per ipotesi gli eventi $A_1,...,A_n \in \mathcal{A}$ sono disgiunti, deve essere che
+  \[A \cap \bigcup_{k=1}^{n-1}A_k = A \cap B = \varnothing\]
+  e quindi si ha che
+  \[p\left(\bigcup_{k=1}^{n}A_k\right) = p(A_n) + p\left(\bigcup_{k=1}^{n-1}A_k\right)\]
+  sfruttando la proprietà di \textbf{additività della probabilità rispetto ad eventi disgiunti} (ossia la proprietà $3$ della probabilità).\\
+  Si procede analogamente, per induzione a scendere su $n$ fino a ottenere che
+  \[p \left(\bigcup_{k=1}^n A_k\right) = \sum_{k=1}^n p \left(A_k\right)\]
+  Per dimostrare anche la seconda implicazione, si deve ricorrere alla proprietà fondamentale dimostrata di seguito, la quale permette di affermare che, siccome $p(A \cap B) \geq 0$, allora
+  \[p(A \cup B) + p(A \cap B) = p(A) + p(B) \longrightarrow p(A) + p(B) \geq p(A \cup B)\]
+  Ancora una volta, per dimostrare la proprietà di cui sopra si procede per \textbf{induzione}: avendo dimostrato il passo base con $n=2$, si suppone che tale proprietà sia verificata per $n-1$ e la si dimostri per $n$; appare evidente che se si considerano $n$ eventi non a due a due disgiunti, tali per cui
+  \[A_n \cap \bigcup_{k=1}^{n-1}A_k \neq \varnothing\]
+  allora segue che
+  \[p\left(\bigcup_{k=1}^{n}A_k\right) \leq p(A_n) + p\left(\bigcup_{k=1}^{n-1}A_k\right)\]
+  ma usando l'ipotesi induttiva si perviene al risultato seguente
+  \[\sum_{k=1}^n p \left(A_k\right) \geq p \left(\bigcup_{k=1}^n A_k\right)\]
+
+  \vspace{2em}
+  \noindent
+  \item \textbf{Proprietà fondamentale}: di seguito si espone una relazione fondamentale che riguarda il calcolo della probabilità:
+
+  % Tabella per le definizione di concetti, etc...
+  \vspace{1em}
+  \rowcolors{1}{black!5}{black!5}
+  \setlength{\tabcolsep}{14pt}
+  \renewcommand{\arraystretch}{2}
+  \noindent
+  \begin{tabularx}{0.94\textwidth}{@{}|P|@{}}
+      \hline
+      {\textbf{PROPRIETÀ FONDAMENTALE}}\\
+      \parbox{\linewidth}{Si verifica che
+      \[p(A \cup B) + p(A \cap B) = p(A) + p(B), \hspace{0.5em} \forall A,B \in \mathcal{A}\]
+      \vspace{-1mm}}\\
+      \hline
+  \end{tabularx}
+
+  \vspace{1em}
+  \noindent
+  \textbf{Dimostrazione $\boldsymbol{2}$}: Per dimostrare la proprietà fondamentale è opportuno osservare che $A \cup B$ può essere vista come l'unione di tre \textbf{insiemi disgiunti}:
+  \[A - (A \cap B) \hspace{1em} A \cap B \hspace{1em} B - (A \cap B)\]
+  ovvero
+  \[A \cup B = \left(A - (A \cap B)\right) \cup \left(A \cap B\right) \cup \left(B - (A \cap B)\right)\]
+  sfruttando ancora la proprietà di \textbf{additività della probabilità rispetto ad eventi disgiunti} nel caso $n = 3$ e la proprietà di \textbf{monotonia} dimostrata di seguito, osservando che $A \cap B \subset A$ e $A \cap B \subset B$ si può concludere che
+  \begin{flalign*}
+    p(A \cup B) & = p\left(A - (A \cap B)\right) + p\left(A \cap B\right) + p\left(B - (A \cap B)\right)\\
+    & = p(A) - p(A \cap B) + p(A \cap B) + p(B) - p(A \cap B) = p(A) + p(B) - p(A \cap B)
+  \end{flalign*}
+
+  \newpage
+  \noindent
+  \item \textbf{Proprietà di monotonia}: di seguito si espone la proprietà che giustifica la monotonia della probabilità:
+
+  % Tabella per le definizione di concetti, etc...
+  \vspace{1em}
+  \rowcolors{1}{black!5}{black!5}
+  \setlength{\tabcolsep}{14pt}
+  \renewcommand{\arraystretch}{2}
+  \noindent
+  \begin{tabularx}{0.94\textwidth}{@{}|P|@{}}
+      \hline
+      {\textbf{PROPRIETÀ DI MONOTONIA}}\\
+      \parbox{\linewidth}{Si verifica che
+      \[p(A - B) = p(A) - p(B), \hspace{0.5em} \forall A,B \in \mathcal{A} : B \subset A\]
+      In particolare, dal momento che $p(A - B) \geq 0$, allora deve essere che
+      \[B \subset A \longrightarrow p(B) \leq p(A)\]
+      ciò significa che la probabilità è \textbf{monotona} (\textbf{crescente}), come intuitivamente ci si poteva aspettare.
+      \vspace{3mm}}\\
+      \hline
+  \end{tabularx}
+
+  \vspace{1em}
+  \noindent
+  \textbf{Dimostrazione $\boldsymbol{3}$}: È facile osservare che gli eventi $A - B$ e l'evento $B$ sono, per costruzione, due eventi mutualmente esclusivi (e quindi disgiunti); inoltre deve essere $(A - B) \cup B = A$, dal momento che $B \subset A$. Ciò permette di concludere che
+  \[p(A - B) + p(B) = p((A - B) \cup B) = p(A)\]
+  sfruttando la proprietà di \textbf{additività della probabilità rispetto ad eventi disgiunti}.
+\end{enumerate}
+
+\vspace{1em}
+\noindent
+\begin{corollary}
+  \textbf{Osservazione}: Se si considera un evento $A \in \mathcal{A}$, allora si ha che
+  \[p(A^c) = 1 - p(A)\]
+\end{corollary}
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: La dimostrazione è presto fatta e segue dai risultati precedenti. Infatti è ovvio che $A$ e $A^c$ sono due eventi disgiutni e che $A \cup A^c = \Omega$. Pertanto, sfruttando la \textbf{proprietà di additività della probabilità rispetto ad eventi digiunti} e la probabilità dell'\textbf{evento certo} si ottiene che
+\[p(A \cup A^c) = p(\Omega) = p(A) + p(A^c) \longrightarrow p(A) = 1 - p(A^c)\]
+
+\vspace{1em}
+\subsubsection{Costruzione di spazi di probabilità finiti}
+Si consideri un \textbf{insieme finito} $\Omega = \left\{\omega_1,...,\omega_n\right\}$ di eventi elementari (che prenderà il nome di \textbf{spazio campione}) e un insieme $\Delta = \left\{\alpha_1,...,\alpha_n\right\}$ di \textbf{numeri reali positivi} la cui somma deve produrre il valore $1$, ovvero
+\[\sum_{k=1}^n \alpha_k = 1 \hspace{0.5em} \text{con} \hspace{0.5em} \alpha_k \in \mathbb{R}, \alpha_k \geq 0\]
+Per la costruzione dello spazio di probabilità si considera come \textbf{algebra} $\mathcal{A}$ degli eventi complessi (o aggregati) l'\textbf{insieme delle parti} di $\Omega$ e si definisce una funzione
+\[p : \mathcal{A} \longrightarrow [0,1]\]
+considerando i valori $\alpha_1,...,\alpha_n$ come i valori di probabilità che verranno attribuiti a ciascun evento elementare di $\Omega$, ovverosia
+\[p(\left\{\omega_k\right\}) = \alpha_k, \hspace{0.5em} \text{con} \hspace{0.5em} k=1,...,n\]
+Tale concetto deve poi essere esteso a qualsiasi evento $A \in \mathcal{A}$ non vuoto, quale il seguente
+\[A = \left\{\omega_{k,1},...,\omega_{k,m}\right\}\]
+ovvero un sottoinsieme non vuoto di $\Omega$. Allora la probabilità dell'evento $A$ sarà definita come segue
+\[p(A) = \sum_{j=1}^m p(\left\{\omega_{k,j}\right\}) = \sum_{j=1}^m \alpha_{k,j} = \sum_{\omega \in A} p(\left\{\omega\right\})\]
+ponendo, per semplicità, $p(\varnothing)=0$. In altre parole, \textbf{la probabilità di $A$ è la somma delle probabilità degli eventi elemntari che costituiscono $A$}.\\
+Mentre la famiglia $\mathcal{A}$ è necessariamente un'\textbf{algebra} (in quanto soddisfa le $4$ proprietà precedentemente esposte), in quanto l'insieme delle parti di $\Omega$, è opportuno verificare che la funzione $p$ presa in considerazione sia, effettivamente, una probabilità:
+\begin{enumerate}
+  \item La probabilità dell'evento certo è naturalmente $1$ per costruzione, in quanto
+  \[p(\Omega) = \sum_{k=1}^n p \left(\left\{w_k\right\}\right) = \sum_{k=1}^n \alpha_k = 1\]
+  \item Per costruzione, la probabilità dell'evento impossibile è nulla, ovvero:
+  \[p(\varnothing)=0\]
+  \item Si verifica immediatamente, infine, che la funzione $p$ è effettivamente additiva rispetto a eventi disgiunti, ovvero
+  \[p(A \cup B) = \sum_{\omega \in A \cup B} p\left(\left\{w\right\}\right) = \sum_{\omega \in A} p\left(\left\{w\right\}\right) + \sum_{\omega \in B} p\left(\left\{w\right\}\right)\]
+  essendo $A$ e $B$ disgiunti, ovvero $A \cup B = A + B$.
+\end{enumerate}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{1}$}: Nel caso di un dado regolare a sei facce, si è posto
+\[\omega_k = k \hspace{0.5em} \text{e} \hspace{0.5em} \alpha_k = \frac{1}{6}\]
+ovverosia
+\[\Omega= \left\{1,...,6\right\} \hspace{0.5em} \text{e} \hspace{0.5em} \Delta=\left\{\frac{1}{6},...,\frac{1}{6}\right\}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{2}$}: Si consideri il lancio di due dadi regolari, ambedue a sei facce. Lo spazio degli eventi elementari è
+\[\Omega = \left\{(1,1),(1,2),...,(1,6),(2,1),(2,2),...,(6,1),(6,2),...,(6,6)\right\}\]
+ovvero un insieme finito costituito da $36$ elementi. Assumendo che i dadi siano uguali e con facce uniformi, è naturale pensare che la probabilità che esca uno degli eventi elementari sia la stessa, ovvero
+\[p\left(\left\{(1,1)\right\}\right) = p\left(\left\{(1,2)\right\}\right) = ... = p\left(\left\{(6,6)\right\}\right)\]
+Il valore della probabilità di ciascuno degli eventi elementari è $\frac{1}{36}$: questo in quanto la somma delle probabilità di tutti gli eventi elementari deve essere $1$. In questo caso, si sta quindi ponendo
+\[\alpha_k = \frac{1}{36} \hspace{0.5em} \text{per} \hspace{0.5em} k=1,...,36\]
+Pertanto, considerando come algebra $\mathcal{A}$ degli eventi l'insieme delle parti di $\Omega$ e definendo una probabilità $p$ su $\mathcal{A}$ come esposto in precedenza, se $A \in \mathcal{A}$, allora
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{white}{white}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{>{\hsize=0.02\textwidth}P>{\hsize=0.01\textwidth}PP>{\hsize=0.01\textwidth}PP}
+  $p(A)$ & $=$ & \parbox{\linewidth}{\vspace{3mm} somma delle probabilità degli eventi elementari che appartengono ad $\mathcal{A}$\vspace{3mm}} & $=$ & \parbox{\linewidth}{\vspace{3mm} numero degli elementi di $\mathcal{A}$ moltiplicato per $\frac{1}{36}$\vspace{3mm}}\\
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si calcoli, ora, la probabilità dei seguenti eventi complessi:
+\begin{enumerate}
+  \item escono due numeri uguali
+  \item la somma dei due numeri fa $8$
+  \item almeno uno dei due numeri è pari
+\end{enumerate}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{1}$}: Al primo evento è associato il sottoinsieme
+\[A = \left\{(1,1),(2,2),...,(6,6)\right\}\]
+costituito da $6$ elementi. Quindi si evince che
+\[p(A) = \frac{6}{36} = \frac{1}{6}\]
+Infatti, dopo aver assegnato in maniera arbitraria i valori di probabilità agli eventi elementari, si adopera l'insieme delle regole del calcolo della probabilità al fine di determinare la probabilità degli eventi complessi (o aggregati).
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{2}$}: Al secondo evento è associato il sottoinsieme
+\[A = \left\{(2,6),(3,5),(4,4),(5,3),(6,2)\right\}\]
+costituito da $5$ elementi. Quindi si evince che
+\[p(A) = \frac{5}{36}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{1}$}: Al primo evento è associato il sottoinsieme
+\[A = \left\{
+  \begin{array}{l}
+    (2,1),...,(2,6),(4,1),...,(4,6),(6,1),...,(6,6),\\
+    (1,2),(1,4),(1,6),(3,2),(3,4),(3,6),(5,2),(5,4),(5,6)
+  \end{array}
+\right\}\]
+costituito da $27$ elementi. Quindi si evince che
+\[p(A) = \frac{27}{36} = \frac{3}{4}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi, ancora una volta, che la scelta di porre
+\[\alpha_k = \frac{1}{36} \hspace{0.5em} \text{per} \hspace{0.5em} k=1,...,36\]
+è di \textbf{natura totalmente arbitraria} e basata su considerazioni empiriche (dadi uguali, facce uniformi, etc.). Se i dadi avessero delle anomalie (fossero, per esempio, truccati), sarebbe più ragionevole pesare in modo diverso le probabilità degli eventi elementari.\\
+Per esempio, se ci fosse uno squilibrio di peso sulle facce $1$ dei dadi, si potrebbe decidere di porre
+\begin{flalign*}
+  p \left(\left\{(1,1)\right\}\right) & = \frac{1}{9}\\
+  p \left(\left\{(1,2)\right\}\right) & = p \left(\left\{(1,6)\right\}\right) = p \left(\left\{(2,1)\right\}\right) = ... = p \left(\left\{(6,1)\right\}\right) = \frac{1}{18}\\
+  \hspace{-2em} \text{e sui restanti } 25 \text{ eventi elementari porre}\\
+  p \left(\left\{(...,...)\right\}\right) & = \left(1-\frac{1}{9}-\frac{10}{18}\right) \cdot \frac{1}{25} = \frac{1}{75}
+\end{flalign*}
+
+\newpage
+\section{Serie}
+Di seguito si espone la definizione di \textbf{serie numerica}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE NUMERICA}}\\
+    \parbox{\linewidth}{Data una successione di numeri reali $\left\{a_n\right\}_{n \in \mathbb{N}}$, si chiama \textbf{serie numerica} la successione delle somme parziali
+    \[\left\{s_n := \sum_{k=1}^n a_k\right\}_{n \in \mathbb{N}}\]
+    Più esplicitamente
+    \[\left\{
+      \begin{array}{l}
+        s_1 = a_1\\
+        s_2 = a_1 + a_2\\
+        ...\\
+        s_n = a_1 + ... + a_n\\
+        ...
+      \end{array}
+    \right.\]
+    Pertanto, effettuare la sommatoria di infinito termini $a_n$ equivale ad effettuare
+    \[\lim_{n \to \infty} s_n\]
+    Tale successione si indica con il simbolo
+    \[\sum_{k=1}^{\infty}a_k\]
+    e si impiega lo stesso simbolo per indicare il limite per $n \to \infty$ (ammesso che esista).\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione $\boldsymbol{1}$}: Se la successione $\left\{a_n\right\}$ è una successione di numeri reali non negativi, allora, naturalmente, $\left\{s_n\right\}$ è crescente. Quindi, come ben noto, $\left\{s_n\right\}$ converge, oppure diverge a $+\infty$.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione $\boldsymbol{2}$}: È chiaro che il simbolo
+\[\sum_{k=1}^{\infty}a_k\]
+viene utilizzato per indicare che la somma inzia a partire dal termine $a_1$. Il simbolo
+\[\sum_{k=0}^{\infty}a_k\]
+invece, è atto a indicare che la somma inzia a partire dal termine $a_0$. Similmente, si impiega il simbolo
+\[\sum_{k=3}^{\infty}a_k\]
+quando si inizia a sommare a partire dal termine $a_3$.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione $\boldsymbol{3}$}: Si osservi che, naturalmente
+\[\sum_{k=1}^{\infty}a_k\]
+converge \textbf{se e solo se} converge
+\[\sum_{k=3}^{\infty}a_k\]
+Questo in quanto
+\[\sum_{k=1}^{\infty}a_k = a_1 + a_2 + ... + a_{j-1} + \sum_{k=0}^{\infty}a_k\]
+per cui il limite a destra esste \textbf{se e solo se} esiste quello di sinistra, in quanto la differenza tra le due successione è costituita soltanto un numero finito di elementi (dalla costante $a_1 + a_2 + ... + a_{j-1}$) che non influiscono sulla convergenza della successione stessa.
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione $\boldsymbol{4}$}: Si osservi che
+
+\begin{lemma}
+  \textbf{Non è vero} che ogni serie converge o diverge a $\pm \infty$.
+\end{lemma}
+
+\vspace{2em}
+\noindent
+\textbf{Esempio}: Si consideri la seguente serie
+\[\sum_{k=1}^{\infty}(-1)^k\]
+tale serie non converge e non diverge: infatti la somma parziale con $k$ pari converge a $0$, mentre la somma parziale con $k$ dispari converge a $-1$: pertanto la serie di partenza non converge e non diverge, in quanto non esiste il limite della somma di successione.\\
+Si parla, in questo caso, di una \textbf{successione oscillante}:
+\[s_1=-1,s_2=0,s_3=-1,...\]
+
+\vspace{1em}
+\subsection{Condizione necessaria per la convergenza di una serie}
+In genere non è facile stabilire se una serie sia convergente o meno (e se anche lo fosse, non è sempre facile stabilire il limite della stessa). Si consideri, a tal proposito, il seguente lemma:
+
+\begin{lemma}
+  Si consideri la serie seguente
+  \[\sum_{k=1}^\infty a_k\]
+  Se essa converge, allora deve essere che
+  \[\lim_{n \to \infty} a_n = 0\]
+  cioé \textbf{condizione necessaria} affinché una serie converga è che i termini da sommare progressivvamente diventino indefinitivamente piccoli.
+\end{lemma}
+
+\vspace{1em}
+\subsubsection{Serie armonica}
+\textbf{Osservazione}: Si osservi che tale condizione è necessaria, ma \textbf{non sufficiente}. E ciò è facilmente verificabile con l'esempio seguente: si consideri la \textbf{serie armonica} seguente
+\[\sum_{k=1}^\infty \frac{1}{k}\]
+Tale serie diverge a $+\infty$, anche se
+\[\lim_{k \to \infty} = 0\]
+in quanto essa va a $0$ troppo lentamente e quindi non ha sufficienza per garantire la convergenza.
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Si dimostri per assurdo che la \textbf{serie armonica} diverge a $+\infty$. Dal momento che taluna è una serie ottenuta come sommatoria di quantità positive o converge, oppure diverge. Si supponga per assurdo che non diverga: allora converge ad un certo $l$, ovvero dovrebbe essere che
+\[\lim_{n \to \infty} s_n = l\]
+Si può facilmente osservare che la differenza tra le due somme parziali $s_{2n}$ e $s_n$ si può scrivere come
+\[s_{2n} - s_n = \sum_{k=n+1}^{2n} \frac{1}{k}\]
+questo perché i primi $n$ termini vengono eliminati nella differenza. Inoltre si ha che
+\[s_{2n} - s_n = \sum_{k=n+1}^{2n} \frac{1}{k} = \underbrace{\frac{1}{n+1} + \frac{1}{n+2} + ... + \frac{1}{2n}}_\text{$n$ \text{ termini}} \geq n \cdot \frac{1}{2n} = \frac{1}{2}\]
+in quanto, ovviamente
+\[\frac{1}{n+1} > \frac{1}{n+2} > ... > \frac{1}{2n}\]
+ed essi sono proprio $n$ termini. Ciò permette di affermare che
+\[\frac{1}{n+1} + \frac{1}{n+2} + ... + \frac{1}{2n} \geq n \cdot \frac{1}{2n} = \frac{1}{2}\]
+Per la definizione di limite si ha che definitivamente, ossia per $n$ abbastanza grande, si ha che
+\[\forall \epsilon > 0, \exists n_\epsilon \in \mathbb{N} : \forall n \geq n_\epsilon \longrightarrow \left \vert s_n - l \right \vert < \epsilon\]
+Ponendo $\epsilon = \frac{1}{4}$ si ottiene che
+\[\left \vert s_n - l \right \vert < \frac{1}{4}\]
+Da ciò segue che, per la disuguaglianza triangolare e ricordando che $|w|=|-w|$
+\[\frac{1}{2} \leq \left \vert s_{2n} - s_n \right \vert = \left \vert s_{2n} - l + l - s_n \right \vert \leq \left \vert s_{2n} - l \right \vert + \left \vert s_{n} - l \right \vert < \frac{1}{4} + \frac{1}{4} = \frac{1}{2}\]
+ricordando che il limite delle due somme parziali è identico, dal momento che per $n \to \infty$ $s_{n} \to +\infty$, $s_n \leq s_{2n}$ e si verifica che
+\[\lim_{k \to \infty} \frac{1}{k} = 0\]
+Dal momento che una quantità non può essere minore di se stessa si ottiene l'assurdo.
+
+\vspace{1em}
+\subsection{Serie armonica generalizzata}
+Di seguito si fornisce la definizione di \textbf{serie armonica generalizzata}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE ARMONICA GENERALIZZATA}}\\
+    \parbox{\linewidth}{Dato $\alpha \in \mathbb{R}$, la serie
+    \[\sum_{k=1}^\infty \frac{1}{k^\alpha}\]
+    è detta \textbf{serie armonica generalizzata}.\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Anche se la serie armonica è divergente, la presenza di un esponente $\alpha > 1$ sul termine $\frac{1}{k}$ fa sì che le somme parziali crescano più lentamente e quindi ci sia convergenza. Se $\alpha < 1$, invece, la serie che non può che divergere ancora più velocemente.\\
+Omettendo la dimostrazione, si può facilmente capire che
+\[\sum_{k=1}^\infty \frac{1}{k^\alpha} \left\{
+  \rowcolors{1}{white}{white}
+  \begin{array}{l}
+    \text{diverge a } +\infty \text{ se } \alpha \leq 1\\
+    \text{converge se } \alpha > 1\\
+  \end{array}
+\right.\]
+
+\vspace{1em}
+\subsection{Serie geometrica}
+Di seguito si fornisce la definizione di \textbf{serie geometrica}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SERIE GEOMETRICA}}\\
+    \parbox{\linewidth}{Dato $Q \in \mathbb{R}$, la serie
+    \[\sum_{k=0}^\infty q^k\]
+    è detta \textbf{serie geometrica} di ragione $q$ (e parte con $k=0$).\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Il comportamento della serie è il seguente:
+\[\sum_{k=0}^\infty q^k \left\{
+  \rowcolors{1}{white}{white}
+  \begin{array}{l}
+    \text{converge a } \frac{1}{1-q} \text{ se } q \in (-1,1)\\
+    \text{diverge a } +\infty \text{ se } q \geq 1\\
+    \text{indeterminata se } q \leq -1
+  \end{array}
+\right.\]
+ove per \textbf{indeterminata} si intende che non converge, né diverge a $\pm \infty$.
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Se $q=1$ il comportamento è ovvio, in quanto si somma indefinitamente il valore $1$, per cui la serie diverge a $+\infty$. Se $q \neq 1$, allora si deve osservare che è possibile scrivere
+\[1 - q^{n+1} = (1 - q) \cdot (1 + q + q^2 + ... + q^n)\]
+dividendo ambo i mebri per il termine $1 - q \neq 0$ in quanto per ipotesi si è assunto $q \neq 1$, si ottiene il seguente termine generico della serie geometrica:
+\[s_n = 1 + q + q^2 + ... + q^n = \frac{1 - q^{n+1}}{1 - q}\]
+e la tesi segue per quanto noto sul limite di $q^n$:
+\begin{itemize}
+  \item se $q \in (-1,1)$, allora ovviamente
+  \[\lim_{n \to \infty} q^{n+1} = 0\]
+  per cui
+  \[\lim_{n \to \infty} \frac{1 - q^{n+1}}{1 - q} = \frac{1}{1-q}\]
+
+  \item se $q > 1$, allora ovviamente
+  \[\lim_{n \to \infty} q^{n+1} = +\infty\]
+  per cui
+  \[\lim_{n \to \infty} \frac{1 - q^{n+1}}{1 - q} = +\infty\]
+  in quanto si può portare fuori il \quotes{$-$}, senza avere problemi di segno.
+
+  \item se $q < 1$, allora ovviamente
+  \[q^{n+1} > 0\]
+  se $n+1$ è pari, mentre
+  \[q^{n+1} < 0\]
+  se $n+1$ è dispari, quindi la serie è oscillante con ampiezza a crescere.
+\end{itemize}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si calcoli la seguente serie geometrica:
+\[\sum_{k=1}^\infty \left(\frac{1}{3}\right)^k\]
+ricordando sempre, però, che la serie geoemtrica parte con $k=0$. Ovviamente è noto che, se $k=0$
+\[\left(\frac{1}{3}\right)^0 = 1\]
+per cui si può scrivere
+\[\sum_{k=1}^\infty \left(\frac{1}{3}\right)^k = -1 + \sum_{k=0}^\infty \left(\frac{1}{3}\right)^k\]
+ma siccome $q = \frac{1}{3} \in (-1,1)$, allora la serie converge a
+\[\frac{1}{1-q} = \frac{1}{1 - \frac{1}{3}}\]
+e si può scrivere
+\[\sum_{k=1}^\infty \left(\frac{1}{3}\right)^k = -1 + \sum_{k=0}^\infty \left(\frac{1}{3}\right)^k = -1 + \frac{1}{1 - \frac{1}{3}} = \frac{1}{2}\]
+
+\vspace{1em}
+\subsection{Criterio del confronto per serie a termini positivi}
+Non è sempre facile capire se una serie converge o meno: anche se la serie è a termini positivi, non è facile determinare se essa converga o diverga a $\pm \infty$. Tuttavia, esistono diversi criteri, uno dei più basilari ed efficaci è il criterio del confronto:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{CRITERIO DEL CONFRONTO PER SERIE A TERMINI POSITIVI}}\\
+    \parbox{\linewidth}{Siano date due successioni $a_n,b_n \geq 0$ e si supponga che esse siano tali che $a_n \leq b_n, \forall n$. Allora si ha che
+    \begin{itemize}
+      \item se \(\displaystyle{\sum_{k=1}^\infty a_n}\) diverge, diverge anche \(\displaystyle{\sum_{k=1}^\infty b_n}\)
+      \item se \(\displaystyle{\sum_{k=1}^\infty b_n}\) converge, allora converge anche \(\displaystyle{\sum_{k=1}^\infty a_n}\)
+    \end{itemize}
+    Inoltre, detto $l_b$ il limite dela prima e $l_a$ il limite della seconda, risulta $l_a = l_b$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+Si propone una breve dimostrazione (che si basa sui teoremi del confronto di successioni monotone):
+\begin{itemize}
+  \item si indichi con $s_n$ la successione delle somme parziali relativa ai termini $a_n$, ovvero
+  \[s_n = a_1 + ... + a_n\]
+  \item si indichi con $r_n$ la successione delle somme parziali relativa ai termini $b_n$, ovvero
+  \[r_n = b_1 + ... + b_n\]
+\end{itemize}
+Si supponga che la successione $r_n$ converga e si chiami ccon $l_b$ il suo limite, ovvero
+\[\lim_{n \to \infty} r_n = l_b\]
+sapendo, però, che $a_n \leq b_n, \forall n$, si evince che
+\[s_n \leq r_n\]
+ma siccome $r_n$ è una successione crescente e convergente, i suoi termini sono diminati dall'alto dal limite $l_b$, da cui
+\[s_n \leq r_n \leq l_b\]
+per il teorema di convergenza delle successioni monotone. Ma siccome anche la successione $s_n$ è crescente ed è limitata superiormente da $l_b$, per il teorema di esistenza del limite delle successioni monotone segue che
+\[\exists \lim_{n \to \infty} a_n = l_a\]
+per il teorema del confronto tra successioni, sapendo che $a_n \leq b_n, \forall n$, si ha che $l_a \leq l_b$.
+Generalmente per il confronto vengono utilizzate la serie geometrica e la serie armonica generalizzata (visto che già se ne conosce il comportamento).
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Si consideri la seguente serie
+\[\sum_{k=0}^\infty \frac{1}{k!}\]
+e si dimostri che essa è \textbf{convergente}. Ricordando che $0!=1$, per definizione, si ha che
+\[\sum_{k=0}^n \frac{1}{k!} = 1 + 1 + \frac{1}{2} + ... + \frac{1}{n \cdot (n-1) \cdot ... \cdot 2}\]
+se ora, in ciascun denominatore, si procede ad eliminare tutti i prodotti tranne i primi due, ovvero lasciando solamente $n \cdot (n-1)$, è naturale ottenere una sommatoria maggiorata, per cui
+\[\sum_{k=0}^n \frac{1}{k!} = 1 + 1 + \frac{1}{2} + ... + \frac{1}{n \cdot (n-1) \cdot ... \cdot 2} \leq 1 + 1 + \frac{1}{2 \cdot 1} + ... + \frac{1}{n \cdot (n-1)} = 2 + \sum_{k=2}^n \frac{1}{k \cdot (k-1)}\]
+La serie a destra può essere così riscritta
+\[\sum_{k=2}^\infty \frac{1}{k \cdot (k-1)} = \sum_{k=2}^\infty \left[\frac{1}{k-1} - \frac{1}{k}\right]\]
+e tale serie è \textbf{convergente} ad $1$, in quanto $s_n = 1 - \frac{1}{n}$. Per verificarlo basta provare a scrivere esplicitamente la successione delle somme parziali
+\[s_n = \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + ... + \left(\frac{1}{n-1} - \frac{1}{n}\right) = 1 - \frac{1}{n}\]
+in quanto tutti gli altri termini si semplificano. Applicando il criteriore del confronto, è facile osservare che
+\[\sum_{k=0}^\infty \frac{1}{k!} \leq 2 + \sum_{k=2}^\infty \frac{1}{k \cdot (k-1)} = 2 + 1 = 3\]
+per cui si ottiene che anche la successione
+\[\sum_{k=0}^\infty \frac{1}{k!}\]
+è convergente e il suo limite è minore di $3$. Tale limite prende il nome di \textbf{numero di Nepero} ed è indicato con $e$.
 \end{document}
