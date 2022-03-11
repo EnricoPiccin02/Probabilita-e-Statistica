@@ -157,12 +157,12 @@ Non è, invece, compito della probabilità quello di attribuire i valori di prob
 Una volta appresa l'assegnazione della probabilità agli eventi elemantari, interviene la probabilità: in particolare, la struttura matematica alla base del calcolo della probabilità prevede tre importanti elementi
 \begin{enumerate}
   \item un insieme $\Omega$ (che per il momento si considera finito);
-  \item una famiglia $A$ (non vuota) di sottoinsiemi di $\Omega$ (spesso la famiglia di tutti i sottoinsieme); mentre gli elementi di $\Omega$ sono chiamati risultati elementari, gli elementi sottoinsiemi di $\Omega$ appartenenti a tale famiglia sono chiamati risultati complessi, ottenuti come aggregazione di risultati elementari;
+  \item una famiglia $\mathcal{A}$ (non vuota) di sottoinsiemi di $\Omega$ (spesso la famiglia di tutti i sottoinsieme); mentre gli elementi di $\Omega$ sono chiamati risultati elementari, gli elementi sottoinsiemi di $\Omega$ appartenenti a tale famiglia sono chiamati risultati complessi, ottenuti come aggregazione di risultati elementari;
   \item un'applicazione
   \[p : \mathcal{A} \longrightarrow \left[0,1\right]\]
   che ad ogni sottoinsieme appartenente alla famiglia $\mathcal{A}$ associa un valore compreso tra $0$ e $1$.
 \end{enumerate}
-Gli elementi di $\Omega$ sono detti \textbf{eventi elementari}, per cui $\Omega$ è detto \textbf{spazio degli eventi elementari}, mentre gli elementi della famiglia $A$ prendono il nome di \textbf{risultati} (o eventi) \textbf{casuali} (o semplicemente eventi, configurazioni, traiettorie, campioni), per cui $A$ prende il nome di \textbf{spazio degli eventi casuali}.\\
+Gli elementi di $\Omega$ sono detti \textbf{eventi elementari}, per cui $\Omega$ è detto \textbf{spazio degli eventi elementari}, mentre gli elementi della famiglia $\mathcal{A}$ prendono il nome di \textbf{risultati} (o eventi) \textbf{casuali} (o semplicemente eventi, configurazioni, traiettorie, campioni), per cui $\mathcal{A}$ prende il nome di \textbf{spazio degli eventi casuali}.\\
 Se due eventi hanno un'intersezione nulla (come numeri pari e numeri dispari), si dice che essi sono \textbf{mutualmente esclusivi}.\\
 L'applicazione $p$ è detta \textbf{probabilità}, mentre l'immagine attraverso $p$ di un evento $A$, ovvero $p(A)$ viene chiamata \textbf{probabilità dell'evento $A$}.
 
@@ -195,7 +195,7 @@ deve soddisfare, anch'essa, determinate regole:
   \[p(\Omega) = 1\]
   \item l'\textbf{evento impossibile} deve avere \textbf{probabilità nulla}, ovvero
   \[p(\varnothing) = 0\]
-  \item se due eventi $A$ e $B$ sono mutualmente esclusivi, ovvero tali che i sottoinsimi di $\Omega$ associati siano disgiunti, ovvero $A \cap B = \varnothing$, allora si ha che
+  \item se due eventi $A$ e $B$ sono mutualmente esclusivi, ovvero tali che i sottoinsiemi di $\Omega$ associati siano disgiunti, ovvero $A \cap B = \varnothing$, allora si ha che
   \[p(A) + p(B) = p(A \cup B)\]
   tale proprietà prende il nome di \textbf{additività} (sempre, però, relativamente a eventi disgiunti).
 \end{enumerate}
@@ -224,7 +224,7 @@ Dopo aver introdotto il concetto di \textbf{algebra} e \textbf{probabilità} è 
       Omega$;
       \item $p$ è una probabilità su $\mathcal{A}$ (che, essendo una probabilità, soddisfa le $3$ regole precedentemente esposte).
     \end{itemize}
-    \vspace{-1mm}}\\
+    \vspace{1mm}}\\
     \hline
 \end{tabularx}
 
@@ -291,7 +291,7 @@ Le proprietà degli spazi di probabilità finiti discendono dalle richieste, oss
       {\textbf{PROPRIETÀ FONDAMENTALE}}\\
       \parbox{\linewidth}{Si verifica che
       \[p(A \cup B) + p(A \cap B) = p(A) + p(B), \hspace{0.5em} \forall A,B \in \mathcal{A}\]
-      \vspace{-1mm}}\\
+      \vspace{1mm}}\\
       \hline
   \end{tabularx}
 
@@ -689,6 +689,7 @@ Non è sempre facile capire se una serie converge o meno: anche se la serie è a
 \end{tabularx}
 
 \vspace{1em}
+\noindent
 Si propone una breve dimostrazione (che si basa sui teoremi del confronto di successioni monotone):
 \begin{itemize}
   \item si indichi con $s_n$ la successione delle somme parziali relativa ai termini $a_n$, ovvero
@@ -724,4 +725,336 @@ in quanto tutti gli altri termini si semplificano. Applicando il criteriore del 
 per cui si ottiene che anche la successione
 \[\sum_{k=0}^\infty \frac{1}{k!}\]
 è convergente e il suo limite è minore di $3$. Tale limite prende il nome di \textbf{numero di Nepero} ed è indicato con $e$.
+
+\newpage
+\begin{center}
+  7 Marzo 2022
+\end{center}
+\section{Spazi di probabilità generali}
+Finora sono stati considerati degli spazi degli eventi elementari finiti. Tuttavia, non è sempre possibile sapere a priori quanti elementi devono essere contenuti nello spazio campione su cui si andrà a lavorare, per cui si rende necessario operare con spazi arbitrariamente grandi, ovvero \textbf{non finiti}.\\
+Tuttavia, ciò introduce una complicazione aggiuntiva: non sarà più possibile sommare un numero finito di probabilità, ma un numero arbitrariamente grande e quindi infinito.
+
+\vspace{1em}
+\subsection{$\boldsymbol{\sigma}$-algebra}
+Per estensione con quanto esposto in precedenza, di seguito si espone la definizione di $\sigma$-algebra, ovvero un'algebra nella quale non si pone un limite sul numero di elementi:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{$\boldsymbol{\sigma}$-ALGEBRA}}\\
+    \parbox{\linewidth}{Una famiglia $\mathcal{A}$ di parti di un insieme $\Omega$ è detta \textbf{$\boldsymbol{\sigma}$-algebra} se
+    \begin{enumerate}
+      \item l'insieme vuoto e lo spazio campione stesso appartengono ad $\mathcal{A}$, ovvero
+      \[\varnothing, \Omega \in \mathcal{A}\]
+      \item se $A \in \mathcal{A}$, allora $A^c \in \mathcal{A}$
+      \item mentre in un'algebra normale si chiedeva che dati $n$ sottoinsiemi appartenenti all'algebra, anche la loro unione e intersezione di devono appartenere, nel caso di una $\sigma$-algebra si chiede che se si considera una successione di sottoinsiemi $A_n$ all'interno della $\sigma$-algebra, ovvero $\left\{A_n, n \in \mathbb{A} \right\} \subset \mathcal{A}$, ossia una \textbf{quantità al più numerabile}, allora l'unione e l'intersezione di tali sottoinsiemi devono appartenere alla $\sigma$-algebra:
+      \[\bigcup_{n=1}^\infty A_n \in \mathcal{A} \hspace{1em} \text{e} \hspace{1em} \bigcap_{n=1}^\infty A_n \in \mathcal{A}\]
+    \end{enumerate}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Osservazione}: Ovviamente, ogni \textbf{$\boldsymbol{\sigma}$-algebra} è anche un'algebra, e i due concetti coincidono se $\Omega$ ha un numero finito di elementi.
+
+\newpage
+\noindent
+\subsection{Probabilità generale}
+Così come su un'algebra è stato definito il concetto di probabilità, è opportuno estendere tale concetto anche ad una $\sigma$-algebra:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PROBABILITÀ PER SPAZI DI PROBABILITÀ GENERALI}}\\
+    \parbox{\linewidth}{Siano $\Omega$ un insieme e la famiglia $\mathcal{A}$ una \textbf{$\boldsymbol{\sigma}$-algebra} su $\Omega$. Una (misura di) \textbf{probabilità} è una funzione
+    \[p : \mathcal{A} \longrightarrow [0,1]\]
+    tale che
+    \begin{enumerate}
+      \item come per un'algebra normale, la probabilità dell'insieme vuoto sia nulla e quella dello spazio campione stesso sia massima, ovvero
+      \[p(\varnothing) = 0 \hspace{1em} \text{e} \hspace{1em} p(\Omega) = 1\]
+      \item se $\left\{A_n, n \in \mathbb{N}\right\} \subset \mathcal{A}$ è una successione di insiemi appartenenti alla $\sigma$-algebra \textbf{a due a due disgiunti}, ovvero $A_i \cap A_j \neq \varnothing, \forall i \neq j$, allora
+      \[\sum_{n=1}^\infty p(A_n) = p \left(\bigcup_{n=1}^{\infty} A_n\right) \hspace{1em} \left[\boldsymbol{\sigma}-\textbf{additività}\right]\]
+      ovvero la probabilità deve essere \textbf{$\boldsymbol{\sigma}$-additiva}. Da notare che
+      \[\sum_{n=1}^\infty p(A_n)\]
+      è una \textbf{serie numerica}, ovverosia una \textbf{somma infinita} delle probabilità di ogni singolo insieme $A_n$ considerato.
+    \end{enumerate}
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\subsection{Spazio di probabilità generale}
+Avendo esteso il concetto di alebra e probabilità al caso generale, è posibile parlare di \textbf{spazio di probabilità generale}, la cui definizione viene di seguito esposta:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SPAZIO DI PROBABILITÀ GENERALE}}\\
+    \parbox{\linewidth}{Si chiama \textbf{spazio di probabilità} una terna $\left(\Omega,\mathcal{A},p\right)$ dove
+    \begin{itemize}
+      \item $\Omega$ è un insieme, ovvero lo spazio degli eventi elementari (spazio campione)
+      \item $\mathcal{A}$ è una $\sigma$-algebra
+      \item $p$ è una probabilità definita su $\mathcal{A}$
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+Da notare, ovviamente, che i risultati visti in precedenza, nell'ambito di uno spazio campione finito, sono ancora validi, anche in questo ambito generale.\\
+Si consideri, a tal proposito, il seguente esempio:
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Presa una moneta e lanciandola ripetutatemente, si vuole determinare la proabilità che esca testa al lancio $n$-esimo, ma non prima.\\
+Per la visualizzazione di tale problema dal punto di vista matematico, è possibile etichettare testa con il numero \quotes{$0$} e croce con il numero \quotes{$1$}. È possibile, quindi, identificare i risultati di una successione di lanci con una successione che prenda valori in $\{0,1\}$. Per esempio $(0,0,1,0,1,1,...)$ identifica una successione di lanci in cui al primo e al secondo lancio è uscita testa, al terzo croce, al quarto di nuovo testa, etc...\\
+Con questa identificazione l'evento elementare è, fissato $n$, il seguente:
+
+\begin{flalign*}
+  \omega_n & = \text{ la prima volta che esce testa è al lancio } n\text{-esimo}\\
+   & = \parbox{\linewidth}{\text{la famiglia delle successione che hanno \quotes{$1$} nei\\ primi $n-1$ elementi e \quotes{$0$} all'evento $n$-esimo.}}\\
+\end{flalign*}
+
+\noindent
+Lo spazio degli eventi elementari è dunque $\Omega=\left\{\omega_n, n \in \mathbb{N}\right\}$, ovvero l'insimee delle fammiglie $\omega_1,\omega_2,$ etc., il quale, quindi, ha un numero infinito, ossia una quantità numerabile, di elementi.\\
+Per rispondere alla domanda che è stata posta in principio, è necessario stabilire un criterio ragionebvole per assegnare la probabilità. È possibile assumere, in maniera puramente \textbf{euristica}, che
+\begin{itemize}
+  \item in ogni singolo lancio, la probabilità che esca testa o croce sia la stessa;
+  \item il risultato di un lancio sia indipendente dai risultati dei lanci precedenti.
+\end{itemize}
+Queste ultime sono ipotesi ragionevoli, ma come per il lancio di un dado, sono assunzioni totalmente arbitrarie. Per esempio, la moneta potrebbe essere sbilanciata e quindi testa potrebbe tendere as usicre più volte rispetto a croce.\\
+Per stabilire la probabilità di verificarsi dell'evento $\omega_1$ è necessario capire che cosa accade nel primo lancio: se esce testa la probabilità è presto calcolata $\frac{1}{2}$, ossia il $50\%$.\\
+La probabilità che si verifichi $\omega_2$ prevede che non sia uscita testa al primo lancio e serve che al secono lancio esca proprio testa. Quindi la probabilità è $\frac{1}{2}$ di $\frac{1}{2}$, cioé $\frac{1}{4}$, ossia il $25\%$.\\
+È così via per l'evento $\omega_n$:
+\[p\left(\left\{\omega_n\right\}\right) = \left(\frac{1}{2}\right)^n\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Nonostante si abbia risposto alla domanda, non è stato definito completamente lo spazio di probabilità che si sta considerando.\\
+È opportuno considerare come $\sigma$-algebra $\mathcal{A}$, come già visto, l'insieme di tutti i sottoinsiemi di $\Omega$: questo è possibile farlo nonostante $\Omega$ sia infinito, in quanto è costituita da una \textbf{quntità numerabile} di elementi.\\
+Dopodiché la probabilità su $\mathcal{A}$ si definisce come in precedenza, ossia come somma delle probabilità degli eventi elementari costituenti $\mathcal{A}$; in particolare
+\[p(A) = \left\{
+  \rowcolors{1}{white}{white}
+  \begin{array}{cl}
+    \displaystyle{\sum_{\omega \in A} p\left(\left\{\omega\right\}\right)} & \forall A \subset \Omega \text{ non vuoto}\\
+    0 & \text{se } A = \varnothing
+  \end{array}
+\right.\]
+La funzione così definita è ben posta, poiché $\Omega$ è numerabile e quindi $\mathcal{A}$ è al più numerabile. Quindi
+\[\sum_{\omega \in \mathcal{A}}\]
+è una sommatoria finita o una serie (se il numero di elementi costituenti $\mathcal{A}$ è infinito). Si ha, inoltre, che tale funzione è utti gli effetti una probabilità, in quanto la somma delle probabilità di tutti gli eventi elementari è proprio $1$
+\[p(\Omega) = \sum_{n=0}^\infty p \left(\left\{\omega\right\}\right) = \sum_{n=0}^\infty \left(\frac{1}{2}\right)^n = \sum_{n=1}^\infty \left(\frac{1}{2}\right)^n - 1 = \frac{1}{1 - \dfrac{1}{2}} - 1 = 2 - 1 = 1\]
+essendo una serie geometrica di ragione $\frac{1}{2}$. Si può facilmente osservare che vale la proprietà di \textbf{$\boldsymbol{\sigma}$-additività}: si calcoli la probabilità dell'evento
+\[A = \left\{\text{esce testa per la prima volta tra il terzo e il sesto lancio (compresi)}\right\} = \left\{\omega_1,\omega_4,\omega_5,\omega_6\right\}\]
+Per calcolare la probabilità di tale evento complesso $\mathcal{A}$ sarà sufficiente provvedere alla somma delle probabilità dei singoli eventi che appartengono ad $\mathcal{A}$, secondo la definzione, ovvero:
+\[p(A) = \sum_{n=3}^6 p\left(\left\{\omega_n\right\}\right) = \left(\frac{1}{2}\right)^3 + \left(\frac{1}{2}\right)^4 + \left(\frac{1}{2}\right)^5 + \left(\frac{1}{2}\right)^6\]
+Si consideri un altro evento complesso:
+\[A = \left\{\text{esce testa per la prima volta in un lancio pari}\right\} = \left\{\omega_n : n \text{ è pari}\right\} = \left\{\omega_{2m} : m \in \mathbb{N}\right\}\]
+La probabilità di tale evento è, quindi:
+\[p(\mathcal{A}) = \sum_{m=0}^\infty p \left(\left\{\omega_{2m}\right\}\right) = \sum_{m=0}^\infty \left(\frac{1}{2}\right)^{2m} = \sum_{m=0}^\infty \left(\frac{1}{4}\right)^{m} = \sum_{m=1}^\infty \left(\frac{1}{4}\right)^{m} - 1 = \frac{1}{1 - \dfrac{1}{4}} - 1 = \frac{4}{3} - 1 = \frac{1}{3}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: L'esempio appena visto è molto simile a quelli visti nel caso finito. Il motivo per cui tale estensione al caso generale è stata così naturale è che $\Omega$ è numerabile, nonostante sia infinito, ma nulla di più. Esso merita, quindi, una definizione specifica:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{SPAZIO DI PROBABILITÀ DISCRETO}}\\
+    \parbox{\linewidth}{Si dirà che uno spazio di probabilità $(\Omega,\mathcal{A},p)$ è \textbf{discreto} se $\Omega$ è al più numerabile (ovvero o finito o numberabile) e $\mathcal{A}$ è la famiglia di tutti i sottoinsieme di $\Omega$. Naturalmente, per quanto già visto, la probabilità sulla famiglia $\mathcal{A}$ viene definita come
+    \[p(A) = \left\{
+      \begin{array}{cl}
+        \displaystyle{\sum_{\omega \in A} p\left(\left\{\omega\right\}\right)} & \forall A \subset \Omega \text{ non vuoto}\\
+        0 & \text{se } A = \varnothing
+      \end{array}
+    \right.\]
+    Quindi, in base a tale formula, si evince che il comportamento di $p$ è \textbf{completamente determinato dalle probabilità degli eventi elementari}.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che l'espressione
+\[\sum_{\omega \in A} p\left(\left\{\omega\right\}\right)\]
+è da interpretarsi come una serie. Tuttavia, nel calcolo di tale sommatoria è totalmente \textbf{ininfluente l'ordine con cui si vanno a sommare le probabilità} degli eventi costituenti $\mathcal{A}$, ma solamente perché taluna è una \textbf{serie convergente a termini positivi}. Pertanto, in questo caso, si parla di \textbf{convergenza assoluta} e, quindi il limite non cambia se i termini vengono riarrangiati.
+
+\vspace{1em}
+\noindent
+Si considerino due questioni:
+\begin{enumerate}
+  \item Si consideri l'alternativa di considerare nell'esempio appena trattato, lo spazio degli eventi elementi seguenti
+  \[\Omega = \left\{\text{successioni costituite da \quotes{0} e da  \quotes{1}}\right\}\]
+  e, per $n \in \mathbb{N}$, gli eventi
+  \[A_n = \left\{\text{successioni che presentano \quotes{1} nei primi } n-1 \text{ elementi e \quotes{0} nell'} n \text{-esimo}\right\}\]
+  Ovvero ci si sta chiedendo se sia più conveniente considerare gli eventi oggetto di interesse come eventi elementari $\omega_n$ invece che come eventi complessi $A_n$.
+
+  \item Inoltre, ci si deve chidere per quale ragione non ci si limiti ad assegnare una probabilità esclusivamente sugli eventi elementari e si necessita, invece, di introdurre la famiglia $\mathcal{A}$ e definire $p$ su eventi complessi $A \in \mathcal{A}$.
+\end{enumerate}
+
+\vspace{1em}
+\noindent
+La risposta alla seconda questione è presto detta: se $\Omega$ non fosse un insieme finito o numerabile, i suoi sottoinsiemi potrebbero non essere finiti o numerabili, per cui non sarebbe possibile definire la probabilità dell'evento complesso semplicemente basandosi sulla sommatoria della probabilità degli eventi elementari, in quanto tale sommatoria potrebbe essere non finita, in quanto somma di quantità più che numerabili, perdendo di significato.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Per rispondere alla prima questione, invece, si consideri un esempio pratico. Se si deve modellizzare la risposta elastica di un ponte di ferro costituito da delle travi di ferro; si compia il seguente parallelo
+\begin{itemize}
+  \item Le travi sono gli eventi elementari $\omega_n$;
+  \item L'elastiticità delle travi corrisponde alla probabilità di eventi elementari $p \left(\left\{\omega_n\right\}\right)$;
+  \item Le regole con cui le travi interagiscono sono gli assiomi dello spazio di probabilità (quale l'additività);
+  \item Il ponte è l'evento complesso $\mathcal{A}$.
+\end{itemize}
+In questo caso, per la modellizzaione, si sarebbe potuto certamente prendere come elemento base del ponte gli atomi di ferro e considerare sia le travi che il ponte strutture complesse; tuttavia, il concetto di elasticità sarebbe stato definito comunque a partire dalle travi e non sugli atomi, dove tale applicazione non avrebbe alcun senso. Similmente, si sarebbero potuto considerare come eventi elementari le successioni, però il concetto di probabilità va comunque definito a livello di evento $A_n$ e non sulla singola successione, in cui non avrebbe avuto senso.\\
+In effetti ogni successione avrebbe dovuto avere la stessa probabilità, ma ogni evento $A_n$ ne contiene infinite e quindi $A_n$ risulterebbe avere \textbf{probabilità infinita} (e ciò è impossibile).\\
+In tale esempio, pertanto, dal punto di vista operativo, i due approcci non differiscono concettualmente; spesso, però, si usano spazi non discreti: il ponte potrebbe essere fatto da ben altro che semplici travi.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si consideri un bersaglio con una macchia non omogenea al suo interno:
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \node[circle,draw=black,fill=white, inner sep=0pt,minimum size=4cm]{} (0,0);
+    \node[circle,draw=black,fill=black, inner sep=0pt,minimum size=1cm](i) at (0,1) {};
+    \node[circle,draw=black,fill=black, inner sep=0pt,minimum size=1cm](i1) at (0,0.7) {};
+    \node[circle,draw=black,fill=black, inner sep=0pt,minimum size=1cm](i2) at (-0.5,0.8) {};
+    \node[circle,draw=black,fill=black, inner sep=0pt,minimum size=1cm](i3) at (-0.8,0.5) {};
+  \end{tikzpicture}
+  \caption{Esempio 4}
+  \label{fig:esempio_4}
+\end{figure}
+
+\noindent
+Lanciando una freccetta, qual'è la probabilità di colpire la macchia scura?\\
+In questo caso, ha senso considerare l'insieme degli eventi elementari $\Omega$ l'insieme di tutti i punti del cerchio
+\[\Omega : = \left\{x \in \mathbb{R}^2 : x \in \text{cerchio}\right\}\]
+Pertanto, sembra ragionevole assegnare ad una certa zona la probabilità di essere colpita in modo proporzionale alla sua area. In altre parole, se $A$ è un sottoinsieme del cerchio $\Omega$, si ha che
+\[p(A) = c \cdot \left \vert A \right \vert\]
+dove $\left \vert A \right \vert$ è l'area del sottoinsieme e $c>0$ è un opportuno fattore; questa è ovviamente un'\textbf{assunzione euristica}, totalmente arbitraria.\\
+Affinché l'oggetto appena definito sia un'algebra (e $p$ una probabilità), deve risultare $p(\Omega)=1$, si può considerare come fattore rinormalizzante
+\[c=\frac{1}{\left \vert \Omega \right \vert}\]
+Nuovamente, la misura di probabilità così definita è una scelta arbitraria basata su considerazioni empiriche. Si sarebbe potuto ancora definirla in modo diverso, per esempio volendo tenere conto della gravità di zone poste in basso che, a paritià di area, potrebbero avere più probabilità di essere colpite rispetto a zone poste in alto.\\
+Si osservi, poi, che benché sia stato considerato come spazio degli eventi elementari l'insieme del punti del bersaglio, ovvero uno spazio \textbf{né finito}, \textbf{né numerabile}, non ha senso definire prima la probabilità di colpire i singoli punti (che sarebbe sempre nulla) e poi la probabilità di colpire un'intera area del bersaglio, in quanto ad ogni area corrispondono infiniti punti e quindi la probabilità risultante sarebbe nulla.\\
+Quando $\Omega$ è un insieme al più numerabile, è sempre possibile scegliere $\mathcal{A}$ come la famiglia di tutti i sottoinsiemi di $\Omega$; tuttavia, in generale questo non è possibile farlo, o non risulta conveniente farlo.\\
+Infatti, in questo caso, lavorando con $\Omega$ non finito e non numerabile, la $\sigma$-algebra $\mathcal{A}$ non è
+\[\mathcal{A} := \left\{\text{ogni sottoinsieme di }\Omega\right\}\]
+in quanto poi dopo si avrebbe difficoltà a definire la probabilità $p$. In effetti, in questo caso, si è assunto
+\[\mathcal{A} := \left\{\text{ogni sottoinsieme di }\Omega\text{ per cui abbia senso il concetto di area}\right\}\]
+altrimenti non si sarebbe potuto scrivere $\left \vert A \right \vert$. In questo caso, la famiglia $\mathcal{A}$ assunta è a tutti gli effetti una $\sigma$-algebra $\mathcal{A}$, in quanto l'unione di due eventi disgiunti di cui si conosce la misura (l'area) è ancora un evento di cui è nota la misura (l'area).\\
+Ciò che in questo caso è rilevante è che in $\mathcal{A}$ cadano tutti gli oggetti geometrici classici e le loro unioni ed intersezioni numerabili. Tale $\sigma$-algebra prende il nome di \textbf{$\boldsymbol{\sigma}$-algebra di Borel}, ovvero la \textbf{famiglia di tutti i sottoinsiemi misurabili di $\boldsymbol{\Omega}$}, o in termini tecnici, la più piccola $\sigma$-algebra che contiene gli aperti di $\Omega$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che, innanzitutto, una probabilità è una \textbf{misura}, una misura della facilità con cui un evento si verifica e come qualsiasi altra misura presenta la seguente proprietà: se di tale oggetto se ne misurano le parti distinte (senza sovrapposizioni) per conoscere la misura dell'oggetto complessivo, è sufficiente sommare fra loro le singole misure distinte.
+
+\vspace{1em}
+\noindent
+Volendo determinare ulteriori proprietà generali degli spazi di probabilità:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PROPRIETÀ DELLO SPAZIO DI PROBABILITÀ}}\\
+    \parbox{\linewidth}{Sia $\left(\Omega,\mathcal{A},p\right)$ uno spazio di probabilità
+    \begin{itemize}
+      \item se $\left\{A_n\right\}$ è una successione crescente di eventi, cioé $A_n \subset A_{n+1}, \forall n \in \mathbb{N}$, allora
+      \[p \left(\bigcup_{k=1}^\infty A_n\right) = \lim_{n \to \infty} p(A_n) \hspace{1em} \left[\textbf{continuità dal basso}\right]\]
+      ovvero la probabilità dell'unione di tali eventi dipende unicamente dal comportamento asintotico dell'ultimo evento, che contiene tutti gli altri, ovvero l'evento $A_n$
+
+      \item se $\left\{A_n\right\}$ è una successione decrescente di eventi, cioé $A_{n+1} \subset A_{n}, \forall n \in \mathbb{N}$, allora
+      \[p \left(\bigcap_{k=1}^\infty A_n\right) = \lim_{n \to \infty} p(A_n) \hspace{1em} \left[\textbf{continuità dall'alto}\right]\]
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione $\boldsymbol{1}$}: È possibile scrivere $\forall n \in \mathbb{N}$, grazie al fatto che si sta lavorando con successioni crescenti
+\[\bigcup_{k=1}^n A_k = A_1 \cup \bigcup_{k=2}^n \left(A_k - A_{k-1}\right)\]
+in modo tale da operare con insiemi disgiunti. Poiché
+\[\bigcup_{k=1}^\infty A_k = A_1 \cup \bigcup_{k=2}^\infty \left(A_k - A_{k-1}\right)\]
+ovvero si sta considerando un insieme infintio di insiemi a due a due disgiunti, usando la $\sigma$-additività si ottiene
+\[p \left(\bigcup_{k=1}^\infty A_k\right) = p(A_1) + \sum_{k=2}^\infty p \left(A_k - A_{k-1} \right)\]
+sfruttando il concetto di serie, una sommatoria infinita può essere considerata come il limite delle somme parziali, ovvero si ha che
+\[p(A_1) + \sum_{k=2}^\infty p \left(A_k - A_{k-1}\right) = p(A_1) + \lim_{n \to +\infty} \sum_{k=2}^n p \left(A_k - A_{k-1}\right)\]
+Dal momento che $p(A_1)$ è un numero reale, può essere tranquillamente portato dentro il limite, ottenendo
+\[p(A_1) + \lim_{n \to +\infty} \sum_{k=2}^n p \left(A_k - A_{k-1} \right) = \lim_{n \to +\infty} \left[p(A_1) + \sum_{k=2}^n p \left(A_k - A_{k-1}\right)\right]\]
+Sfruttando ancora l'additività si possono rimettere nuovamente insieme tutti gli insiemi e calcolare il limite della probabilità dell'unione, come mostrato di seguito:
+\[\lim_{n \to +\infty} \left[p(A_1) + \sum_{k=2}^n p \left(A_k - A_{k-1}\right)\right] = \lim_{n \to +\infty} p\left(A_1 \cup \bigcup_{k=2}^n \left(A_k - A_{k-1}\right) \right) = \lim_{n \to +\infty} p(A_n)\]
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione $\boldsymbol{2}$}: Per la dimostrazione della seconda proprietà, si deve osservare che $\{A_1 - A_n\}$ è una successione necessariamente crescente. Dopo questa prima osservazione si può facilmente scrivere che
+\[p(A_1) - p \left(\bigcap_{k=2}^{\infty} A_k\right) = p \left(A_1 - \bigcap_{k=2}^\infty A_k\right)\]
+questo sfruttando il fatto che
+\[\bigcap_{k=2}^\infty A_k \subset A_1\]
+Inoltre, dal momento che l'intersezione degli $A_k$ è uguale all'unione dei complementari si ottiene
+\[p \left(A_1 - \bigcap_{k=2}^\infty A_k\right) = p \left(A_1 \cap \bigcup_{k=2}^\infty A_k^c\right)\]
+Ora, invece, sfruttando la proprietà distributiva, si ha che $A_1$ intersecato con l'unione è uguale all'unione delle intersezioni, per cui
+\[p \left(A_1 \cap \bigcup_{k=2}^\infty A_k^c\right) = p \left( \bigcup_{k=2}^\infty \left(A_1 \cap A_k^c\right)\right)\]
+Ma naturalmente si ha che $A_1 \cap A_k^c = A_1 - A_k$, ovvero l'intersezione tra $A_1$ e il complementare di $A_k$ è $A_1$ a cui viene tolto $A_k$, per cui
+\[p \left( \bigcup_{k=2}^\infty \left(A_1 \cap A_k^c\right)\right) = p \left( \bigcup_{k=2}^\infty \left(A_1 - A_k\right)\right)\]
+Ma per l'osservazione iniziale, si ha che $A_1 - A_k$ è una successione crescente, per cui per la \textbf{continuità dal basso} dimostrata in precedenza, segue che
+\[p \left( \bigcup_{k=2}^\infty \left(A_1 - A_k\right)\right) = \lim_{n \to +\infty} p \left(A_1 - A_n\right) = p(A_1) - \lim_{n \to +\infty} p(A_n)\]
+Per cui si è ottenuto, alla fine, che
+\[p(A_1) - p \left(\bigcap_{k=2}^{\infty} A_k\right) = p(A_1) - \lim_{n \to +\infty} p(A_n) \longrightarrow p \left(\bigcap_{k=2}^{\infty} A_k\right) = \lim_{n \to +\infty} p(A_n)\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
