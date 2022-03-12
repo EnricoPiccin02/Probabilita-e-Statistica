@@ -6,7 +6,7 @@
 \contentsline {subsection}{\numberline {1.2}Regole della famiglia di eventi complessi}{4}{}%
 \contentsline {subsection}{\numberline {1.3}Regole dell'applicazione di probabilità}{5}{}%
 \contentsline {subsection}{\numberline {1.4}Spazio di probabilità}{5}{}%
-\contentsline {subsubsection}{\numberline {1.4.1}Proprietà degli spazi di probabilità finiti}{6}{}%
+\contentsline {subsubsection}{\numberline {1.4.1}Proposizione 1 - Proprietà degli spazi di probabilità finiti}{6}{}%
 \contentsline {subsubsection}{\numberline {1.4.2}Costruzione di spazi di probabilità finiti}{8}{}%
 \contentsline {section}{\numberline {2}Serie}{11}{}%
 \contentsline {subsection}{\numberline {2.1}Condizione necessaria per la convergenza di una serie}{12}{}%
@@ -18,3 +18,8 @@
 \contentsline {subsection}{\numberline {3.1}$\boldsymbol {\sigma }$-algebra}{17}{}%
 \contentsline {subsection}{\numberline {3.2}Probabilità generale}{18}{}%
 \contentsline {subsection}{\numberline {3.3}Spazio di probabilità generale}{18}{}%
+\contentsline {subsection}{\numberline {3.4}Proposizione 2 - Proprietà degli spazi di probabilità generali}{22}{}%
+\contentsline {subsection}{\numberline {3.5}Formula di inclusione-esclusione}{28}{}%
+\contentsline {section}{\numberline {4}Calcolo combinatorio}{29}{}%
+\contentsline {subsection}{\numberline {4.1}Disposizione con ripetizione}{29}{}%
+\contentsline {subsection}{\numberline {4.2}Disposizione senza ripetizione}{30}{}%

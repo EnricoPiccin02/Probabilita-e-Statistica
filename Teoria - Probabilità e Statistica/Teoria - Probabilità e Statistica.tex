@@ -229,7 +229,8 @@ Dopo aver introdotto il concetto di \textbf{algebra} e \textbf{probabilità} è 
 \end{tabularx}
 
 \vspace{1em}
-\subsubsection{Proprietà degli spazi di probabilità finiti}
+\subsubsection{Proposizione 1 - Proprietà degli spazi di probabilità finiti}
+\label{sec:proposizione_1}
 Le proprietà degli spazi di probabilità finiti discendono dalle richieste, ossia dalle regole, definite in merito alla famiglia degli eventi complessi $\mathcal{A}$, la quale deve essere un'\textbf{algebra} e sulla funzione $p$, la quale deve essere una \textbf{probabilità}:
 
 \begin{enumerate}
@@ -291,7 +292,7 @@ Le proprietà degli spazi di probabilità finiti discendono dalle richieste, oss
       {\textbf{PROPRIETÀ FONDAMENTALE}}\\
       \parbox{\linewidth}{Si verifica che
       \[p(A \cup B) + p(A \cap B) = p(A) + p(B), \hspace{0.5em} \forall A,B \in \mathcal{A}\]
-      \vspace{1mm}}\\
+      \vspace{-1mm}}\\
       \hline
   \end{tabularx}
 
@@ -972,7 +973,8 @@ Ciò che in questo caso è rilevante è che in $\mathcal{A}$ cadano tutti gli og
 \textbf{Osservazione}: Si osservi che, innanzitutto, una probabilità è una \textbf{misura}, una misura della facilità con cui un evento si verifica e come qualsiasi altra misura presenta la seguente proprietà: se di tale oggetto se ne misurano le parti distinte (senza sovrapposizioni) per conoscere la misura dell'oggetto complessivo, è sufficiente sommare fra loro le singole misure distinte.
 
 \vspace{1em}
-\noindent
+\subsection{Proposizione 2 - Proprietà degli spazi di probabilità generali}
+\label{sec:proposizione_2}
 Volendo determinare ulteriori proprietà generali degli spazi di probabilità:
 
 % Tabella per le definizione di concetti, etc...
@@ -1029,21 +1031,286 @@ Ma per l'osservazione iniziale, si ha che $A_1 - A_k$ è una successione crescen
 Per cui si è ottenuto, alla fine, che
 \[p(A_1) - p \left(\bigcap_{k=2}^{\infty} A_k\right) = p(A_1) - \lim_{n \to +\infty} p(A_n) \longrightarrow p \left(\bigcap_{k=2}^{\infty} A_k\right) = \lim_{n \to +\infty} p(A_n)\]
 
+\newpage
+\begin{center}
+  11 marzo 2022
+\end{center}
+È noto, come dimostrato nella \textbf{Proposizione 1} (§ \ref{sec:proposizione_1}), che la probabilità è \textbf{subadditiva}; più un generale, se $A_1, ..., A_n$ sono eventi (non necessariamente disgiunti), allora
+\[p \left( \bigcup_{k=1}^n A_k \right) \leq \sum_{k=1}^n p(A_k)\]
+E la \textbf{Proposizione 2} (§ \ref{sec:proposizione_2} precedentemente esposta permette di generalizzare la \emph{subadditività} alle successioni di eventi.
 
+\vspace{1em}
+\noindent
+\begin{corollary}
+  Sia $\left\{A_n\right\}_{n \in \mathbb{N}}$ una successione di eventi in uno spazio di probabilità $(\Omega, \mathcal{A}, p)$. Allora
+  \[p \left( \bigcup_{k=1}^\infty A_k\right) \leq \sum_{k=1}^\infty p(A_k)  \hspace{1em} \left[\boldsymbol{\sigma}\textbf{-subadditività}\right]\]
+  Tale proprietà prende il nome di $\sigma$-subadditività.
+\end{corollary}
 
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Si consideri
+\[B_n := \bigcup_{k=1}^n A_k\]
+ovvero $B_n$ sotituisce un aggregato di $n$ successioni. Naturalmente, appare evidente come
+\[B_{n+1} = B_n + A_{n+1} \geq B_n\]
+per cui $\left\{B_n\right\}_{n \in \mathbb{N}}$ è una successione crescente di eventi e quindi $B_n \subset B_{n+1}$: ciò permettera di impiegare la \textbf{continuità dall'alto} dimostrata nella \textbf{Proposizione 2} (§ \ref{sec:proposizione_2}); inoltre, appare evidente come
+\[\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k\]
+per come è stato costruito l'oggetto $B_k$. Per la \textbf{continuità dall'alto} si ottiene che
+\[p \left( \bigcup_{k=1}^\infty A_k\right) = p \left( \bigcup_{k=1}^\infty B_k\right) = \lim_{n \to +\infty} p \left(B_n\right)\]
+ovvero la probabilità dell'aggregato, in una successione crescente, è stimata dal comportamento asintotico dell'elemento $B_n$. Riscrivendo $B_n$ secondo la sua definizione si ha che
+\[ \lim_{n \to +\infty} p \left(B_n\right) = \lim_{n \to +\infty} p \left(\bigcup_{k=1}^n A_k\right)\]
+sfruttando, ora, quanto è noto per il caso finito, ovvero che la probabilità dell'unione è minore della somma delle probabilità dei singoli eventi, si ha che
+\[\lim_{n \to +\infty} p \left(\bigcup_{k=1}^n A_k\right) \leq \lim_{n \to +\infty} \sum_{k=1}^n p \left(A_k\right)\]
+sfrutando, ora, il concetto di serie, si ha che il limite della serie è uguale al limite delle somme parziali, per cui
+\[\lim_{n \to +\infty} \sum_{k=1}^n p \left(A_k\right) = \sum_{k=1}^\infty p \left(A_k\right)\]
+in cui tale limite esiste sempre in quanto si sta considerando una serie a termini positivi. Pertanto tale limite può essere finito o $+\infty$, a seconda che la serie sia convergente o divergente.
 
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: È noto che, in generale, la proprietà
+\[p \left( \bigcup_{k=1}^n A_k \right) \leq \sum_{k=1}^n p(A_k)\]
+se gli eventi $A_1,...,A_n$ non sono digunti, non è un'uguaglianza. È noto, però, nel caso di due eventi $A$ e $B$ (così chiamati in luogo di $A_1$ e $A_2$) disgiunti, che
+\[p(A \cup B) + p (A \cap B) = p(A) + p(B)\]
+in cui è facile osservare che affinché la disuguaglianza
+\[p(A \cup B) \leq p(A) + p(B)\]
+sia una uguaglianza, deve essere considerato il termine $p (A \cap B)$. Ciò è ravvisabile ancora meglio se tale configurazione si analizza dal punto di vista geometrico:
 
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \tikzset{venn circle/.style={draw,circle,minimum
+     width=3.5cm}}
 
+    \node [venn circle, label={[fill=yellow!50,xshift=-1em]center:$A$}] (A) at (0,0) {};
+    \node [venn circle, label={[fill=green!50,xshift=1em]center:$B$}] (B) at (0:2cm) {};
+    \node[fill=red!50] at (barycentric cs:A=1/2,B=1/2 ) {$A \cap B$};
+  \end{tikzpicture}
+  \caption{Intersezione tra due insiemi}
+  \label{fig:intersezione_due_insiemi}
+\end{figure}
 
+\vspace{1em}
+\noindent
+Considerando la probabilità una \textbf{misura} (in questo caso dell'area dei due insiemi), quando viene eseguita la somma $p(A) + p(B)$, si sta considerando due volte la probabilità della loro intersezione, ovvero $p(A \cap B)$; pertanto, al fine di ottenere $p(A \cup B)$, è necessario sottrarre a $p(A) + p(B)$ proprio la probabilità dell'intersezione $p(A \cap B)$, ottenendo l'identità
+\[p(A \cup B) = p(A) + p(B) - p(A \cap B)\]
 
+\vspace{1em}
+\noindent
+Nel caso di $n=3$ insiemi, si considerino $A$,$B$ e $C$ tre eventi
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+  \tikzset{venn circle/.style={draw,circle,minimum
+   width=3.5cm}}
 
+  \node [venn circle, label={[fill=yellow!50,xshift=-1em]center:$A$}] (A) at (0,0) {};
+  \node [venn circle, label={[fill=blue!50,yshift=1em]center:$C$}] (C) at (60:2cm) {};
+  \node [venn circle, label={[fill=green!50,xshift=1em]center:$B$}] (B) at (0:2cm) {};
+  \node[fill=orange!50,yshift=-1.5em] at (barycentric cs:A=1/2,B=1/2 ) {$1$};
+  \node[fill=orange!50,xshift=-1.5em,yshift=1em] at (barycentric cs:A=1/2,C=1/2 ) {$2$};
+  \node[fill=orange!50,xshift=1.5em,yshift=1em] at (barycentric cs:B=1/2,C=1/2 ) {$3$};
+  \node[fill=violet!50] at (barycentric cs:A=1/3,B=1/3,C=1/3 ){$4$};
+\end{tikzpicture}
+\caption{Intersezione tra tre insiemi}
+\label{fig:intersezione_tre_insiemi}
+\end{figure}
 
+\vspace{1em}
+\noindent
+In questo secondo caso, quando si sommano $p(A) + p(B) + p(C)$ vengono misurate \textbf{due volte} le intersezioni a due a due degli insiemi (ovvero $1$, $2$, $3$), mentre l'intersezione dei tre insiemi ($4$) viene misurata \textbf{tre volte}. Pertanto, se si vuole ottenere $p(A \cup B \cup C)$, alla somma delle tre probabilità $p(A) + p(B) + p(C)$ bisogna sottrarre $p(A \cap B) + p(A \cap C) + p(B \cap C)$. Tuttavia, in questo modo, è stata rimossa completamente l'intersezione tra i tre insiemi, che quindi deve essere riaggiunta, ottenendo:
+\[p(A) + p(B) + p(C) - p(A \cap B) - p(A \cap C) - p(B \cap C) + p(A \cap B \cap C) = p(A \cup B \cup C) \hspace{1em} \forall A, B, C \in \mathcal{A}\]
 
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Per la dimostrazione di tale proprietà, nel caso di $3$ eventi, si impiegano le nozioni già note per $2$ eventi, come mostrato di seguito:
+\[p(A \cup B \cup C) = p((A \cup B) \cup C)\]
+Ora, l'unione degli eventi $A \cup B$ e $C$ può essere scritta come somma delle probabilità degli eventi distinti meno la probabilità dell'intersezione, ovvero
+\[p((A \cup B) \cup C) = p(A \cup B) + p(C) - p((A \cup B) \cap C)\]
+Tuttavia, ora, $A \cup B$ è ancora l'unione di due eventi, per cui, secondo la formula, si ha che
+\[p(A \cup B) + p(C) - p((A \cup B) \cap C) = p(A) + p(B) - p(A \cap B) + p(C) - p((A \cap B) \cup (B \cap C))\]
+in cui, semplicemente, per la proprietà distributiva degli insiemi, si osserva che $(A \cup B) \cap C = (A \cap C) \cup (B \cap C)$. Pertanto, ora, sfruttando ancora una volta la proprietà di unione di due insiemi si può scrivere che
+\[p((A \cap C) \cup (B \cap C)) = P(A \cap C) + p(B \cap C) - p((A \cap C) \cap (B \cap C))\]
+da cui si ottiene la seguente formula
+\[= p(A) + p(B) + p(C) - p(A \cap B) - p(A \cap C) - p(B \cap C) + p(A \cap B \cap C)\]
+tenuto conto che $(A \cap C) \cap (B \cap C) = A \cap B \cap C$.
 
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Tale formula può essere riscritta in modo più compatto: se si indicano i tre insiemi con $A_1, A_2, A_3$ è possibile scrivere
+\[p \left(\bigcup_{k=1}^3 A_k\right) = \sum_{k=1}^3 \hspace{1em} \sum_{j \subset \left\{1,2,3\right\} \text{ tale che } \vert j \vert = k} \hspace{1em} (-1)^{k+1} \cdot p \left( \bigcap_{i \in j} A_i\right)\]
+in cui la prima sommatoria serve solo per fissare la lunghezza dell'indice, mentre la seconda sommatoria considera tutte le famiglie costituite dal numero di elementi indicati dall'indice. Infatti
+\begin{itemize}
+  \item i sottoinsiemi $j \subset \{1,2,3\}$ per i quali $\vert j \vert = 1$ (ovvero che hanno cardinalità $1$) sono $\{1\}, \{2\}, \{3\}$, quindi
+  \[\sum_{j \subset \left\{1,2,3\right\} \text{ tale che } \vert j \vert = 1} \hspace{1em} (-1)^{2} \cdot p \left( \bigcap_{i \in j} A_i\right) = p(A_1) + p(A_2) + p(A_3)\]
 
+  \item i sottoinsiemi $I \subset \{1,2,3\}$ per i quali $\vert I \vert = 2$ sono $\{1,2\}, \{1,3\}, \{1,3\}$, quindi
+  \[\sum_{j \subset \left\{1,2,3\right\} \text{ tale che } \vert j \vert = 2} \hspace{1em} (-1)^{3} \cdot p \left( \bigcap_{i \in j} A_i\right) = - p(A_1 \cap A_2) - p(A_1 \cap A_3) - p(A_2 \cap A_3)\]
 
+  \item I sottoinsiemi $I \subset \{1,2,3\}$ per i quali $\vert I \vert = 3$ sono $\{1,2,3\}$, quindi
+  \[\sum_{j \subset \left\{1,2,3\right\} \text{ tale che } \vert j \vert = 3} \hspace{1em} (-1)^{4} \cdot p \left( \bigcap_{i \in j} A_i\right) = p(A_1 \cap A_2 \cap A_3)\]
+\end{itemize}
+Eseguendo, ora, la somma, di ciascuno di tali casi si ottiene proprio la formula di partenza.
 
+\newpage
+\noindent
+\subsection{Formula di inclusione-esclusione}
+Procedendo, ora, per induzione, si può generalizzare tale formula al caso $n$, grazie al fatto che essa è stato scritta per mezzo di sommatorie, come illustrato di seguito:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{FORMULA DI INCLUSIONE-ESCLUSIONE}}\\
+    \parbox{\linewidth}{Sia $(\omega, \mathcal{A}, p)$ uno spazio di probabilità. Presi $n$ eventi $A_1, A_2, ..., A_n \in \mathcal{A}$ si ha che
+    \[p \left(\bigcup_{k=1}^n A_k\right) = \sum_{k=1}^n \hspace{1em} \sum_{j \subset \left\{1,...,n\right\} \text{ tale che } \vert j \vert = k} \hspace{1em} (-1)^{k+1} \cdot p \left( \bigcap_{i \in j} A_i\right)\]
+    Si chiama formula di inclusione-esclusione in quanto per i termini pari si aggiunge, mentre per quelli dispari si toglie, a causa delle sovrapposizioni.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\newpage
+\section{Calcolo combinatorio}
+Volendo procedere al calcolo probabilistico, risulta fondamentale conoscere il numero di eventi elementari che vanno a costituire lo spazio campione $\Omega$. Si espongono di seguito, per tale ragione, alcune fondamentali nozioni di calcolo combinatorio:
+
+\vspace{1em}
+\subsection{Disposizione con ripetizione}
+Si espone di seguito la definizione di \textbf{dispozione con ripetizione}, in cui si considera una scelta che non condiziona quelle successive:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DISPOSIZIONE CON RIPETIZIONE}}\\
+    \parbox{\linewidth}{Dato $k \in \mathbb{N}$ e un insieme finito $A$, si chiama \textbf{disposizione con ripetizione} di $k$ elementi estratti da $A$ (o anche di \textbf{classe} $k$) una funzione
+    \[f : \{1, ..., k\} \longrightarrow A\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+In altre parole, considerando un insieme $A$, una disposizione con ripetizione di $k$ elementi estratti da $A$ non è altro che una $k$-upla di elementi dell'insieme $A$.\\
+Ciò che è importante osservare, in tal senso, è che è \textbf{possibile scegliere uno stesso elemento più volte}. Si descriva, quindi, tale scelta, con una funzione
+\[f : \{1, ..., k\} \longrightarrow A\]
+ponendo
+
+\begin{flalign*}
+  f(1) & \text{ il primo elemento scelto}\\
+  f(2) & \text{ il secondo elemento scelto}\\
+  f(3) & \text{ il terzo elemento scelto}\\
+  ... & \text{ ...}\\
+  f(k) & \text{ il } k \text{-esimo elemento scelto}\\
+\end{flalign*}
+
+\noindent
+In cui vi è una corrispondenza biunivoca tra la famiglia delle possibili disposizioni e l'insieme prodotto $A^k$ (ossia l'insieme delle $k$-uple con coordinate nell'insieme $A$): ad ogni disposizione $f$ è possibile associare la $k$-upla $(f(1),...,f(k))$, mentre ad ogni $k$-upla $(a_1,...,a_k)$ è possibile associare la disposizione
+\[f(j) := a_j \hspace{1em} j= 1,...,k\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si definisca quante disposizioni con ripetizione esistono di $k$ elementi su un insieme $A$ con $n$ elementi; ovviamente, vista la corrispondenza biunivoca ve ne sono
+\[\left \vert A^k \right \vert = n^k\]
+in quanto si hanno $n$ alternative per la scelta del primo elemento, $n$ alternative per la scelta del secondo elemento e così via fino al $k$-esimo elemento.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Per compilare la colonna di una schedina del totocalcio occorre scegliere, per ciascuna delle $13$ partite considerate, un numero $A = \left\{1,\times,2\right\}$ ($1$ vittoria interna, $\times$ pareggio, $2$ vittoria esterna). Cioé bisogna effettuare una disposizione con ripetizione di $k=13$ elementi dall'insieme $A$. Quindi ci sono $3^{13} \cong 1,6$ milioni di modi per compilare la schedina.
+
+\vspace{1em}
+\subsection{Disposizione senza ripetizione}
+Si espone di seguito la definizione di \textbf{dispozione senza ripetizione}, in cui si considera una scelta che condiziona quelle successive:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DISPOSIZIONE SENZA RIPETIZIONE}}\\
+    \parbox{\linewidth}{Dato $k \in \mathbb{N}$ e un insieme finito $A$, si chiama \textbf{disposizione senza ripetizione} di $k$ elementi estratti da $A$ una funzione \textbf{iniettiva}
+    \[f : \{1, ..., k\} \longrightarrow A\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+Le disposizioni senza ripetizione sono anche chiamate \textbf{disposizioni semplici}. Nel caso delle disposizioni con ripetizione, è assolutamente ininfluente la relazione tra $k$ ed $n$, con $n = \vert A \vert$ numero di elementi dell'insieme $A$; nel caso di disposizioni semplici, deve essere che $k \leq n$, in quanto altrimenti la funzione non potrebbe essere iniettiva, visto che a valori distinti di $k$ dovrebbe corrispondere uno stesso elemento.
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PERMUTAZIONE}}\\
+    \parbox{\linewidth}{Data una disposizione senza ripeizione di $k$ elementi estratti da $A$, se $k = \vert A \vert$, si parla di una \textbf{permutazione} dell'insieme $A$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+\vspace{1em}
+
+\noindent
+Dal punto di vista operativo, una disposizione senza ripetizione è una scelta di $k$ elementi all'interno di un insieme $A$, con il vincolo che
+\begin{itemize}
+  \item nello scegliere il secondo elemento, bisogna che esso sia diverso dal primo, cioé
+  \[f(2) \neq f(1)\]
+  \item nello scegliere il terzo elemento bisogna fare in modo che esso sia diverso dal primo e dal secondo, ovvero
+  \[f(3) \neq f(1) \hspace{0.5em} \wedge \hspace{0.5em} f(3) \neq f(2)\]
+  \item e così via.
+\end{itemize}
+
+\vspace{1em}
+\noindent
+Si determini quante disposizioni semplici esistono di $k$ elementi su un insieme $A$ con $n$ elementi; naturalmente si hanno $n$ possibilità per la prima scelta, $n-1$ per la seconda scelta (ovvero tutti gli elementi di $A$, escluso quello scelto precedentemente), e così via. Quindi il valore cercato è
+\[\underbrace{n \cdot (n-1) \cdot ... \cdot (n-k+1)}_\text{$k$ scelte} = \frac{n!}{(n-k)!}\]
+in cui l'uguaglianza si ottiene moltiplicando il lato sinistro per $(n-k)!$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri un mazzo di carte regolare, con $n=52$ carte. Naturalmente vi sono
+\[52 \cdot 51 \cdot 50 \cdot 49 \cdot 48 \cong 312 \cdot 10^6\]
+possibili modi per servire $k=5$ carte.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si determini la probabilità $p_k$ che in un gruppo di $k$ persone selezionate casualmente (nessuna delle quali sia però nata il $29$ febbraio), almeno due di esse \textbf{compiono gli anni lo stesso giorno}.\\
+Naturalmente, lo spazio degli eventi elementari $\Omega$ è costituito dalle possibili disposizioni con ripetizioni fi $k$ elementi dall'insieme degli $n=365$ giorni dell'anno (il $29/02$ è escluso per ipotesi). Infatti per ognuna delle $k$ persone viene selezionato un giorno di nascita. Si ha, quindi
+\[\left \vert \Omega \right \vert = n^k = 365^k\]
+La probabilità che una persona nasca in un dato giorno può essere assunta uniforme, e quindi può essere assunta uniforme anche la probabilità sulle disposizioni: ogni disposizione
+\[f : \left\{1,...,k\right\} \longrightarrow \left\{1,...,365\right\}\]
+ha probabilità
+\[\frac{1}{\vert \Omega \vert} = \frac{1}{365^k}\]
+Per risolvere la domanda del problema bisogna provvedere ad effettuarne la traduzione dal punto di vista matematico; l'evento di cui si deve effettuare il calcolo della probabilità $p_k$ è
+\[A := \left\{f \in \Omega : f \text{ non è iniettiva}\right\}\]
+Quindi
+\[p_k = p(A) = 1 - p(A^c) = 1 - \frac{\vert A^c \vert}{\vert \Omega \vert}\]
+ma siccome $A^c$ è costituito dalle disposizioni semplici, si ha
+\[\vert A^c \vert = \frac{365!}{(365 - k)!} = \prod_{j=0}^{n-1} (365 - j)\]
+per cui, finalmente, si ottiene
+\[p_k = 1 - \frac{\displaystyle{\prod_{j=0}^{k-1}} (365 - j)}{365^k} = 1 - \prod_{j=0}^{k-1} \frac{365 - j}{365} = 1 - \prod_{j=0}^{k-1} \left(1 - \frac{j}{365}\right)\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Non appena $k \geq 23$, $p_k > \frac{1}{2}$. Cioé, in una classe di liceo vi è una probabilità superiore al $50\%$ che due persone compiano il compleanno lo stesso giorno.
+
+\newpage
+\begin{center}
+  14 marzo 2022
+\end{center}
 
 
 
