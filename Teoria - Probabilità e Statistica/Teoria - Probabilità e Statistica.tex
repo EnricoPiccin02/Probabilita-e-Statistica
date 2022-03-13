@@ -48,6 +48,20 @@
 \renewcommand\arraystretch{}
 \newcolumntype{P}{>{\centering\arraybackslash}X}
 
+\makeatletter
+\DeclareRobustCommand{\iscircle}{\mathord{\mathpalette\is@circle\relax}}
+\newcommand\is@circle[2]{%
+  \begingroup
+  \sbox\z@{\raisebox{\depth}{$\m@th#1\bigcirc$}}%
+  \sbox\tw@{$#1\square$}%
+  \resizebox{!}{\ht\tw@}{\usebox{\z@}}%
+  \endgroup
+}
+\makeatother
+
+\newcommand*\circled[2]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,fill=#1,draw,inner sep=2pt] (char) {#2};}}
+
 \title{\textbf{Università di Trieste\\ \vspace{1em}
 Laurea in ingegneria elettronica e informatica}}
 \author{Enrico Piccin - Corso di Probabilità e Statistica - Prof. Marco Barchiesi}
@@ -1218,7 +1232,7 @@ In cui vi è una corrispondenza biunivoca tra la famiglia delle possibili dispos
 \vspace{1em}
 \noindent
 \textbf{Osservazione}: Si definisca quante disposizioni con ripetizione esistono di $k$ elementi su un insieme $A$ con $n$ elementi; ovviamente, vista la corrispondenza biunivoca ve ne sono
-\[\left \vert A^k \right \vert = n^k\]
+\[\boxed{\left \vert A^k \right \vert = n^k}\]
 in quanto si hanno $n$ alternative per la scelta del primo elemento, $n$ alternative per la scelta del secondo elemento e così via fino al $k$-esimo elemento.
 
 \vspace{1em}
@@ -1257,7 +1271,7 @@ Le disposizioni senza ripetizione sono anche chiamate \textbf{disposizioni sempl
 \begin{tabularx}{\textwidth}{@{}|P|@{}}
     \hline
     {\textbf{PERMUTAZIONE}}\\
-    \parbox{\linewidth}{Data una disposizione senza ripeizione di $k$ elementi estratti da $A$, se $k = \vert A \vert$, si parla di una \textbf{permutazione} dell'insieme $A$.
+    \parbox{\linewidth}{Data una disposizione senza ripetizione di $k$ elementi estratti da $A$, se $k = \vert A \vert$, si parla di una \textbf{permutazione} dell'insieme $A$.
     \vspace{3mm}}\\
     \hline
 \end{tabularx}
@@ -1276,7 +1290,7 @@ Dal punto di vista operativo, una disposizione senza ripetizione è una scelta d
 \vspace{1em}
 \noindent
 Si determini quante disposizioni semplici esistono di $k$ elementi su un insieme $A$ con $n$ elementi; naturalmente si hanno $n$ possibilità per la prima scelta, $n-1$ per la seconda scelta (ovvero tutti gli elementi di $A$, escluso quello scelto precedentemente), e così via. Quindi il valore cercato è
-\[\underbrace{n \cdot (n-1) \cdot ... \cdot (n-k+1)}_\text{$k$ scelte} = \frac{n!}{(n-k)!}\]
+\[\boxed{\underbrace{n \cdot (n-1) \cdot ... \cdot (n-k+1)}_\text{$k$ scelte} = \frac{n!}{(n-k)!}}\]
 in cui l'uguaglianza si ottiene moltiplicando il lato sinistro per $(n-k)!$.
 
 \vspace{1em}
@@ -1311,17 +1325,251 @@ per cui, finalmente, si ottiene
 \begin{center}
   14 marzo 2022
 \end{center}
+\subsection{Combinazione}
+Dopo aver esposto i concetti di disposizione con ripetizione e disposizione semplice, si espone di seguito il concetto di \textbf{combinazione}:
 
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{COMBINAZIONE}}\\
+    \parbox{\linewidth}{Dato $k \in \mathbb{N}$ e un insieme finito $A$, si chiama \textbf{combinazione} di $k$ elementi estratti da $A$ i sottoinsiemi di $A$ di cardinalità $k$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+\vspace{1em}
 
+\noindent
+\textbf{Osservazione}: Si osservi che la differenza tra una disposizione e una combinazione è la rilevanza, nel primo, dell'ordine della disposizione degli elementi, fattore che nel secondo caso è ininfluente.\\
+Infatti, ad una disposizione con ripetizione di $k$ elementi è possibile associare una $k$-upla, e quindi ad una disposizione semplice una $k$-upla senza ripetizione. Pertanto, è possibile considerare una disposizione semplice come una \textbf{collezione ordinata}, mentre una combinazione è una \textbf{collezione non ordinata}.
 
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri l'insieme $A = \left\{\iscircle,\square,\triangle\right\}$. Le disposizioni semplici di classe $k=2$ elementi possono essere identificate con le coppie ordinate
+\[\left(\iscircle,\triangle\right) \hspace{0.5em} \left(\iscircle,\square\right) \hspace{0.5em} \left(\triangle,\square\right) \hspace{0.5em} \left(\triangle,\iscircle\right) \hspace{0.5em} \left(\square,\iscircle\right) \hspace{0.5em} \left(\square,\triangle\right)\]
+Mentre le combinazioni, invece, sono
+\[\left\{\iscircle,\triangle\right\} \hspace{0.5em} \left\{\iscircle,\square\right\} \hspace{0.5em} \left\{\triangle,\square\right\}\]
+in quanto per le combinazioni non è rilevante l'ordine degli elementi dell'insieme, ma solamente gli elementi stessi.\\
+Si determini, allora, il numero di combinazioni di $k$ lementi relative ad un insieme con $n$ elementi; al fine di rispondere a tale domanda, è sufficiente considerare una disposizione semplice di $k$ elementi (collezione ordinata) e procedere, poi, con la permutazione di tutti i $k$ elementi che la compongono, ottenendo una combinazione (collezione non ordinata). Da notare, infatti, che due collezioni ordinate (composte dagli stessi $k$ elementi) restituiscono la stessa collezione non ordinata; viceversa, da una collezione non ordinata, procedendo al suo ordinamento tramite permutazione dei suoi $k$ elementi si otterranno diverse collezioni ordinate, \textbf{tante quante sono le possibili permuazioni dei $\boldsymbol{k}$ elementi}.\\
+Pertanto si ha
 
+\vspace{1em}
+\begin{table}[H]
+  \rowcolors{1}{white}{white}
+  \setlength{\tabcolsep}{14pt}
+  \renewcommand{\arraystretch}{2}
+  \noindent
+  \begin{tabularx}{\textwidth}{P>{\hsize=0.005 \textwidth}PP>{\hsize=0.005 \textwidth}PP}
+    \parbox{\linewidth}{Numero di combinazioni di $k$ elementi su $n$ elementi} & \multirow{2}{0.01em}{$\cdot$} & \parbox{\linewidth}{Numero di permutazioni di $k$ elementi} & \multirow{2}{0.01em}{$=$} & \parbox{\linewidth}{Numero di disposizioni semplici di $k$ elementi su $n$ elementi}\\
+    $C_{n,k}$ & & $k!$ & & $\dfrac{n!}{(n-k)!}$\\
+  \end{tabularx}
+\end{table}
 
+\vspace{1em}
+\subsection{Coefficiente binomiale}
+Peranto si è ottenuto che il numero di combinazioni di $k$ elementi su $n$ elementi è proprio
+\[\boxed{C_{n,k} = \frac{n!}{k! \cdot (n-k)!}}\]
+Tale quantità prende il nome di \textbf{coefficiente binomiale}, il quale viene indicato con il simbolo
+\[\binom{n}{k}\]
+Tenendo conto che, naturalmente, $k>0$ (in quanto non avrebbe senso una collezione di $0$ elementi), dal punto di visto matematico, visto che per $k=0$ si ha $k!=1$, si pone anche
+\[\binom{n}{0}=1\]
+Anche nel caso delle combinazioni, naturalmente, ha senso supporre $k \leq n$, in quanto per $k>n$ non ci sono disposizioni semplici di $k$ elementi, ovviamente. In generale, non esistono nemmeno combinazioni possibili con $k>n$, quindi si pone, per convenzione
+\[\binom{n}{k} = 0 \hspace{1em} \text{se} \hspace{1em} k>n\]
 
+\vspace{1em}
+\noindent
+\textbf{Esempio}: È noto che il numero dei possibili modi di servire $k=5$ carte da un mazzo da $n=52$ carte sono
+\[\frac{52!}{(52-5)!} = \frac{52!}{47!}\]
+ossia il numero di disposizioni semplici di $5$ elementi su $52$. Una volta, però, che le carte sono state distribuite, l'ordine con cui esse vengono disposte è ininfluente, pertanto vi sono
+\[\binom{52}{5} = \frac{52!}{5! \cdot 47!}\]
+possibili mani servite (ossia il numero di combinazioni di $5$ elementi su $52$).
 
+\vspace{1em}
+\subsubsection{Proprietà del coefficiente binomiale}
+\begin{enumerate}
+  \item La \textbf{prima proprietà} del coefficiente binomiale è di \textbf{simmetria}, ovvero
+  \[\binom{n}{k} = \frac{n!}{k| \cdot (n-k)!} = \binom{n}{n-k} = \frac{n!}{(n-k)! \cdot (n - (n-k))!} \hspace{1em} \forall n \in \mathbb{N}, \forall k \in \{0,...,n\}\]
 
+  \item La \textbf{seconda proprietà} prende il nome di \textbf{Formula di Stifel} e permette di esprimere la somma tra due coefficienti binomiali, come mostrato di seguito, scrivendo esplicitamente i due coefficienti binomiali
+  \[\binom{n-1}{k-1} + \binom{n-1}{k} = \frac{(n-1)!}{(k-1)! \cdot (n-k)!} + \frac{(n-1)!}{k! \cdot (n-k-1)!}\]
+  Ora, semplicemente, al fine di sommarli, è sufficiente impiegare le proprietà del fattoriale e scrivere
+  \[\frac{1}{(k-1)!} = \frac{k}{k!} \hspace{1em} \text{e} \hspace{1em} \frac{1}{(n-k-1)!} = \frac{(n-k)}{(n-k)!}\]
+  da cui si evince l'uguaglianza seguente
+  \[\frac{(n-1)!}{(k-1)! \cdot (n-k)!} + \frac{(n-1)!}{k! \cdot (n-k-1)!} = \frac{(n-1)! \cdot k}{k! \cdot (n-k)!} + \frac{(n-1)! \cdot (n-k)}{k! \cdot (n-k)!}\]
+  Ora che entrambi gli addendi presentano lo stesso denominatore, è possibile sommarli, ottenendo:
+  \[\frac{(n-1)! \cdot k}{k! \cdot (n-k)!} + \frac{(n-1)! \cdot (n-k)}{k! \cdot (n-k)!} = \frac{n!}{k! \cdot (n-k)!} = \binom{n}{k} \hspace{1em} \forall n \in \mathbb{n}, \forall k \in \{0,...,n\}\]
 
+  \item Infine, come \textbf{terza proprietà}, si espone la \textbf{formula del binomio di Newton}: siano $a,b \in \mathbb{R}$ e $n \in \mathbb{N}$, allora
+  \[\boxed{(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k}}\]
+  In particolare è noto che il numero di tutti i possibili raggruppamenti di oggetti estratti da un insieme, ovvero il numero di tutti i sottoinsiemi di un insieme è
+  \[\boxed{\sum_{k=0}^n \binom{n}{k} = 2^n}\]
+  ponendo $a=b=1$ nella formula del binomio di Newton.
+\end{enumerate}
 
+\vspace{1em}
+\subsection{Permutazione con ripetizione}
+Dopo aver introdotto il concetto di combinazione e di disposizione semplice e con ripetizione, é opportuno, ora, introdurre il significato della \textbf{permutazione con ripetizione}. Si consideri, a tal proposito, il seguente esempio: si supponga di disporre di $10$ palline numerate e anche colorate ($3$ blue, $4$ verdi e $3$ rosse):
+\[\circled{blue!25}{1} \hspace{0.5em} \circled{blue!25}{2} \hspace{0.5em} \circled{blue!25}{3} \hspace{0.5em} \circled{green!25}{4} \hspace{0.5em} \circled{green!25}{5} \hspace{0.5em} \circled{green!25}{6} \hspace{0.5em} \circled{green!25}{7} \hspace{0.5em} \circled{red!25}{8} \hspace{0.5em} \circled{red!25}{9} \hspace{0.5em} \circled{red!25}{\small 10}\]
+È possibile, ora, procedere all'ordinamento di tali oggetti, semplicemente provvedendo a permutarli, come mostrato di seguito
+\[\circled{blue!25}{2} \hspace{0.5em} \circled{red!25}{8} \hspace{0.5em} \circled{green!25}{4} \hspace{0.5em} \circled{blue!25}{3} \hspace{0.5em} \circled{red!25}{\small 10} \hspace{0.5em} \circled{blue!25}{1} \hspace{0.5em} \circled{green!25}{5} \hspace{0.5em} \circled{green!25}{7} \hspace{0.5em} \circled{red!25}{9} \hspace{0.5em} \circled{green!25}{6}\]
+Questo cirrisponde alla permutazione
+\[f : \left\{1,...,10\right\} \longrightarrow A\]
+con $A$ insieme delle palline, definita da
+\[f(1)=2 \hspace{0.5em} f(2)=8 \hspace{0.5em} f(3)=4 \hspace{0.5em} \text{e così via}\]
+Oppure ancora
+\[\circled{blue!25}{3} \hspace{0.5em} \circled{red!25}{9} \hspace{0.5em} \circled{green!25}{6} \hspace{0.5em} \circled{blue!25}{1} \hspace{0.5em} \circled{red!25}{8} \hspace{0.5em} \circled{blue!25}{2} \hspace{0.5em} \circled{green!25}{7} \hspace{0.5em} \circled{green!25}{4} \hspace{0.5em} \circled{red!25}{\small 10} \hspace{0.5em} \circled{green!25}{5}\]
+che corrisponde alla permutazione
+\[g(1)=3 \hspace{0.5em} g(2)=9 \hspace{0.5em} g(3)=6 \hspace{0.5em} \text{e così via}\]
+In cui il numero delle permutazioni è, naturalmente, $10!$, essendo una permutazione una disposizione semplice in cui $k=n$. Si osservi, però, che se nell'osservare le permutazioni si prende in considerazione esclusivamente il colore delle palline e non il loro valore, allora le due permutazioni precedenti sono perfettamente \textbf{equivalenti}. Formalmente, quindi, se l'insieme $A$ viene diviso in $3$ parti
+\[\underbrace{A_1 = \{1,2,3\}}_\text{\textcolor{blue}{BLU}} \hspace{1em} \underbrace{A_2 = \{4,5,6,7\}}_\text{\textcolor{green}{VERDE}} \hspace{1em} \underbrace{A_3 = \{8,9,10\}}_\text{\textcolor{red}{ROSSO}}\]
+e si osserva la controimmagine di ognuno di tali insimei attraverso $f$ è $g$ si ottiene
+\begin{flalign*}
+  f^{-1} (A_1) & = \{1,3,6\} = g^{-1}(A_1)\\
+  f^{-1} (A_2) & = \{3,7,8,10\} = g^{-1}(A_2)\\
+  f^{-1} (A_3) & = \{2,5,9\} = g^{-1}(A_3)\\
+\end{flalign*}
+cioé $f$ e $g$ spostano le palline di ogni colore sullo stesso blocco di posizioni.\\
+Considerado, quindi, equivalenti due permutazioni che spostano i colori nello stesso modo, il numero di tali permutazioni non sarà più $10!$, ma tale quantità dovrà essere divisa per tutte le permutazioni che si reputano identiche: quindi $3!$ nel caso del \textcolor{blue}{blu}, $4!$ nel caso del \textcolor{green}{verde} e ancora $3!$ nel caso del \textcolor{red}{rosso}. Pertanto il numero di permutazioni che portano colori uguali in colori uguali, senza tenere conto dei è numeri è proprio
+\[\frac{10!}{3! \cdot 4! \cdot 5!}\]
 
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PERMUTAZIONE CON RIPETIZIONE}}\\
+    \parbox{\linewidth}{Dato un insieme finito $A$, sia $\{A_1,...,A_q\}$ una sua partizione, cioé
+    \[\bigcup_{j=1}^q A_j = A\]
+    e gli $A_j$ sono a due a due disgiunti. Si chiama \textbf{permutazione con ripetizione} una permutazione in cui si considerano uguali gli elementi di uno stesso sottoinsieme $A_j$. Ciò significa che si considerano equivalenti due permutazioni $f$ e $g$ su $A$ quando
+    \[f^{-1}(A_j) = g^{-1}(A_j) \hspace{1em} \forall j = 1,...,q\]
+    ovvero le controimmagini di ciascuna permutazione coincidono.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
 
+\vspace{1em}
+\noindent
+Generalizzando, è possibile affermare che il numero di permutazioni con ripetuzione è
+\[\boxed{\dfrac{n!}{\displaystyle{\prod_{j=1}^q n_j!}} \hspace{1em} \text{dove} \hspace{1em} \prod_{j=1}^q n_j! = (n_1)! \cdot ... \cdot (n_q)!}\]
+in cui $n = \vert A \vert$, ossia il numero degli elementi dell'insieme $A$ e $n_j = \vert A_j \vert$, ossia il numero degli elementi della partizione $A_j$. Questo è dovuto al fatto che permutando internamente gli elementi di uno stesso sottoinsieme $A_j$ si ottiene una nuova permutazione, ma equivalente alla precedente.
 
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Sia $A = \{a,b,c,d\}$. Le possibili permutazioni di $A$ sono $4!=24$. Si considerino, ora, le permutazioni con ripetuzione relative alla partizione
+\[A_1 = \{a\} \hspace{1em} A_2 = \{b\} \hspace{1em} A_3 = \{c,d\}\]
+che, in pratica, equivale a non distinguere la lettera \quotes{$c$} dalla lettera \quotes{$d$}; pertanto
+\[abcd \hspace{1em} abdc \hspace{1em} \text{sono equivalenti}\]
+\[adbc \hspace{1em} acbd \hspace{1em} \text{sono equivalenti}\]
+e così via. Il numero totale di permutazioni con ripetizione è, quindi
+\[\frac{4!}{1! \cdot 1! \cdot 2!} = \frac{24}{2} = 12\]
+
+\vspace{1em}
+\subsection{Principio fondamentale del calcolo combinatorio}
+Si espone di seguito il \textbf{principio fondamentale del calcolo combinatorio}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{0.94\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PRINICIPIO FONDAMENTALE DEL CALCOLO COMBINATORIO}}\\
+    \parbox{\linewidth}{Si supponga che gli elementi di una configurazione possano essere determinati mediante $q$ scelte \textbf{successive} ed \textbf{indipendenti} (ovvero totalmente ininfluenti una sull'altra), in cui ogni scelta abbia un numero fissato di opzioni: la prima scelta ha $n_1$ opzioni, la seconda $n_2$ opzioni, ..., la $q$-esima scelta ha $n_q$ opzioni.\\
+    Se sequenze distinte di opzioni nelle scelte determinano configurazioni distinte, allora il numero totale di configurazioni cche è possibile ottenere è pari a
+    \[\boxed{\prod_{j=1}^q n_q}\]
+    ossia dal prodotto delle possibili opzioni che si hanno a disposizione ad ogni scelta.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si supponga di entrare in una gelateria, in cui vi sono solamente tre gusti: cioccolato/crema/puffo. Considerando che è possibile scegliere anche tra cono e coppetta, si determinino quante configurazioni esistono per il proprio gelato se è possibile scegliere due palline.\\
+Naturalmente si hanno $n_1=2$ opzioni per la base (cono/coppetta) e $n_2=6$ opzioni per i gusti ($3$ nel caso di palline uguali e $3$ nel caso di palline diverse). Tenuto conto cche ad opzioni distinte corrispondono configurazioni finali distinte, si hanno $6 \cdot 2 = 12$ possibili assemblaggi.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che il principio fondamentale del calcolo combinatorio prevede che le scelte da effettuare siano \textbf{indipendenti}, pertanto non è applicabile nel caso in cui da una scelta dipenda la scelta successiva.\\
+Inoltre vi è il vincolo che \textbf{a scelte distinte corrispondano configurazioni finali distinte}: se, infatti, fosse sta individuata una prima scelta e una seconda scelta di gusto di gelato, si sarebbe potuto scegliere puffo e crema o crema e puffo ottenendo sempre la stessa configurazione finale, ma avendo prediletto opzioni distinte in principio.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Si impieghi, ora, il principio fondamentale del calcolo combinatorio per determinare il numero di possibili permutazioni con ripetizione, designato con $c$.\\
+Si esamini, a tal proposito, il caso specifico delle palline colorate
+\[\circled{blue!25}{2} \hspace{0.5em} \circled{red!25}{8} \hspace{0.5em} \circled{green!25}{4} \hspace{0.5em} \circled{blue!25}{3} \hspace{0.5em} \circled{red!25}{\small 10} \hspace{0.5em} \circled{blue!25}{1} \hspace{0.5em} \circled{green!25}{5} \hspace{0.5em} \circled{green!25}{7} \hspace{0.5em} \circled{red!25}{9} \hspace{0.5em} \circled{green!25}{6}\]
+e si supponga di voler \quotes{assemblare} una permutazione: è possibile decidere dapprima dove posizionare i colori e per farlo si dispone di $c$ opzioni. Poi si deve decidere dove posizionare i numeri sulle palline blu, per cui si hanno $3!$ opzioni, sulle palline verdi, per cui si hanno $4!$ opzioni e sulle palline rosse, per cui si hanno $3!$ opzioni. Per il principio fondamentale del calcolo combinatorio, il numero di possibili permutazioni è adato da:
+\[10! = c \cdot 3! \cdot 4! \cdot 3! \hspace{1em} \text{e quindi} \hspace{1em} c = \frac{10!}{3! \cdot 4! \cdot 3!}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Nel caso generale, per ottenere una permutazione dell'insieme $A$ bisogna prima scegliere
+\[
+  \left\{
+  \rowcolors{1}{white}{white}
+  \renewcommand{\arraystretch}{1}
+  \begin{array}{l}
+    \text{le } n_1 \text{ posizioni su cui mettere gli elementi di } A_1\\
+    ...\\
+    \text{le } n_q \text{ posizioni su cui mettere gli elementi di } A_q\\
+  \end{array}
+  \right.
+\]
+cioé si fissa una specifica permutazione con ripetizione; si dispone, poi
+\[
+  \left\{
+  \rowcolors{1}{white}{white}
+  \renewcommand{\arraystretch}{1}
+  \begin{array}{l}
+    \text{gli } n_1 \text{ elementi di } A_1 \text{ nelle posizioni prescelte}\\
+    ...\\
+    \text{gli } n_q \text{ elementi di } A_q \text{ nelle posizioni prescelte}\\
+  \end{array}
+  \right.
+\]
+Pertanto, nella prima scelta si hanno $c$ possibili opzioni (ossia le permutazioni con ripetizione) e poi si hanno $n_1!$ opzioni nella seconda scelta (ossia le permutazioni su $A_1$), ..., ed infine si hanno $n_q!$ nell'ultima scelta (ossia le permutazioni su $A_q$). Pertanto si ha, per il principio fondamentale:
+\[n! = c! \cdot n_1! \cdot ... \cdot n_q! = c \cdot \prod_{j=1}^q n_j!\]
+che restituisce il risultato già ottenuto
+\[\boxed{\dfrac{n!}{\displaystyle{\prod_{j=1}^q n_j!}} \hspace{1em} \text{dove} \hspace{1em} \prod_{j=1}^q n_j! = (n_1)! \cdot ... \cdot (n_q)!}\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che finora il concetto di disposizione con ripetizione, disposizione semplice e combinazione in modo matematico e preciso, mentre il concetto di permutazione con ripetizione è stato fornito in maniera intuitiva ed impirica.\\
+Per essere più precisi, si rammenti che dato un insieme $E$, una \textbf{relazione} su $E$ è detta di \textbf{equivalenza} se è
+\begin{itemize}
+  \item \textbf{riflessiva}: $x \sim x$ $\forall x \in E$
+  \item \textbf{simmetrica}: $x \sim y$ allora $y \sim x$ $\forall x,y \in E$
+  \item \textbf{transitiva}: $x \sim y$ e $y \sim z$ allora $x \sim z$ $\forall x,y,z \in E$
+\end{itemize}
+Due elementi $x,y$ sono detti \textbf{equivalenti} se sono in relazione attraverso una relazione di equivalenza. La \textbf{classe di equivalenza} di un elemnto $x$ è definita come
+\[[x] := \{y \in E : x \sim y\}\]
+Per la riflessività, $x \in [x]$; per la simmetria, se $y \in [x]$ allora anche $x \in [y]$, mentre per la transitività, se $y \in [x]$ allora $x \sim y$ e se $z \in [x]$ allora $z \sim x$ e quindi $z \sim y$, quindi $z \in [y]$, per ogni scelta di $z$ (la stessa cosa vale se si parte considerando $z \in [y]$).\\
+Dal primo risultato ($x \in [x]$), segue che ogni elementi di $E$ apartiene alla propria classe di equivalenza, la famiglia delle classi di equivalenza copre completamente l'insieme $E$; non solo, ma se si considerano due classi di equivalenza, o queste coincidono o queste sono disgiunte, per cui le classi di equivalenza costituiscono una partizione di $E$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{1}$}: Sia $\mathbb{R} - \{0\}$ e si consideri la seguente relazione di equivalenza: $x \sim y$ se e solo se $x \cdot y > 0$ (cioé se $x$ e $y$ presentano lo stesso segno). È facile verificare che si tratta di una relazione di equivalenza, in quanto le classi di equivalenza sono due:
+\[\{x \in \mathbb{R} : x > 0\} \hspace{1em} \text{e} \hspace{1em} \{x \in \mathbb{R} : x < 0\}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{2}$}: Sia
+\[A := \{f : [0,1] \longrightarrow \mathbb{R}\}\]
+e si ponga $f \sim g$ se e solo se $\exists c \in \mathbb{R} : f-g=c$ (cioé $f$ e $g$ sono una la traslata dell'altra in verticale). Anche in questo caso è facile verificare ce si tratta di una relazione di equivalenza.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Nella definzione di permutazione con ripetizione sono state considerate equivalenti due permutazioni $f$ e $g$ su $A$ quando
+\[f^{-1}(A_J) = g^{-1}(A_j) \hspace{1em} \forall j=1,...,q\]
+anche in questo caso si tratta di una relazione di equivalenza. Formalmente, dunque, \textbf{una permutazione con ripetizione è una classe di equivalenza} rispetto alla relazione
+\[f^{-1}(A_J) = g^{-1}(A_j) \hspace{1em} \forall j=1,...,q\]
+nella famiglia delle permutazioni.
 \end{document}
