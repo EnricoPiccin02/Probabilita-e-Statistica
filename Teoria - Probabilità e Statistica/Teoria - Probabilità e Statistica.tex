@@ -1572,4 +1572,152 @@ e si ponga $f \sim g$ se e solo se $\exists c \in \mathbb{R} : f-g=c$ (cioé $f$
 anche in questo caso si tratta di una relazione di equivalenza. Formalmente, dunque, \textbf{una permutazione con ripetizione è una classe di equivalenza} rispetto alla relazione
 \[f^{-1}(A_J) = g^{-1}(A_j) \hspace{1em} \forall j=1,...,q\]
 nella famiglia delle permutazioni.
+
+\newpage
+\noindent
+\begin{center}
+  17 Marzo 2022
+\end{center}
+Dopo aver definito il concetto di permutazione con ripetizione rispetto ad una partizione, è necessario procedere ad osservare un'applicazione di tal concetto:
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si supponga di disporre di $10$ libri e di volerli disporre su una libreria avente $5$ ripiani. Si vuole sapere in quanti modi è possibile farlo, senza tenere conto di quali siano i libri, ma solo di quanti ne si pone su ogni scaffale.\\
+Per esempio, dati i $5$ scaffali, vi si riporta quanti libri è stato deciso di porvisi, come mostrato di seguito
+\[\boxed{3}\boxed{3}\boxed{0}\boxed{2}\boxed{2}\]
+in cui, decidere di porre $3$ manga al primo piano e i $3$ libri di probabilità sul secondo o viceversa conta come una stessa configurazione.\\
+Similmente, si sarebbe voluto sapere come suddividere $7$ paia di calzini in $3$ cassetti; se vengono disposti come segue
+\[\boxed{2}\boxed{2}\boxed{3}\]
+non è facile determinare il numero totale delle disposizioni. Più in generale, dati $n$ oggetti e $k$ contenitori, si calcoli il numero di possibili disposizioni.\\
+Nel caso in cui $n=10$ e $k=5$, si considerino $10$ tessere bianche (corrispondenti ai $10$ libri) e $4=k-1$ tessere nere (corrispondenti ai divisori dei $5$ scaffali) e si dispongano in fila come segue:
+\[\underbrace{\square\square}_\text{$2$}\blacksquare\underbrace{}_\text{$0$}\blacksquare\underbrace{\square\square\square}_\text{$3$}\blacksquare\underbrace{\square\square}_\text{$2$}\blacksquare\underbrace{\square\square\square}_\text{$3$}\]
+Naturalmente questa è una possibile configurazione: $2$ tessere bianche prima della prima nera, $0$ bianche tra la prima e la seconda nera, $3$ bianche tra la terza e la quarta nera e $3$ bianche dopo la quarta nera. Si può associare, quindi, a questa configurazione di tessere la seguente configurazione di libri
+È ovvio che sussista una corrispondenza biunivoca tra le configurazioni delle tessere e le configurazioni dei libri. La configurazione di libri iniziale, per esempio, restituisce per le tessere la seguente:
+\[\underbrace{\square\square\square}_\text{$3$}\blacksquare\underbrace{\square\square\square}_\text{$3$}\blacksquare\underbrace{}_\text{$0$}\blacksquare\underbrace{\square\square}_\text{$2$}\blacksquare\underbrace{\square\square}_\text{$2$}\]
+Pertanto vi sono tante configurazioni di libri quante sono quelle per le tessere. Le configurazioni per le tessere sono permutazioni con ripetizione (rispetto alla partizione bianco/nero) e sono in numero di
+\[\frac{14!}{10! \cdot 4!} = 1001\]
+ovverosia $14$ tessere, partizionate in $10$ e $4$. Più in generale, ripetendo lo stesso ragionamento con $n$ oggetti e $k$ contenitori, le configurazioni sono in numero uguale a quelle delle permutazione con ripetizione di $n+k-1$ tessere partizionate in $n$ e $k-1$. Quindi
+\[\boxed{\frac{(n+k-1)!}{n! \cdot (k-1)!} = \binom{n+k-1}{n}}\]
+così facendo, nell'esempio dei calzini, con $n=7$ e $k=3$ si hanno
+\[\frac{9!}{7! \cdot 2!} = 36\]
+configurazioni. Da notare che se si considera un solo oggetto ($n=1$), allora vi sono solo $k$ configurazioni possibili, ovviamente.\\
+... continua ...
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{COMBINAZIONE CON RIPETIZIONE}}\\
+    \parbox{\linewidth}{Dato $k \in \mathbb{N}$ e un insieme finito $A$, si chiama \textbf{combinazione con ripetizione} di classe $k$ su $A$ tutti i possibili raggruppamente di cardinalità $k$ che si possono formare con gli elementi di $A$, includendo eventuali ripetizioni.\\
+    Da notare che due raggruppamenti vengono considerati differenti quando differiscono
+    \begin{itemize}
+      \item per qualche elemento;
+      \item per il numero di volte in cui un dato elemento viene ripetuto.
+    \end{itemize}
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Sia $A=\{1,2,3,4,5\}$ e si determinino le combinazioni con $2$ elementi e quali quelle con ripetizione.\\
+Naturalmente le combinazioni con $2$ elementi sono\\
+...\\
+ovvero sono
+\[C_{5,2} = \binom{5}{2} = \frac{5!}{2! \cdot 3!} = 10\]
+Se, invece, si possono ripetere qualche elemento, allora vanno anche considerate\\
+...\\\
+Allora, per determinare il numero di combinazioni con ripetizione di classe $k$ su un insieme finito $A$ di cardinalità $n$ si consideri che gli elementi di $A = \{a_1,...,a_n\}$ siano delle scatole.\\
+...\\
+Si considerino, ora, $k$ oggetti e si pongano questi ultimi all'interno delle scatole. Infine si formi una combinazione con ripetizione con gli elementi $a_3$ che come scatola contengono almeno un ogetto, e si ripetano tante volte quanti sono gli oggetti che stanno nella scatola.\\
+Per esempio, con $k=5$ si possono porre $2$ oggetti nella scatola $a_3$, $1$ nella scatola $a_5$ e due nalla scatola $a_8$. La combinazione relativa sarà
+\[\{a_3,a_3,a_5,a_8,a_8\}\]
+Si è così creata una corrispondenza biunivoca tra le combinazioni con ripetizione di classe $k$ su $n$ elementi e i modi di mettere $k$ oggetti in $n$ contenitori. Detto $C_{n,k}^r$ il numero delle combinazioni con ripetizione, per quanto visto sui contenitori, è possibile affermare che
+\[C_{n,k}^r = \binom{n+k-1}{k}\]
+e si noti che sono $k$ oggetti in $n$ contenitori e non viceversa.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si scrivano tutte le combinazioni con ripetizione di classe $3$ sull'insieme $A=\{a,b,c\}$. Allora si hanno\\
+...\\
+Nello scrivere aiuta sapere in anticipo che sono
+\[C_{5,3}^r = \binom{5}{3} = \frac{5!}{3! \cdot 2!} = 10\]
+
+\vspace{1em}
+\subsection{Estrazione}
+Si supponga di disporre di un'urna contenente $N$ palline di due colori: si considerino $M$ palline bianche e $N-M$ palline nere (con $M \leq N$). Si supponga di eseguire $n$ estrazioni successibe. Naturalmente si hanno due cateogorie
+\begin{itemize}
+  \item \textbf{Estrazione senza reimmissione}, cioé le palline estratte non vengono reinserite. In questo caso deve essere $n \leq N$;
+  \item \textbf{Estrazione con reimmissione}, cioé ad ogni estrazione la pallina estratta viene reinserita nell'urna.
+\end{itemize}
+Per ciascuna delle due cateogorie bisogna calcolare la probabilità che $k$ delle $n$ palline estratte siano bianche. Numerando da $1$ ad $M$ le palline bianche e da $M+1$ a $N$ le palline nere.\\
+Cominciando con la prima cateogoria, l'evento \quotes{il numero di palline bianche estratte è $k$} non dipende dall'ordine di estrazione, quindi è possibile prendere
+\[\Omega := \{\text{combinazioni di classe } n \text{ sull'insieme delle } N \text{ palline}\}\]
+Da questo è immediato capire che
+\[\left \vert \Omega \right \vert = \binom{N}{m}\]
+L'evento favorevole è
+\[A := \{\omega \in \Omega : \left \vert \omega \cap \{1,...,M\} \right \vert = k\} = \{\omega \in \Omega : \left \vert \omega \cap \{\omega \cap \{M+1,...,N\} \right \vert = n-k\}\]
+cioé le combinaizoni che hanno $k$ elementi bianchi sono uguali alle combinazioni che hanno $n-k$ elementi neri.\\
+È possibile determinare una configurazione $\omega \in A$ attraverso due scelte:
+\begin{itemize}
+  \item scegliere la parte di $\omega$ in $\{1,...,M\}$, cioé una combinazione di classe $k$. Naturalmente in questo caso si hanno
+  \[\binom{M}{k}\]
+  opzioni.
+  \item Scegliere la parte di $\omega$ in $\{M+1,...,N\}$, cioè una combinazione di classe $n-k$. Pertanto si hanno
+  \[\binom{N-M}{n-k}\]
+  opzioni.
+\end{itemize}
+In questo modo si ottengono tutte le possibili configurazioni. Per il teorema fondamentale, il loro numero totale è dato da
+\[\left \vert A \right \vert = \binom{M}{k} \cdot \binom{N-M}{n-k}\]
+Si tratta ora di assegnare le probabilità elementari. Una configurazione significa infilare una mano nell'urna e tirare fuori $n$ palline. È quindi naturale assumere che le configurazioni abbiano tutte la stessa probabilità.\\
+La probabilità elementare sulla singola configurazione è data da
+\[\frac{1}{\vert \Omega \vert}\]
+mentre quella dell'evento $A$ è data da
+\[p(A) = \frac{\vert A \vert}{\vert \Omega \vert} = \frac{\displaystyle{\binom{M}{k} \cdot \binom{N-M}{n-k}}}{\displaystyle{\binom{N}{n}}}\]
+
+\vspace{1em}
+\noindent
+Si osservi che non sarebbe cambiato nulla se invece di considerare le combinazioni fossero state considerate delle disposizioni seplici. In altre parole, se invece di estrare dall'urna un mucchio di $n$ palline se ne fosse estratta una per volta e messa in ordine in fila il risultato sarebbe stato identico. Tuttavia, ad ogni combinazione di classe $n$ corrispondono $n!$ disposizioni seplici di classe $n$. Quindi prendendo come spazio degli eventi elementari
+\[\hat{\Omega} = \{\text{disposizioni semplici di classe } n \text{ sull'insieme delle } N \text{ palline}\}\]
+ed indicato con $\hat{A}$ l'evento favorevole, si hanno $\vert \hat{\Omega} \vert = n! \cdot \vert \Omega \vert$ e $\hat{A} = n! \cdot \vert A \vert$, cossicché
+\[p(\hat{A}) = \frac{\vert \hat{A} \vert}{\vert \hat{\Omega} \vert} = \frac{\vert A \vert}{\vert \Omega \vert} = p(A)\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Analizzando, ora, l'estrazione con reimmissione di $3$ palline di un'urna con $3$ palline. È possibile estrarre in modo ordinato, per cui vi sono $3^3=27$ disposizioni con ripetizione (di classe $3$ su $3$ oggetti)\\
+...\\
+Oppure è possibile solamente segnare i risultati senza tenere conto dell'ordine di estrazione. In questo secondo caso si avrebbero
+\[\binom{5}{3}=10\]
+combinazioni con ripetizione (di classe $3$ su $3$ oggetti).\\
+...\\
+Come si osserva, la cardinalità della corrispondenza tra disposizioni e combinazioni varia: $1$ a $1$, $3$ a $1$ e $6$ a $1$. Poichè sull'estrazione singola le tre palline sono equiprobabili, ammesso che siano palline uguali, appare ragionevole assegnare a tutte le disposizioni con ripetizione la stessa probabilità, mentre alle combinazioni con ripetizioni l'assegnazione va pesata opportunamente.\\
+Esaminando in senso generale la seconda categoria: estrazione con reimmissione. Sulla base di quanto appena detto, è meglio considerare anche l'ordine di estrazione e prendere
+\[\Omega := \{\text{disposizioni con ripetizione di classe } n \text{ sull'insieme delle } N \text{ palline}\}\]
+Naturalmene si considerano disposizioni con ripetizione perché le palline una volta estratte vengono reinserite. Per cui si ha che
+\[\vert \Omega \vert = N^n\]
+L'evento favorevole è
+\[A := \{f : \{1,...,n\} \longrightarrow \{1,...,N\} \text{ tale che } \left \vert f^{-1} \left(\{1,...,M\}\right) \right \vert = k\}\]
+cioé le disposizioni con ripetizioni che pescano $k$ elementi bianchi. Per determinare $\vert A \vert$ si utilizza il principio fondamentale in maniera simile a come è stato usato per le permutazioni con ripetizione con ripetizione rispetto ad una partizione.\\
+Per ottenere una disposizione $f$ in $A$
+\begin{itemize}
+  \item si scelgono le $k$ posizioni, su $n$ possibili, in cui mettere le palline bianche. Naturalmente si hanno
+  \[\binom{n}{k}\]
+  opzioni, essendo la scelta una combinazione di classe $k$ su $n$ elementi.
+
+  \item si dispongono $k$ palline bianche (eventualmente con ripetizione) nelle posizioni prescelte. Naturalmente si hanno $M^k$ opzioni, essendo la scelta una disposizione.
+
+  \item si dispongono $n-k$ palline nere (eventualmente con ripetizione) nelle restanti $n-k$ posizioni. Naturalmente si hanno $(N-M)^{m-k}$ opzioni, essendo la scelta una disposizione.
+\end{itemize}
+In questo modo si ottengono tutte le possibile configurazioni. Per il principio fondamentale il loro numero totale è dato da
+\[\vert A \vert = \binom{n}{k} \cdot M^k \cdot (N-M)^{n-k}\]
+È possibile, quindi, concludere che
+\[\boxed{p(A) = \frac{\vert A \vert}{\vert \Omega \vert} = \binom{n}{k} \cdot \frac{M^k \cdot (N-M)^{n-k}}{N^n} = \binom{n}{k} \cdot S^k \cdot (1-S)^{n-k}}\]
+ponendo
+\[S=\frac{M}{N}\]
+
+
 \end{document}
