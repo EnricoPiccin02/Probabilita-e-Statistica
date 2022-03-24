@@ -30,3 +30,6 @@
 \contentsline {subsection}{\numberline {4.6}Principio fondamentale del calcolo combinatorio}{35}{}%
 \contentsline {subsection}{\numberline {4.7}Combinazione con ripetizione}{39}{}%
 \contentsline {subsection}{\numberline {4.8}Estrazione}{40}{}%
+\contentsline {subsection}{\numberline {4.9}Probabilità condizionata}{44}{}%
+\contentsline {subsection}{\numberline {4.10}Probabilità composite}{47}{}%
+\contentsline {subsection}{\numberline {4.11}Formula di disintegrazione}{48}{}%

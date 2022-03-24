@@ -1761,5 +1761,236 @@ In questo modo si ottengono tutte le possibile configurazioni. Per il principio 
 ponendo
 \[S=\frac{M}{N}\]
 
+\newpage
+\noindent
+\begin{center}
+  24 Marzo 2022
+\end{center}
+\subsection{Probabilità condizionata}
+Si consideri un'urna contenente $10$ palline numerate da $1$ a $10$. Si effettui un'estrazione e si determini la probabilità che la pallina estratta abbia un numero $\leq 5$. Naturalmente come spazio degli eventi elementari si considera
+\[\Omega := \{1,2,...,10\}\]
+e si consideri la probabilità uniforme
+\[p(\{\omega\}) = \frac{1}{\vert \Omega \vert} = \frac{1}{10} \hspace{1em} \forall \omega \in \Omega\]
+che si estende ad ogni sottoinsieme $A \subset \Omega$ al solito modo:
+\[p(A) = \frac{\vert A \vert}{\vert \Omega \vert} = \frac{\vert A \vert}{10}\]
+L'evento favorevole a cui si è interessati è
+\[A := \{\omega \in \Omega : \omega \leq 5\}\]
+E quindi la probabilità cercata è proprio $p(A)=\frac{1}{2}$. Si supponga, ora, di sapere a priori che il numero uscito sia pari. Ciò porta a modificare lo spazio campione considerato in
+\[B := \{2,4,6,6,10\}\]
+con una probabilità uniforme
+\[\widetilde{p}(\{\omega\}) = \frac{1}{\vert \Omega \vert} = \frac{1}{5} \hspace{1em} \forall \omega \in B\]
+Poiché $C:=\{\omega \in B : \omega \leq 5\} = \{2,4\}$; si ha, quindi:
+\[\widetilde{p}(C) = \frac{\vert C \vert}{\vert B \vert} = \frac{2}{5}\]
+Cioé, sapendo a priori che il numero estratto è pari (informazione aggiuntiva), la probabilità che esca un numero $\leq 5$ sale a $\frac{2}{5}$. Si noti che $C = A \cap B$ e che
+\[\widetilde{p}(C) = \frac{\vert A \cap B \vert}{\vert B \vert} = \frac{p(A \cap B)}{p(B)}\]
+Ciò permette di fornire la seguente definizione:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{0.94\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{PROBABILITÀ CONDIZIONALE}}\\
+    \parbox{\linewidth}{Siano $A$ e $B$ due eventi in uno spazio di probabilità ($\Omega$, $\mathcal{A}$, $p$), con $p(B)>0$. Si chiama, allora, \textbf{probabilità condizionale} di $A$ dato B (cioé sapendo cche si è verificato B) la quantità:
+    \[p(A \vert B) := \frac{p(A \cap B)}{p(B)}\]
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Proporizione}: Si osservi che la funzione $p(\cdot \vert B)$, cioé
+\[A \longrightarrow p(A \vert B) \hspace{1em} \forall A \in \mathcal{A}\]
+è una probabilità su $\mathcal{A}$
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio}: Vengono estratte $5$ palline da un'urna che ne contiene $90$ (numerate da $1$ a $90$). Si determini, allora, la probabilità che escano $1$ e $7$, anche sapendo che dei $5$ numeri estratti $3$ sono dispari.\\
+Si assuma, per impotesi, che non ci sia reimmissione; lo spazio degli eventi elementari è costituito dalle estrazioni di cinque numeri tra $1$ e $90$, quindi
+\[\Omega := \{\text{combinazioni i classe } 5 \text{ in } \{1,...,90\}\} = \{\omega \in \{1,...,90\} : \vert \omega \vert = 5\}\]
+Sapendo, quindi, che
+\[\vert \Omega \vert = \binom{90}{5}\]
+Su $\Omega$ si introduce la probabilità uniforme precedentemente considerata. Gli eventi a cui si è interessati sono
+\[A:=\{\text{i numeri estratti contengono } 1 \text{ e } 7\} = \{\omega \in \Omega : \{1,7\} \subset \omega\}\]
+\[B:=\{\text{i numeri estratti sono dispari}\} = \{\omega \in \Omega : \vert \omega \cap \mathbb{N}_D \vert = 3\}\]
+dove con $\mathbb{N}_D$ si indicano i numeri naturali dispari.\\
+Naturalmente, le possibili configurazioni si ottengono aggiungendo a $\{1,7\}$ ogni possibile combinazione di classe $3$ sui restanti $\{1,...,90\} - \{1,7\}$ numeri. Quindi
+\[\vert A \vert = \binom{88}{3}\]
+da cui
+\[p(A) = \frac{\vert A \vert}{\vert \Omega \vert} = \frac{\binom{88}{3}}{\binom{90}{5}} = \frac{88!}{3!} \cdot \frac{5!}{90!} = \frac{2}{801} \cong 0.0025\]
+Per conoscere, ora, il numero di elementi che si trovano in $B$ e $A \cap B$ si procede in questo modo: gli elementi di $A \cap B$ sono cinquine che contengono $1$ e $7$, più un altro numero dispari diverso da $1$ e $7$ (che sono altri $43$ tra $1$ e $90$), e due numeri pari (ce ne sono $45$ tra $1$ e $90$, quindi $\binom{45}{2}$ combinazioni).\\
+Per il principio fondamentale si ha che
+\[\vert A \cap B \vert = 43 \cdot \binom{45}{2}\]
+Similmente, dato che $B$ è costituito da due numeri pari e tre numeri dispari, si ha
+\[\vert B \vert = \binom{45}{2} \cdot \binom{45}{3}\]
+Si hanno, quindi
+\[p(A \vert B) = \frac{p(A \cap B)}{p(B)} = \frac{\vert A \cap B \vert}{\vert \Omega \vert} \cdot \frac{\vert \Omega \vert}{\vert B \vert} = \frac{\vert A \cap B \vert}{\vert B \vert} = \frac{3}{\binom{45}{3}} = \frac{43 \cdot 42! \cdot 3!}{45!} = \frac{6}{45 \cdot 44} = \frac{1}{330} \cong 0.003\]
+In pratica, con maggiori informazioni, la probabilità aumenta, almneo in questo caso.\\
+Tuttavia, può capitare che l'informazione aggiuntiva \quotes{si è verificato $B$} sia ininfluente.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Lanciando due volte una moneta, si ottiene il seguente spazio degli eventi elementari:
+\[\Omega := \{(T,T),(T,C),(C,T),(C,C)\}\]
+cioé le disposizioni di classe $2$ sull'insieme $\{T,C\}$. Si consierino gli eventi
+\[A:=\quotes{\text{esce testa al secondo lancio}}=\{(T,T),(C,T)\}\]
+\[A:=\quotes{\text{esce testa al primo lancio}}=\{(T,T),(T,C)\}\]
+Si ha che $\vert \Omega \vert = 4$, $\vert A \vert = \vert B \vert = 2$, $\vert A \cap B \vert = 1$, in quanto $A \cap B = \{(T,T)\}$. Dunque, usando la probabilità uniforme
+\[p(A) = \frac{1}{2} \hspace{1em} \text{e} \hspace{1em} p(A \vert B) = \frac{p(A \cap B)}{p(B)} = \frac{1}{4} \cdot 2 = \frac{1}{2}\]
+Ciò porta alla seguente definizione:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{0.94\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{EVENTI INDIPENDENTI}}\\
+    \parbox{\linewidth}{Due eventi $A$ e $B$ in uno spazio di probabilità si dicono \textbf{indipendenti} se
+    \[\boxed{p(A \cap B) = p(A) \cdot p(B)}\]
+    In particolare, se $p(B) > 0$, allora $A$ e $B$ sono indipendenti quando
+    \[p(A = p(A \vert B)\]
+    cioé la probabilità di $A$ non cambia conoscendo $B$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si preferisce, tuttavia, la prima definizione in luogo della seconda perché copre anche il caso $p(B)=0$. Inoltre mostra come tale proprietà sia simmetrico rispetto ad $A$ e a $B$.
+
+\vspace{1em}
+\noindent
+La probabilità condizionale fornisce anche la seguente formula per l'intersezione di eventi:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{0.94\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{REGOLA DELLA CATENA}}\\
+    \parbox{\linewidth}{Dati $n$ eventi $A_1,...,A_n$ in uno spazio di probabilità $(\Omega,\mathcal{A},p)$ tali che
+    \[p\left(\bigcap_{k=1}^{n-1} A_k\right) > 0\]
+    si ha
+    \[p\left(\bigcap_{k=1}^{n} A_k\right) = p(A_1) \cdot p(A_2 \vert A_1) \cdot p(A_3 \vert A_2 \cap A_1) \cdot ... \cdot p\left(A_n \vert \bigcap_{k=1}^{n-1} A_k\right) = p(A_1) \cdot \prod_{j=2}^n p\left(A_j \left \vert \right. \bigcap_{k=1}^{j-1} A_k\right)\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Si osservi, dapprima, che
+\[\bigcap_{k=1}^j A_k \supset \bigcap_{k=1}^{n-1} A_k\]
+per ogni $j \leq n-1$, quindi se
+\[p \left(\bigcap_{k=1}^{n-1} A_k\right) > 0\]
+allora deve essere necessariamente che
+\[p \left(\bigcap_{k=1}^{j-1} A_k\right) > 0\]
+Ciò permette di affermare che
+\[p \left( A_j \left \vert \right. \bigcap_{k=1}^{j-1} A_k\right)\]
+ha senso e il lato destro dell'eguaglianza appena scritta è ben posto. Per la dimostrazione, è conveniente procedere per induzione. Quando $n=2$, l'uguaglianza
+\[p(A_1 \cap A_2) = p(A_1) \cdot p(A_2 \vert A_1)\]
+è fornita dalla definizine di probabilità condizionale. Si supponga sia vera per $n-1$, cioé che
+\[p \left(\bigcap_{k=1}^{n-1} A_k\right) = p(A_1) \cdot \prod_{j=2}^{n-1} p \left(A_j \left \vert \right. \bigcap_{k=1}^{j-1} A_k\right)\]
+Si ha, quindi, ancora tramite probabilità condizionale che:
+\[p \left(\bigcap_{k=1}^{n} A_k\right) = p \left( \left( \bigcap_{k=1}^{n-1} A_k\right) \cap A_n\right) = p \left(\bigcap_{k=1}^{n-1} A_k\right) \cdot p \left(A_n \left \vert \right. \bigcap_{k=1}^{n-1} A_k\right) = p(A_1) \cdot \prod_{j=2}^n p \left(A_j \left \vert \right. \bigcap_{k=1}^{j-1} A_k\right)\]
+
+\vspace{1em}
+\subsection{Probabilità composite}
+Si consideri l'esempio seguente che mostra come usare la probabilità condizionale per costruire un modello probabilistico, cioé definire una probabilità $p$ su una $\sigma$-algebra $\mathcal{A}$ di eventi su uno spazio campione $\Omega$.\\
+Lo spazio $\Omega$ sarà finito, quindi per costruire $p$ sarà sufficiente, come sempre, definire $p(\{\omega\}), \forall \omega \in \Omega$, e porre poi
+\[p(A) = \sum_{\omega \in A} p(\{\omega\}), \hspace{1em} \forall A \in \mathcal{A}\]
+Si dorvrà, poi, costruire $p$ a partire da alcune probabilità condizionali $p(\cdot \vert B)$. Ciò è spesso utile in casi reali, dove si hanno informazioni del tipo \quotes{la probabilità che accada è questa \textbf{se}...}.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri di disporre di due urne, che si etichettano con $\alpha$ e $\beta$:
+\[\alpha \text{ contiene } \left\{
+  \begin{array}{l}
+    3 \text{ palline nere}\\
+    1 \text{ pallina bianca}\\
+  \end{array}
+\right.\]
+\[\beta \text{ contiene } \left\{
+  \begin{array}{l}
+    1 \text{ pallina nera}\\
+    1 \text{ pallina bianca}\\
+  \end{array}
+\right.\]
+Sapendo di scegliere una delle due urne con la stessa probabilità, e poi estrarre a caso dall'urna scelta una pallina, si determini la probabilità di estrarre una pallina nera.\\
+Si consideri come spazio $\Omega$ l'insieme dei possibili output:
+\[\Omega = \{\alpha_n, \alpha_b, \beta_n, \beta_b\}\]
+dove
+\[\left\{
+  \begin{array}{l}
+    \alpha_n : \text{ si è scelta urna } \alpha \text{ ed estratto nero}\\
+    \alpha_b : \text{ si è scelta urna } \alpha \text{ ed estratto bianco}\\
+    \beta_n : \text{ si è scelta urna } \beta \text{ ed estratto nero}\\
+    \beta_b : \text{ si è scelta urna } \beta \text{ ed estratto bianco}\\
+  \end{array}
+\right.\]
+L'evento $A = \{\alpha_n,\alpha_b\}$ corrisponde a \quotes{l'unica scelta è la $\alpha$}, l'evento $N=\{\alpha_n,\beta_n\}$ corrisponde a \quotes{la pallina estratta è nera}.\\
+Com'è noto, si assume che la scelta dell'urna abbia uguale probabilità di essere $\alpha$ oppure $\beta$, quindi
+\[p(A) = \frac{1}{2}\]
+Inoltre, supponendo di aver scelto l'urna $\alpha$, la probabilità di estrarre una pallina nera è
+\[p(N \vert A) = \frac{3}{4}\]
+Similmente, tenuto conto che all'evento $A^c = \{\beta_n,\beta_b\}$ corrisponde \quotes{l'urna scelta è la $\beta$}, si ha
+\[p(N \vert A^c) = \frac{1}{2}\]
+Si ottiene, quindi:
+\[p(\{\alpha_n\}) = p(A \cap N) = p(A) \cdot p(N \vert A) = \frac{3}{8}\]
+e similmente
+\[p(\{\beta_n\}) = p(A^c \cap N) = p(A^c) \cdot p(N \vert A^c) = \frac{1}{4}\]
+A questo punto è possibile già rispondere alla domanda
+\[p(\{\alpha_n,\beta_n\}) = p(\{\alpha_n\}) + p(\{\beta_n\}) = \frac{3}{8} + \frac{1}{4} = \frac{5}{8}\]
+Ricapitolando, sapendo che
+\begin{enumerate}
+  \item Nell'urna $\alpha$ vi sono $3$ palline nere ed $1$ bianca, assunta la ... continua ...
+\end{enumerate}
+
+\vspace{1em}
+\noindent
+\subsection{Formula di disintegrazione}
+Sia $(\Omega,\mathcal{A},p)$ uno spazio di probabilità e sia $\{B_k\}_{k \in K} \subset \mathcal{A}$ una partizione finita o numerabile (cioé $K$ è costiuito da un numero finito di indici, tipo $K=\{1,...,n\}$, oppure $K=\mathbb{N}$). Allora
+\[p(A) = \sum_{k \in K} = \sum_{k \in K} p(A \cap B_k) \hspace{1em} \forall A \in \mathcal{A}\]
+Inoltre, se $p(B_k) > 0, \forall k \in K$, allora
+\[p(A) = \sum_{k \in K} p(A \vert B_k) \cdot p(B_k) \hspace{1em} \forall A \in \mathcal{A}\]
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Si osservi che essere una partizione significa che gli elementi di $\{B_k\}_{k \in K}$ sono a due a due disgiunti, cioé
+\[B_k \cap B_i \neq \varnothing \hspace{1em} \text{se} \hspace{1em} i \neq k, \forall i,k \in K\]
+e che $\{B_k\}_{k \in K}$ è un ricoprimenti di $\Omega$ e che $\{B_k\}_{k \in K}$ è un ricoprimento di $\Omega$, cioé
+\[\bigcup_{k \in K} B_k = \Omega\]
+per avere un'idea geometrica della formula di disintegrazione, si immagini $p$ come la misura (rinormalizzata) dell'area dell'evento $A$. Per sapere quanto vale l'area di $A$ è sufficiente sapere quanto valgono le aree di $A \cap B_1$, $A \cap B_2$, $A \cap B_3$ e $A \cap B_4$ e sommarle tutte insieme. Formalmente si ottiene che
+\[A = A \cap \Omega = A \cap \left(\bigcup_{k\in K} B_k\right) = \bigcup_{k\in K} (A \cap B_k)\]
+Ma essendo gli eventi $\{B_k\}_{k \in K}$ disgiunti, sono digiunti anche gli eventi $\{A \cap B_k\}_{k \in K}$, quindi per la $\sigma$-additività
+\[p(A) = p \left(\bigcup_{k \in K} (A \cap B_k) \right) = \sum_{k \in K} p(A \cap B_k)\]
+Inoltre, se $p(B_k)>0$, allora è possibile scrivere
+\[p(A \cap B_k) = p(B_k) \cdot p(A \vert B_k)\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Un immediato risultato che deriva dal precedente è il seguente:
+
+\begin{corollary} Per ogni coppia di eventi $A$ e $B$, con $p(B) \in (0,1)$, si ha che
+\[p(A)=p(A \vert B) \cdot p(B) + p(A \vert B^c) \cdot p(B^c) = p(A \vert B) \cdot p(B) + p(A \vert B^c) \cdot \left[1 - p(B)\right]\]
+Tenuto conto che $\{B,B^c\}$ è una partizione di $\Omega$ e che $p(B^c) = 1-p(B)>0$.
+\end{corollary}
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri l'estrazione di palline da un'urna. Se si pone $N$, come evento \quotes{la pallina estratta è nera} e che $A$ è l'evento \quotes{l'urna scelta è la $\alpha$} si era osservato che
+\[p(A)=\frac{1}{2} \hspace{1em} \text{e} \hspace{1em} p(N \vert A) = \frac{3}{4} \hspace{1em} \text{e} \hspace{1em} p(N \vert A^c)=\frac{1}{2}\]
+Quindi, per il corollario appena esposto
+\[p(N) = p(N \vert A) \cdot p(A) + p(N \vert A^c) \cdot \left[1-p(A)\right] = \frac{3}{4} \cdot \frac{1}{2} + \frac{1}{2} \cdot \left[1-\frac{1}{2}\right]=\frac{3}{8}+\frac{1}{4}=\frac{5}{8}\]
+come già ottenuto in precedenza.
+
 
 \end{document}
