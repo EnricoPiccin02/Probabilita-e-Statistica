@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1648136734 "Teoria - Probabilità e Statistica.tex" "build/Teoria - Probabilità e Statistica.pdf" "Teoria - Probabilità e Statistica" 1648136736
+["pdflatex"] 1648371245 "Teoria - Probabilità e Statistica.tex" "build/Teoria - Probabilità e Statistica.pdf" "Teoria - Probabilità e Statistica" 1648371246
   "/Users/enricopiccin/Library/texlive/2021basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1643364959 11524 2df7d3388477aff28c2fab5169faa2c5 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -214,9 +214,9 @@
   "/usr/local/texlive/2021basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616691443 79187 72c3adcacc8085f6390cf80c64ac00e5 ""
   "/usr/local/texlive/2021basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1643302228 2057433 28863b3cbca3a1e9d798e67601f03c47 ""
   "/usr/local/texlive/2021basic/texmf.cnf" 1616691442 628 e23d78b1be89c53495d66eec94d2300d ""
-  "Teoria - Probabilità e Statistica.tex" 1648136734 138149 8346d9a95ad8ebdbee808a6c53cf8e35 ""
-  "build/Teoria - Probabilità e Statistica.aux" 1648136735 4798 5fac984d78eea60ec92b29a8fd2756e4 "pdflatex"
-  "build/Teoria - Probabilità e Statistica.toc" 1648136735 2720 b0e0cfc2177a7e2c61189d9c36b866ad "pdflatex"
+  "Teoria - Probabilità e Statistica.tex" 1648371244 144211 ec880efcb57a4e20b3738343e17e708a ""
+  "build/Teoria - Probabilità e Statistica.aux" 1648371246 5045 58f1f225056c03a54fe676e4a87f7fbe "pdflatex"
+  "build/Teoria - Probabilità e Statistica.toc" 1648371246 2885 db1db194d7306b43142ab65e7cbd8e0e "pdflatex"
   (generated)
   "build/Teoria - Probabilità e Statistica.aux"
   "build/Teoria - Probabilità e Statistica.log"
