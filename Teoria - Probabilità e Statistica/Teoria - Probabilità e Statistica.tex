@@ -266,7 +266,7 @@ Le proprietà degli spazi di probabilità finiti discendono dalle richieste, oss
       \[\sum_{k=1}^n p \left(A_k\right) \geq p \left(\bigcup_{k=1}^n A_k\right)\]
       In particolare, è sempre verificato che
       \[p(A) + p(B) \geq p(A \cup B), \hspace{0.5em} \forall A,B \in \mathcal{A}\]
-      ciò significa che  la probabilità è \textbf{subadditiva}.
+      ciò significa che la probabilità è \textbf{subadditiva}.
       \vspace{3mm}}\\
       \hline
   \end{tabularx}
@@ -2080,6 +2080,296 @@ come già ottenuto in precedenza.
 \begin{center}
   28 marzo 2022
 \end{center}
+\subsection{Formula di Bayes}
+Si espone di seguito un importante risultato, ossia la \textbf{formula di Bayes}
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{FORMULA DI BAYES}}\\
+    \parbox{\linewidth}{Sia ($\Omega$,$\mathcal{A}$,$p$) uno spazio di probabilità e siano $A$ e $B$ due eventi per cui $p(A)>0$, $p(B)>0$. Allora
+    \[\boxed{p(B \vert A) = \frac{p(A \vert B) \cdot p(B)}{p(A)}} \hspace{1em} [\textbf{formula di Bayes}]\]
+    Inoltre, se $p(B)\in(0,1)$ (e quindi $p(B^c)>0$) la formula di Bayes si può scrivere come
+    \[p(B \vert A) = \frac{p(A \vert B) \cdot p(B)}{p(A \vert B) \cdot p(B) + p(A \vert B^c) \cdot p(B^c)} \hspace{1em} [\textbf{II versione}]\]
+    Inoltre, se $\{B_k\}_{k \in K} \subset \mathcal{A}$ è una partizione di eventi (finita o numerabile) di $\Omega$ con $p(B_k)>0, \forall k \in K$, allora
+    \[p(B_i \vert A) = \frac{p(A \vert B_i) \cdot p(B_i)}{p(A)} = \frac{p(A \vert B_i) \cdot p(B_i)}{\displaystyle{\sum_{k \in K} p(A \vert B_k) \cdot p(B_k)}} \hspace{1em} \forall i \in K \hspace{1em} [\textbf{III versione}]\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{2em}
+\noindent
+\textbf{Dimostrazione}: Per la dimostrazione della fortuna di Bayes, basta osservare che per definizione di probabilità condizionale si ha che
+\[p(B \vert A) = \frac{p(A \cap B)}{p(A)} \hspace{1em} \text{e} \hspace{1em} p(A \vert B) = \frac{p(A \cap B)}{p(B)}\]
+per cui è facile capire come si ottenga l'idetità simmetrica seguente:
+\[p(B \vert A) \cdot p(A) = p(A \cap B) = p(A \vert B) \cdot p(B)\]
+che può essere interpretata come: \quotes{la probabilità che accada sia $A$ che $B$ è il prodotto della probabilità che accada $A$ per la probabilità che accada $B$ sapendo che è accaduto $A$ e viceversa}.\\
+Da qui è immediato evincere che:
+\[p(B \vert A) = \frac{p(A \vert B) \cdot p(B)}{p(A)}\]
+per le altre due formule, basta applicare al denominatore la formula delle probabilità totali e il suo corollario.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: La III versione della formula di Bayes è detta \textbf{formula delle probabilità delle cause}: infatti, interpretando gli eventi della partizione $\{B_k\}_{k \in K}$ come \quotes{cause} al verificarsi di $A$ (e la $p(A \vert B_k)$ è appunto la probabilità che si verifichi $A$ se accade $B_k$), la formula permette di calcolare la probabilità che quando $A$ si è verificato, la causa sia stata $B_i$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{1}$}: Tornando ancora una volta alle due urne $\alpha$ e $\beta$, se la pallina estratta è nera, si determini la probabilità che l'urna scelta sia stata la $\alpha$. È noto che
+\[p(A) = \frac{1}{2} \hspace{2em} p(N \vert A) = \frac{3}{4} \hspace{2em} p(N \vert A^c) = \frac{1}{2}\]
+Dalla formula di Bayes, al fine di determinare $p(A \vert N)$, si ha che
+\[p(A \vert N) = \frac{P(N \vert A) \cdot p(A)}{p(N \vert A) \cdot p(A) + p(N \vert A^c) \cdot [1-p(A)]} = \frac{\dfrac{3}{4} \cdot \dfrac{1}{2}}{\dfrac{5}{8}}=\frac{3}{5}\]
+in cui è facile osservare che sapendo a posteriori il colore della pallina, la probabilità sulla scelta dell'urna $\alpha$ (evento $A$) sia più alta di quella non condizionata $p(A)=\frac{1}{2}$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio $\boldsymbol{2}$}: Si consideri un sondaggio degli studenti del secondo anno di università, i quali hanno fornito una spiegazione di come hanno superato l'esame di Analisi I:
+\begin{itemize}
+  \item il $50\%$ del campione ha risposto \quotes{tanto studio};
+  \item il $40\%$ del campione ha risposto \quotes{fortuna};
+  \item il $10\%$ del campione ha risposto \quotes{copiando}.
+\end{itemize}
+È stato poi chiesto il voto con cui hanno superato l'esame:
+\begin{itemize}
+  \item nel primo gruppo $\frac{2}{3}$ ha preso un voto $\geq 27$;
+  \item nel secondo fruppo $\frac{1}{2}$ ha preso un voto $\geq 27$;
+  \item nel terzo gruppo $\frac{1}{4}$ ha preso un voto $\geq 27$.
+\end{itemize}
+Si valuti in che percentiale chi ha preso $\geq 27$ appartenga al primo e al terzo gruppo. Si consideri come spazio campione
+\[\Omega = \{(1,n),(1,b),(2,n),(2,b),(3,n),(3,b)\}\]
+dove
+\begin{flalign*}
+  n & = \text{ nero sta per } \geq 27\\
+  b & = \text{ bianco sta per } < 27
+\end{flalign*}
+quindi per $k=1,2,3$ si ha che
+\begin{flalign*}
+  (k,n) & = \text{ sono coloro che nel } k\text{-esimo gruppo hanno un voto} \geq 27\\
+  (k,b) & = \text{ sono coloro che nel } k\text{-esimo gruppo hanno un voto} < 27\\
+\end{flalign*}
+Si considerino, allora, gli eventi
+\begin{flalign*}
+  N & = \text{ \quotes{il voto è }} \geq 27 = \{(1,n),(2,n),(3,n)\}\\
+  B_k & = \text{ \quotes{appartenenza al gruppo }} k =  \geq 27 = \{(k,n),(k,b)\}\\
+\end{flalign*}
+Si osservi che $\{B_k\}_{k \in K}$ è una partizione di $\Omega$, in quanto
+\[B_1=\{(1,n),(1,b)\} \hspace{2em} B_2=\{(2,n),(2,b)\} \hspace{2em} B_3=\{(3,n),(3,b)\}\]
+sono a due a due disgiunti e la loro unione produce $\Omega$. Calcolando le probabilità che vengono richieste per la risoluzione del problema si ottiene:
+\[p(B_1)=\frac{1}{2} \hspace{2em} p(B_2)=\frac{2}{5} \hspace{2em} p(B_3)=\frac{1}{10}\]
+Inoltre si ha che
+\[p(N \vert B_1)=\frac{2}{3} \hspace{2em} p(N \vert B_2)=\frac{1}{2} \hspace{2em} p(N \vert B_3)=\frac{1}{4}\]
+Pertanto, per la formula delle probabilità totali
+\[p(N) = \sum_{k=1}^3 p(N \vert B_k) \cdot p(B_k) = \frac{2}{5} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{2}{5} + \frac{1}{4} \cdot \frac{1}{10} = \frac{40+24+3}{120} = \frac{67}{120}\]
+ossia la probabilità totale di prendere un voto $\geq 27$. Per la formula di Bayes si ottiene
+\[p(B_1 \vert N) = \frac{p(N \vert B_1) \cdot p(B_1)}{p(N)} = \frac{\dfrac{2}{3} \cdot \dfrac{1}{2}}{\dfrac{67}{120}} = \frac{40}{67} \cong 60 \%\]
+\[p(B_3 \vert N) = \frac{p(N \vert B_3) \cdot p(B_3)}{p(N)} = \frac{\dfrac{1}{4} \cdot \dfrac{1}{10}}{\dfrac{67}{120}} = \frac{3}{67} \cong 5 \%\]
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che si sarebbe potuto usare direttamente la formula di probabilità delle cause; si è così trovato che se uno studente ha preso $\geq 27$, al $60 \%$ proviene dal primo gruppo e al $5 \%$ dal terzo gruppo.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Per determinare la presenza del coronavirus è stato elaborato un test clinico con la seguente efficacia:
+\begin{itemize}
+  \item se il virus è presente, il test risulta positivo al $99\%$;
+  \item se il virus è assente, il test risulta positivo al $2\%$ (i cosiddetti falsi positivi);
+\end{itemize}
+Su un campione di $1000$ persone $2$ risultano avere il virus. Si supponga che un individuo scelto a caso risulti positivo al test, si determini quale probabilità risulta realmente malato.\\
+Lo spazio campione è
+\[\Omega=\{(+,\text{m}),(+,\text{s}),(-,\text{m}),(-,\text{s})\}\]
+dove
+\begin{itemize}
+  \item $+$ significa test positivo
+  \item $-$ significa test negativo
+  \item $m$ significa esaminato malato (cioè virus presente)
+  \item $s$ significa esaminato sano (cioè virus asente)
+\end{itemize}
+Si considerino, allora, gli eventi:
+\begin{flalign*}
+  A & = \text{ \quotes{il test è positivo}} = \{(+,m),(+,s)\}\\
+  M & = \text{ \quotes{l'esaminato è malato}} = \{(+,m),(-,m)\}\\
+\end{flalign*}
+Sapendo che $p(A \vert M^c)$ è la percentuale di falsi positivi, cioé persone sane che risultano positive al test, si determini $p(M \vert A)$. È noto che
+\[p(M) = \frac{1}{500} \hspace{2em} p(A \vert M) = \frac{99}{100} \hspace{2em} p(A | M^c) = \frac{2}{100}\]
+Quindi, tramite la formula di Bayes si ottiene
+\[p(M \vert A) = \frac{p(A \vert M) \cdot p(M)}{p(A)} = \frac{p(A \vert M) \cdot p(M)}{p(A \vert M) \cdot p(M) + p(A \vert M^c) \cdot p(M^c)} = \frac{\dfrac{99}{100} \cdot \dfrac{1}{500}}{\dfrac{99}{100} \cdot \dfrac{1}{500} + \dfrac{2}{100} \cdot \dfrac{499}{500}} = \frac{99}{1097}\]
+Ciò siginfica anche che $p(M^c \vert A) \cong 0.91$ (calcolando la probabilità complementare), cioè tra le persone testate che risultano positive, $91\%$ in verità sono sane. Ciò può sembrare strano, ma se si considera un campione di $100 000$ persone, presumibilmente $200$ saranne malate (ovvero $2$ su $1000$), e $99 800$ sono sane. Se si effettua il test, si avranno
+\begin{itemize}
+  \item per le persone malate, un risultato positivo e corretto sul $99\%$ di esse, cioè
+  \[200 \cdot \frac{99}{100}=198\]
+  \item per le persone sane, un risultato positivo ed errato sul $2\%$ di esse, cioè
+  \[99800 \cdot \frac{2}{100} = 1996\]
+\end{itemize}
+Per cui si è ottenuto che $1996+198=2194$ persone su cui il test risulta positivo, ma solo $198$ sono realmente malate ($\cong 9\%$, come calcolato in precedenza).\\
+Potrebbe sembrare anomalo come risultato, ma dopo tutto i falsi positivi sono pochi: $p(A \vert M^c) = 0.02$. Il punto è che, considerando la formula di Bayes e portando un fattore del numeratore come denominatore del denominatore si ottiene
+\[p(M \vert A) = \frac{p(A \vert M) \cdot p(M)}{p(A \vert M) \cdot p(M) + p(A \vert M^c) \cdot p(M^c)} = \frac{p(A \vert M)}{p(A \vert M) + \dfrac{p(A \vert M^c)}{p(M)} \cdot p(M^c)}\]
+Per cui se i sani sono l'ampia maggioranza, cioé $p(M^c) \cong 1$ (nel caso descritto $499$ su $500$), affinché $p(M \vert A) \cong 1$, cioé i testati positivi siano quasi tutti malati, ciò che conta è che sia piccolo il rapporto falsi positivi e malati, ossia
+\[\frac{p(A \vert M^c)}{p(M)}\]
+cioè la percentuale di falsi positivi deve essere molto più bassa della percentuale dei malati
+\[p(A \vert M^c) << p(M)\]
+
+\vspace{1em}
+\subsection{Indipendenza di eventi generalizzata}
+Per comprendere la generalizzazione del concetto di eventi indipendenti a più di due eventi, si consideri l'esempio seguente:
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Tre scimmie giocano a dadi, ognuna lanciando un dado a $6$ facce. Si provi che gli eventi
+\begin{flalign*}
+  A & = \text{ \quotes{la prima e la seconda scimia ottenfono lo stesso risultato}}\\
+  B & = \text{ \quotes{la seconda e la terza scimmia ottengono lo stesso risultato}}\\
+\end{flalign*}
+sono indipendenti. La cosa più conveniente è quella di prendere come spazio campione $\Omega=\{1,...,6\}^3$, ossia le terne di numeri da $1$ a $6$, associando alla coordinata $k$-esima il risultato del lancio del $k$-esimo dado. Così facendo è possibile scrivere:
+\[A=\{(x,y,z) \in \Omega : x=y\} \hspace{2em} B=\{(x,y,z) \in \Omega : y=z\} \hspace{2em} A \cap B=\{(x,y,z) \in \Omega : x=y=z\}\]
+Poiché
+\[\vert \Omega \vert=6^3 \hspace{2em} \vert A \vert = \vert B \vert = 6^2 \hspace{2em} \vert A \cap B \vert = 6\]
+dotando $\Omega$ di probabilità uniforme si ha
+\[p(A) = p(B) = \frac{6^2}{6^3}=\frac{1}{6} \hspace{1em} \text{e} \hspace{1em} p(A \cap B)=\frac{6}{6^3}=\frac{1}{36}\]
+dunque appare evidente come $p(A \cap B)=p(A) \cdot p(B)$, per cui gli eventi sono indipendenti, com'era intuitivamente ovvio.\\
+Se ora si definisce $C=\{(x,y,z) \in \Omega:x=z\}$, cioé \quotes{la prima e la terza scimmia ottengono lo stesso risultato}, si vede allo stesso modo che:
+\[p(A \cap C)=p(A) \cdot p(c) \hspace{1em} \text{e} \hspace{1em} p(B \cap C)=p(B) \cdot p(C)\]
+cioé $A$ e $C$ sono indipendenti, come anche gli eventi $B$ e $C$. Quindi gli eventi $A$, $B$, $C$ sono a due a due indipendenti. Usando la probabilità condizionale si può scrivere che
+\begin{flalign*}
+  p(A) & = p(A \vert B) = p(A \vert C)\\
+  p(B) & = p(B \vert A) = p(B \vert C)\\
+  p(C) & = p(C \vert A) = p(C \vert B)
+\end{flalign*}
+Il fatto che $A$ sia indipendente sia da $B$ che da $C$ è piuttosto intuitivo. È altrettanto intuitivo, però, che $A$ non è indipendente dal fatto che $B$ e $C$ accadano entrambi, ossia dall'evento $B \cap C$.\\
+In altre parole si ha che $p(A) \neq p(A \vert B \cap C)$, infatti:
+\[p(A \vert B \cap C) = \frac{p(A \cap B \cap C)}{p(B \cap C)} = 1 \hspace{1em} \text{mentre} \hspace{1em} p(A)=\frac{1}{6}\]
+in quanto $A \cap B \cap C = B \cap C$ (e analogamente $=A \cap B=A \cap C$) (giacchè costituito dall'insieme di tutte le terne che hanno tutte e $3$ le coordinate $x$,$y$,$z$ uguali).\\
+Se $A$ fosse stato indipendente da $B \cap C$ si sarebbe dovuto ottenere che
+\[p(A) = p(A \vert B \cap C) = \frac{p(A \cap B \cap C)}{p(B \cap C)} = \frac{p(A \cap B \cap C)}{p(B) \cdot p(C)}\]
+essendo $B$ e $C$ indipendenti, e quindi
+\[p(A) \cdot p(B) \cdot p(C) = p(A \cap B \cap C)\]
+che permette di ottenere la definizione seguente:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{INDIPENDENZA TRA PIÙ DI DUE EVENTI}}\\
+    \parbox{\linewidth}{Tre eventi $A$,$B$,$C$ in uno spazio di probabilità si dicono \textbf{indipendenti} se sono \textbf{indipendenti a due a due} e se vale l'eguaglianza:
+    \[\boxed{p(A) \cdot p(B) \cdot p(C) = p(A \cap B \cap C)}\]
+    Più in generale, data una famiglia $\{A_k\}_{k \in K}$ di eventi, si dirà che gli eventi sono indipendenti se per ogni sottoinsieme finito $J \subset K$ con $\vert J \vert \geq 2$ si ha che
+    \[p \left( \bigcap_{k \in J} A_k \right) = \prod_{k \in J} p(A_k)\]
+    per cui si ha indipendenza solamente quando i $k$ eventi considerati sono indipendenti due a due, tre a tre, ..., $k$ a $k$. Nel caso di tre eventi $K=\{1,2,3\}$ si avrebbe
+    \[J=\{(1,2),(1,3),(2,3),(1,2,3)\}\]
+    \vspace{-1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che \textbf{l'indipendenza non gode della proprietà transitiva}: se $A$ è indipendente da $B$ e $B$ è indipendente da $C$, non è detto che $A$ sia indipendente da $C$. Per esempio, sul quadrato unitario, considerando i tre eventi
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.5]
+    \draw [draw=black] (0,0) rectangle ++(2,2);
+    \draw [fill = purple!30,draw = purple!50] (0,1) rectangle ++(2,1);
+    \draw (1,1.5) node[]{$A$};
+  \end{tikzpicture}
+  \hspace{2em}
+  \begin{tikzpicture}[scale=1.5]
+    \draw [draw=black] (0,0) rectangle ++(2,2);
+    \draw [fill = purple!30,draw = purple!50] (0,0) rectangle ++(1,2);
+    \draw (0.5,1) node[]{$B$};
+  \end{tikzpicture}
+  \hspace{2em}
+  \begin{tikzpicture}[scale=1.5]
+    \draw [draw=black] (0,0) rectangle ++(2,2);
+    \draw [fill = purple!30,draw = purple!50] (0,0) rectangle ++(2,1);
+    \draw (1,0.5) node[]{$C$};
+  \end{tikzpicture}
+\end{figure}
+
+\noindent
+Si ha, naturalmente, che
+\[p(A) = p(B) = p(C) = \frac{1}{2}\]
+mentre
+\[p(A \cap B)=p(B \cap C)=\frac{1}{4}\]
+e
+\[p(A \cap C)=0\]
+quindi $p(A \cap B)=p(A) \cdot p(B)$ e $p(B \cap C) = p(B) \cdot p(C)$, mentre $p(A \cap C)=0$ che è naturalmente diversa da $p(A) \cdot p(C) = 0.25$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri il lancio di due dadi a $6$ facce. Impiegando $\Omega=\{1,...,6\}^2$ dotato di probabilità uniforme. Considerando gli eventi
+\begin{flalign*}
+  A & = \text{\quotes{il risultato del secondo dado è 1,2 oppure 5}} = \{(x,y) \in \Omega : y=1,2,5\}\\
+  B & = \text{\quotes{il risultato del secondo dado è 4,5 oppure 6}} = \{(x,y) \in \Omega : y=4,5,6\}\\
+  C & = \text{\quotes{la somma dei risultati dei due dadi vale 9}} = \{(x,y) \in \Omega : x+y=9\}\\
+\end{flalign*}
+Naturalmente si ha che $C=\{(3,6),(4,5),(5,4),(6,3)\}$, mentre
+\begin{flalign*}
+  A \cap B & = \{(x,y) \in \Omega : y=5\}\\
+  A \cap C & = \{(4,5)\}\\
+  B \cap C & = \{(3,6),(4,5),(5,4)\}\\
+  A \cap B \cap C& = \{(4,5)\}\\
+\end{flalign*}
+Quindi, tenuto conto che $\vert \Omega \vert = 36$, si ottiene che
+\[p(A)=p(B)=\frac{18}{36}=\frac{1}{2} \hspace{2em} p(C)=\frac{4}{36}=\frac{1}{9} \hspace{2em} p(A \cap B)=\frac{6}{36}=\frac{1}{6}\]
+\[p(B \cap C)=\frac{3}{36}=\frac{1}{12} \hspace{2em} p(A \cap C)=p(A \cap B \cap C)=\frac{1}{36}\]
+da cui
+\[
+\left\{
+\rowcolors{1}{white}{white}
+\begin{array}{l}
+  p(A \cap B \cap C) = \dfrac{1}{36} = p(A) \cdot p(B) \cdot p(C)\\
+  p(A \cap B) = \dfrac{1}{6} \neq \dfrac{1}{4} = p(A) \cdot p(B)\\
+  p(A \cap B) = \dfrac{1}{36} \neq \dfrac{1}{18} = p(A) \cdot p(C)\\
+  p(B \cap C) = \dfrac{1}{12} \neq \dfrac{1}{18} = p(B) \cdot p(C)\\
+\end{array}
+\right.
+\]
+per cui gli eventi non sono indipendenti.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione $\boldsymbol{1}$}: Si osservi che il fatto che $p(A \cap B \cap C) = p(A) \cdot p(B) \cdot p(C)$ nulla dice sul fatto che gli eventi $A$,$B$,$C$ siano a due a due indipendenti.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione $\boldsymbol{2}$}: Se $A$ e $B$ sono eventi indipendenti, allora anche $A^c$ e $B$ lo sono, in quanto
+\[p(A^c \cap B) = p(B - (A \cap B)) = p(B) - p(A \cap B)\]
+per la proprietà di monotonia esposta nella \textbf{Proposizione 1} (§ \ref{sec:proposizione_1}) (essendo, ovviamente, $A \cap B \subset B$). Da ciò si ha che, essendo $A$ e $B$ indipendenti $p(A \cap B) = p(A) \cdot p(B)$, per cui:
+\[p(B) - p(A) \cdot p(B) = p(B) \cdot \left[1 - p(A)\right] = p(B) \cdot p(A^c)\]
+Ovviamente, visto che $(A^c)^c=A$, vale anche il viceversa (per cui se $A^c$ e $B$ sono indipendenti, allora lo sono anche $(A^c)^c$ e $B$, quindi $A$ e $B$). Più estensivamente, si è dimostrato che le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+  \item $A$ e $B$ sono indipendenti;
+  \item $A$ e $B^c$ sono indipendenti;
+  \item $A^c$ e $B$ sono indipendenti;
+  \item $A^c$ e $B^c$ sono indipendenti.
+\end{itemize}
+Un concetto che può essere generalizzato a famiglie con più di due eventi:
+
+\vspace{1em}
+\noindent
+\textbf{Proposizione}: Sia $\{A_k\}_{k \in K}$ una famiglia di eventi indipendenti. Sia $J \subset K$ un sottoinsieme di indici. Per cui si definisce
+\[
+  B_k := \left\{
+    \rowcolors{1}{white}{white}
+    \begin{array}{l}
+      A_k \text{ se } k \in J\\
+      A_k^c \text{ se } k \in K - J
+    \end{array}
+  \right.
+\]
+Allora $\{B_k\}_{k \in K}$ è una famiglia di eventi indipendenti.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri la famiglia $\{A_1,A_2,A_3,A_4\}$, quindi $K=\{1,2,3,4\}$ e si consideri $J=\{2,3\}$. Allora $B_1=A_1^c$, $B_2=A_2$, $B_3=A_3$, $B_4=A_4^c$.
 
 
 \end{document}
