@@ -2371,5 +2371,136 @@ Allora $\{B_k\}_{k \in K}$ è una famiglia di eventi indipendenti.
 \noindent
 \textbf{Esempio}: Si consideri la famiglia $\{A_1,A_2,A_3,A_4\}$, quindi $K=\{1,2,3,4\}$ e si consideri $J=\{2,3\}$. Allora $B_1=A_1^c$, $B_2=A_2$, $B_3=A_3$, $B_4=A_4^c$.
 
+\newpage
+\noindent
+\begin{center}
+  31 Marzo 2022
+\end{center}
+\subsection{Schema delle prove indipendenti}
+Si espongono, di seguito, nuovi modelli per spazi di probabilità discreti, partendo da un esempio:
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri l'esperimento seguente: lanciando $n$ volte una moneta, per la quale è $q \in (0,1)$ la probabilità di ottenere testa (per cui il fatto che $q \neq 0.5$ significa che la moneta non è equilibrata, e ovviamente la probabilità di ottenere croce sarà $p=1-q$). Si assuma, durante l'esperimento, che ogni lancio non influenzi gli altri, cioè che i risultati dei singoli lanci siano indipendenti tra loro.\\
+Si determini con che probabilità sia ottenibile una certa $n$-pla di risultati; per esempio, se $n=7$, si vorrebbe sapere con che probabilità esce il risultato ($1$,$1$,$0$,$0$,$0$,$1$,$0$), dove per semplicità si è etichettato testa con $1$ e croce con $0$.\\
+Si consideri come spazio degli eventi elementari
+\[\Omega=\{0,1\}^n\]
+cioé l'insieme di tutte le $n$-uple costituite da $0$ e $1$. Come di consueto, bisogna stabilire una probabilità $p : \mathcal{A} \longrightarrow [0,1]$, dove $\mathcal{A}$ è la $\sigma$-algebra di tutti i sottoinsieme di $\Omega$. Analogamente, è sufficiente definire $p$ sugli eventi elementari, ossia quanto vale $p(\{\omega\}), \hspace{1em} \forall \omega \in \Omega$ e poi porre
+\[p(A) = \sum_{\omega \in A} p(\{\omega\}) \hspace{1em} \forall A \in \mathcal{A}\]
+Nel caso specifico considerato, siccome $n=7$ e $\omega=(1,1,0,0,0,1,0)$, si considerino gli eventi
+\[A := \text{\quotes{esce 1 al lancio i-esimo}} i = 1,...,7\]
+Naturalmente si ha che $\{\omega\}=A_1 \cap A_2 \cap A_3^c \cap A_4^c \cap A_5^c \cap A_6 \cap A_7^c$
+Visto che la probabilità di ottenere $1$ (cioé testa) in un singolo lancio è $q$, sarà sufficiente porre
+\[p(A_i)=q \hspace{1em} i=1,...,7\]
+Poiché gli eventi $\{A_1,...,A_7\}$ sono indipendenti, lo sono anche gli eventi $\{A_1,A_2,A_3^c,A_4^c,A_5^c,A_6,A_7^c\}$ (per quanto già dimostrato nella proposizione su famiglie di eventi dipendenti precedenti). Pertanto si ha che
+\[p(\{\omega\}) = p(A_1) \cdot p(A_2) \cdot p(A_3^c) \cdot p(A_4^c) \cdot p(A_5^c) \cdot p(A_6) \cdot p(A_7^c) = q^3 \cdot (1-q)^4\]
+in quanto $p(A_i^c)=1-q$ con $i=1,...,7$
+È possibile, quindi, generalizzare tale modello, indicando con $\omega_i$ la componente $i$-esima di un elemento $\omega \in \Omega$, cioé
+\[\omega = (\omega_1,...,\omega_n)\]
+considerando il seguente modo formale di formare gli eventi
+\[A_i = \text{\quotes{esce 1 al lancio i-esimo}} = \{\omega \in \Omega : \omega_i = 1\}\]
+ponendo $p(A_i)=q$. Si noti che $p(A_i^c)=1-q$ e che
+\[A_i^c := \text{\quotes{esce 0 al lancio i-esimo}} = \{\omega \in \Omega : \omega_i = 0\}\]
+Fissato $\omega \in \Omega$ si divide l'insieme degli indici $\{1,...,n\}$ in due sottofamiglie
+\[I_1 := \{i \in \{1,...,n\} : \omega_i = 1\}\]
+\[I_2 := \{i \in \{1,...,n\} : \omega_i = 0\}\]
+Nel caso sepcifico visto in precedenza, cioé $\omega=(1,1,0,0,0,1,0)$, si ottiene
+\[I_1=\{1,2,6\} \hspace{1em} \text{e} \hspace{1em} I_0=\{3,4,5,7\}\]
+per cui si può scrivere $\{\omega\}$ come intersezioni di $A_i$ e dei suoi complementari, ovvero
+\[\{\omega\} = \bigcap_{i \in I_1} A_i \bigcap_{i \in I_0} A_i^c\]
+ e quindi per l'indipendenza degli eventi $A_i$ e $A_i^c$ si ottiene che
+ \[p(\{\omega\})= \prod_{i \in I_1} p(A_i) \cdot \prod_{i \in I_0} p(A_i^c) = q^{\vert I_1 \vert} \cdot (1-q)^{\vert I_0 \vert}\]
+ In cui è facile osservare come
+ \[\vert I_1 \vert = \sum_{i=1}^n \omega_i \hspace{1em} \text{e} \hspace{1em} \vert I_0 \vert = n - \sum_{i=1}^n \omega_i\]
+ per cui, in definitiva, si può scrivere che
+ \[p(\{\omega\})=q^{\sum_{i=1}^n \omega_i} \cdot (1-q)^{n-\sum_{i=1}^n \omega_i}\]
+
+ % Tabella per le definizione di concetti, etc...
+ \vspace{1em}
+ \rowcolors{1}{black!5}{black!5}
+ \setlength{\tabcolsep}{14pt}
+ \renewcommand{\arraystretch}{2}
+ \noindent
+ \begin{tabularx}{\textwidth}{@{}|P|@{}}
+     \hline
+     {\textbf{SCHEMA DELLE PROVE INDIPENDENTI}}\\
+     \parbox{\linewidth}{Lo spazio di probabilità appena costruito è detto \textbf{schema delle prove indipendenti} (o anche schema delle prove ripetute, o schema di Bernoulli).
+     \vspace{3mm}}\\
+     \hline
+ \end{tabularx}
+
+ \vspace{1em}
+ \noindent
+ Tale spazio di probabilità viene utilizzato non solo per il lancio della moneta, ma in generale in esperimenti costitui da $n$ prove ripetute ed indipendenti, che possono avere solo due esiti possibili, etichettati con $1$ e $0$, e detti convenzionalmente \quotes{successo}
+ ed \quotes{insuccesso}
+
+ ... continua ...
+
+ \vspace{1em}
+ \noindent
+ \textbf{Osservazione}: L'evento \quotes{nessuna delle $n$ prove ha successo} si scrive formalmente come
+ \[A=\{\omega \in \Omega : \omega_i \neq 1 \text{ per ogni } i=1,...,n\} = \{(0,...,0)\}\]
+ ed ha una probabilità
+ \[p(A)=(1-q)^n\]
+ l'evento completamentare $A^c$, cioé \quotes{almeno una delle $n$ prove ha successo}, ha quindi probabilità
+ \[p(A^c)=1-(1-q)^n\]
+ Inoltre, quale che sia $q>0$ fissato, si ha che
+ \[\lim_{n \to +\infty} (1-q)^n = 0\]
+ Dunque, per quanto sia piccola la probabilità $q$ relativa alla singola prova, con un numero abbastanza grande di prove c'è una quasi certezza di ottenere un sucesso: fissato $\epsilon > 0$, esiste $n_0(\epsilon)$ tale che se $n \geq n_0$ allora $1-q^{n}<\epsilon$ e quindi $p(A^c)>1-\epsilon$
+
+ \vspace{1em}
+ \noindent
+ \textbf{Esempio}: Si supponga di mettere una scimmia davanti al vostro laptop (modernizziamo l'esempio). Si dica se riuscirà pigiando i stati a caso a comporre il primo capitolo di Harry Potter.\\
+ Sulla tastiera, vi sono $25$ tasti e si supponga che ogni tasto abbia la stessa probabilità di essere premuto. Il primo capitolo è costituito da $5000$ caratteri (compresi gli spazi). Per scriverla bisogna effettuare una specifica sequenza di battitura dei $25$ tasti, è possibile descriverla come una disposizione con ripetizione di classe $5000$ su $25$ elementi. Le possibili disposizioni sono
+ \[25^{5000} \cong 10^{7000}\]
+ visto che ogni tasto ha la stessa probabilità di essere premuto, ogni disposizione di tasti ha la stessa probabilità di essere battuta, ed è
+ \[q=25^{-5000}\]
+ Taluna è la probabilità che la scimmia ha di scrivere il primo capitolo al primo colpo.\\
+ Dopo tale prima prova, potrebbe provare una seconda volta, e così via. Per quanto detto precedentemente, prendendo $\epsilon=\frac{1}{10^4}$, si ha che esisto un $n_0$ tale che se la scimmia fa $n \geq n_0$ tentativi, allora $(1-q)^n < \frac{1}{10^4}$ e quindi $p(A^c) > 1 - \frac{1}{10^4}$, cioé la probabilità di scrivere il primo capitolo è maggiore di $99.99\%$. Sembra strano, ma la verità è che la soglia $n_0$ è terribilmente alta: $(1-q)^{n_0} < \frac{1}{10^4}$ significa
+ \[n_0 \cdot \log(1-q) < \log \left( \frac{1}{10^4}\right)\]
+ Stimando dall'alto $\log \left(\frac{1}{10^4}\right)$ con $-8$ e dal basso $\log(1-q)$ con $-29$ si ottiene che deve essere almeno
+ \[n_0 > \frac{4}{9} = 4 \cdot 25^{5000}\]
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio $\boldsymbol{1}$}: Relativamente ad uno schema di $n$ prove indipendenti e ripetute, con probabilità di successo $1$, si determini la probabilità che il primo successo avvenga alla $j$-esima prova, con $j \in \{1,...,n\}$ fissato.\\
+L'evento che si sta considerando è il seguente:
+\[C_j = \text{\quotes{il primo successo si verifica alla j-esima prova}} = \{\omega \in \Omega : \omega_1=...=\omega_{j-1}=0 \text{ e } \omega_j=1\}\]
+che si può esprimere come intersezione seguente
+\[C_j = A_1^c \cap ... \cap A_{j-1}^c \cap A_j\]
+e la sua probabilità vale
+\[p(C_j) = p(A_1^c) \cdot ... \cdot p(A_{j-1}^c) \cdot p(A_j) = (1-q)^{j-1} \cdot q\]
+Da notare la \textbf{non dipendenza} da $n$ e si noti che tale risultato era già stato ottenuto in precedenza quando $q=\frac{1}{2}$
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio $\boldsymbol{2}$}: Relativamente ad uno schema di $n$ prove indipendenti e ripetute, con probabilità di successo $q$, si determini la probabilità che $k$ prove abbiano successo, con $k \in \{1,...,n\}$ fissato.\\
+L'evento che si sta considerando è
+\[C_k = \text{\quotes{k prove hanno successo}} = \{\omega \in \Omega : k \text{ componenti di } \omega \text{ valgono } 1\}\]
+È possibile associato ad un dato $\omega in C_k$ la famiglia di indici
+\[M:=\{h \in \{1,...,n\} : \omega_h = 1\}\]
+Chiaramente $\vert H \vert = k$; viceversa, dato $M \subset \{1,...,n\}$ con $\vert H \vert = k$, è possibile associare ad $H$ l'evento $\omega = (\omega_1,...,\omega_2)$ con $\omega_h=1$ se $h \in H$ e $\omega_h=0$ se $h \notin H$. Chiaramente $\omega \in C_k$, per cui in questo modo è stata creata una corrispondenza biunivoca tra gli elementi di $C_k$ e ele combinazioni di classe $k$ su $\{1,...,n\}$. Si è provato che, quindi
+\[\vert C_k \vert = \binom{n}{k}\]
+si osservi anche che se $\omega \in C_k$, avendo precisamente $k$ componenti non nulle
+\[p(\{\omega\}) = q^k \cdot (1-q)^{n-k}\]
+mettendo le due informazioni insieme si ottiene
+\[\boxed{p(C_k)=\sum_{\omega \in C_k} p(\{\omega\}) = \binom{n}{k} \cdot q^k \cdot (1-q)^{n-k}}\]
+E ancora una volta tale quesito era stato già ottenuto in precedenza: la probabilità che effettuando $n$ estrazioni con reimmissione da un'urna contenente $M$ palline bianche ed $N-M$ palline nere (quindi $N$ in totale) è proprio data dalla formula seguente:
+\[\binom{n}{k} s^k \cdot (1-s)^{n-k} \hspace{1em} \text{dove} \hspace{1em} s=\frac{M}{N}\]
+In effetti, tale tipo di estrazion può essere visto come uno schema di $n$ prove indipendenti. La probabilità di successo, cioé di estrarre una pallina bianca, è
+\[s=\frac{M}{N}\]
+per ogni singola estrazione. Per tale ragione la formula ottenuta in precedenza restituisce per $q=s$ lo stesso risultato.
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
