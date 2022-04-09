@@ -1,8 +1,10 @@
 # Fdb version 3
-["pdflatex"] 1648734600 "Teoria - Probabilità e Statistica.tex" "build/Teoria - Probabilità e Statistica.pdf" "Teoria - Probabilità e Statistica" 1648734601
+["pdflatex"] 1649455206 "Teoria - Probabilità e Statistica.tex" "build/Teoria - Probabilità e Statistica.pdf" "Teoria - Probabilità e Statistica" 1649455207
   "/Users/enricopiccin/Library/texlive/2021basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1643364959 11524 2df7d3388477aff28c2fab5169faa2c5 ""
+  "/Users/enricopiccin/Library/texlive/2021basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcti1000.600pk" 1643364958 14040 022bc10113d0acc4086e792ed0794037 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
+  "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/jknappen/ec/tcti1000.tfm" 1136768653 2048 3777f70f4372b17e2d3fda2b5684af05 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -44,6 +46,7 @@
   "/usr/local/texlive/2021basic/texmf-dist/fonts/tfm/public/cm/cmti7.tfm" 1136768653 1492 86331993fe614793f5e7e755835c31c5 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
+  "/usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb" 1248133631 32007 e8fa0078355f39467039935974716569 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1248133631 36554 b67dc2cfa451409e100b3fcf5f506509 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/local/texlive/2021basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
@@ -216,9 +219,9 @@
   "/usr/local/texlive/2021basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616691443 79187 72c3adcacc8085f6390cf80c64ac00e5 ""
   "/usr/local/texlive/2021basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1643302228 2057433 28863b3cbca3a1e9d798e67601f03c47 ""
   "/usr/local/texlive/2021basic/texmf.cnf" 1616691442 628 e23d78b1be89c53495d66eec94d2300d ""
-  "Teoria - Probabilità e Statistica.tex" 1648734598 172137 9a5825eebc616da7c1a570785930ed27 ""
-  "build/Teoria - Probabilità e Statistica.aux" 1648734601 5410 836cb6f1a38bc7d0db00d7049ebd9b01 "pdflatex"
-  "build/Teoria - Probabilità e Statistica.toc" 1648734601 3127 7a47f74e942a7a495e9cb9e5c5e8fbe8 "pdflatex"
+  "Teoria - Probabilità e Statistica.tex" 1649455204 186973 f22070d1cf379549670b5b6e74f8a305 ""
+  "build/Teoria - Probabilità e Statistica.aux" 1649455207 5743 3d4efedd1e0d08d496e0c70df6dfef36 "pdflatex"
+  "build/Teoria - Probabilità e Statistica.toc" 1649455207 3337 e81fbd777fd6e188bb2a675262a7bdf1 "pdflatex"
   (generated)
   "build/Teoria - Probabilità e Statistica.aux"
   "build/Teoria - Probabilità e Statistica.log"

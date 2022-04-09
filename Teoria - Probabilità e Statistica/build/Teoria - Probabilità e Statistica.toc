@@ -1,40 +1,43 @@
 \babel@toc {italian}{}
 \babel@toc {italian}{}
 \babel@toc {italian}{}
-\contentsline {section}{\numberline {1}Introduzione}{2}{}%
-\contentsline {subsection}{\numberline {1.1}Matematica della probabilità}{4}{}%
-\contentsline {subsection}{\numberline {1.2}Regole della famiglia di eventi complessi}{4}{}%
-\contentsline {subsection}{\numberline {1.3}Regole dell'applicazione di probabilità}{5}{}%
-\contentsline {subsection}{\numberline {1.4}Spazio di probabilità}{5}{}%
-\contentsline {subsubsection}{\numberline {1.4.1}Proposizione 1 - Proprietà degli spazi di probabilità finiti}{6}{}%
-\contentsline {subsubsection}{\numberline {1.4.2}Costruzione di spazi di probabilità finiti}{8}{}%
-\contentsline {section}{\numberline {2}Serie}{11}{}%
-\contentsline {subsection}{\numberline {2.1}Condizione necessaria per la convergenza di una serie}{12}{}%
-\contentsline {subsubsection}{\numberline {2.1.1}Serie armonica}{12}{}%
-\contentsline {subsection}{\numberline {2.2}Serie armonica generalizzata}{13}{}%
-\contentsline {subsection}{\numberline {2.3}Serie geometrica}{14}{}%
-\contentsline {subsection}{\numberline {2.4}Criterio del confronto per serie a termini positivi}{15}{}%
-\contentsline {section}{\numberline {3}Spazi di probabilità generali}{17}{}%
-\contentsline {subsection}{\numberline {3.1}$\boldsymbol {\sigma }$-algebra}{17}{}%
-\contentsline {subsection}{\numberline {3.2}Probabilità generale}{18}{}%
-\contentsline {subsection}{\numberline {3.3}Spazio di probabilità generale}{18}{}%
-\contentsline {subsection}{\numberline {3.4}Proposizione 2 - Proprietà degli spazi di probabilità generali}{22}{}%
-\contentsline {subsection}{\numberline {3.5}Formula di inclusione-esclusione}{28}{}%
-\contentsline {section}{\numberline {4}Calcolo combinatorio}{29}{}%
-\contentsline {subsection}{\numberline {4.1}Disposizione con ripetizione}{29}{}%
-\contentsline {subsection}{\numberline {4.2}Disposizione senza ripetizione}{30}{}%
-\contentsline {subsection}{\numberline {4.3}Combinazione}{32}{}%
-\contentsline {subsection}{\numberline {4.4}Coefficiente binomiale}{32}{}%
-\contentsline {subsubsection}{\numberline {4.4.1}Proprietà del coefficiente binomiale}{33}{}%
-\contentsline {subsection}{\numberline {4.5}Permutazione con ripetizione}{34}{}%
-\contentsline {subsection}{\numberline {4.6}Principio fondamentale del calcolo combinatorio}{35}{}%
-\contentsline {subsection}{\numberline {4.7}Combinazione con ripetizione}{39}{}%
-\contentsline {subsection}{\numberline {4.8}Estrazione}{40}{}%
-\contentsline {section}{\numberline {5}Probabilità condizionale}{44}{}%
-\contentsline {subsection}{\numberline {5.1}Eventi indipendenti}{46}{}%
-\contentsline {subsection}{\numberline {5.2}Regola della catena}{47}{}%
-\contentsline {subsection}{\numberline {5.3}Probabilità composite}{48}{}%
-\contentsline {subsection}{\numberline {5.4}Formula di disintegrazione e delle probabilità totali}{49}{}%
-\contentsline {subsection}{\numberline {5.5}Formula di Bayes}{51}{}%
-\contentsline {subsection}{\numberline {5.6}Indipendenza di eventi generalizzata}{54}{}%
-\contentsline {subsection}{\numberline {5.7}Schema delle prove indipendenti}{58}{}%
+\contentsline {section}{\numberline {1}Introduzione}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Matematica della probabilità}{5}{}%
+\contentsline {subsection}{\numberline {1.2}Regole della famiglia di eventi complessi}{5}{}%
+\contentsline {subsection}{\numberline {1.3}Regole dell'applicazione di probabilità}{6}{}%
+\contentsline {subsection}{\numberline {1.4}Spazio di probabilità}{6}{}%
+\contentsline {subsubsection}{\numberline {1.4.1}Proposizione 1 - Proprietà degli spazi di probabilità finiti}{7}{}%
+\contentsline {subsubsection}{\numberline {1.4.2}Costruzione di spazi di probabilità finiti}{9}{}%
+\contentsline {section}{\numberline {2}Serie}{12}{}%
+\contentsline {subsection}{\numberline {2.1}Condizione necessaria per la convergenza di una serie}{13}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Serie armonica}{13}{}%
+\contentsline {subsection}{\numberline {2.2}Serie armonica generalizzata}{14}{}%
+\contentsline {subsection}{\numberline {2.3}Serie geometrica}{15}{}%
+\contentsline {subsection}{\numberline {2.4}Criterio del confronto per serie a termini positivi}{16}{}%
+\contentsline {section}{\numberline {3}Spazi di probabilità generali}{18}{}%
+\contentsline {subsection}{\numberline {3.1}$\boldsymbol {\sigma }$-algebra}{18}{}%
+\contentsline {subsection}{\numberline {3.2}Probabilità generale}{19}{}%
+\contentsline {subsection}{\numberline {3.3}Spazio di probabilità generale}{19}{}%
+\contentsline {subsection}{\numberline {3.4}Proposizione 2 - Proprietà degli spazi di probabilità generali}{23}{}%
+\contentsline {subsection}{\numberline {3.5}Formula di inclusione-esclusione}{29}{}%
+\contentsline {section}{\numberline {4}Calcolo combinatorio}{30}{}%
+\contentsline {subsection}{\numberline {4.1}Disposizione con ripetizione}{30}{}%
+\contentsline {subsection}{\numberline {4.2}Disposizione senza ripetizione}{31}{}%
+\contentsline {subsection}{\numberline {4.3}Combinazione}{33}{}%
+\contentsline {subsection}{\numberline {4.4}Coefficiente binomiale}{33}{}%
+\contentsline {subsubsection}{\numberline {4.4.1}Proprietà del coefficiente binomiale}{34}{}%
+\contentsline {subsection}{\numberline {4.5}Permutazione con ripetizione}{35}{}%
+\contentsline {subsection}{\numberline {4.6}Principio fondamentale del calcolo combinatorio}{36}{}%
+\contentsline {subsection}{\numberline {4.7}Combinazione con ripetizione}{40}{}%
+\contentsline {subsection}{\numberline {4.8}Estrazione}{41}{}%
+\contentsline {section}{\numberline {5}Probabilità condizionale}{45}{}%
+\contentsline {subsection}{\numberline {5.1}Eventi indipendenti}{47}{}%
+\contentsline {subsection}{\numberline {5.2}Regola della catena}{48}{}%
+\contentsline {subsection}{\numberline {5.3}Probabilità composite}{49}{}%
+\contentsline {subsection}{\numberline {5.4}Formula di disintegrazione e delle probabilità totali}{50}{}%
+\contentsline {subsection}{\numberline {5.5}Formula di Bayes}{52}{}%
+\contentsline {subsection}{\numberline {5.6}Indipendenza di eventi generalizzata}{55}{}%
+\contentsline {subsection}{\numberline {5.7}Schema delle prove indipendenti}{59}{}%
+\contentsline {subsection}{\numberline {5.8}Variabile aleatoria}{63}{}%
+\contentsline {subsection}{\numberline {5.9}Densità ipergeometrica}{65}{}%
+\contentsline {subsection}{\numberline {5.10}Densità}{66}{}%

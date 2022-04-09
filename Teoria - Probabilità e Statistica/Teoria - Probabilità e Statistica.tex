@@ -1925,7 +1925,7 @@ Ciò permette di affermare che
 \[p \left( A_j \left \vert \right. \bigcap_{k=1}^{j-1} A_k\right)\]
 ha senso e il lato destro dell'eguaglianza appena scritta è ben posto. Per la dimostrazione, è conveniente procedere per induzione. Quando $n=2$, l'uguaglianza
 \[p(A_1 \cap A_2) = p(A_1) \cdot p(A_2 \vert A_1)\]
-è fornita dalla definizine di probabilità condizionale (quindi è certamente vera). Compiendo il passo induttivo, si supponga, allora, che tale proprietà sia vera per $n-1$, cioé che
+è fornita dalla definizione di probabilità condizionale (quindi è certamente vera). Compiendo il passo induttivo, si supponga, allora, che tale proprietà sia vera per $n-1$, cioé che
 \[p \left(\bigcap_{k=1}^{n-1} A_k\right) = p(A_1) \cdot \prod_{j=2}^{n-1} p \left(A_j \left \vert \bigcap_{k=1}^{j-1} A_k \right.\right)\]
 Si ha, quindi, ancora tramite la definizione di probabilità condizionale che:
 \[p \left(\bigcap_{k=1}^{n} A_k\right) = p \left( \left( \bigcap_{k=1}^{n-1} A_k\right) \cap A_n\right) = p \left(\bigcap_{k=1}^{n-1} A_k\right) \cdot p \left(A_n \left \vert \bigcap_{k=1}^{n-1} A_k \right. \right) = p(A_1) \cdot \prod_{j=2}^n p \left(A_j \left \vert  \bigcap_{k=1}^{j-1} A_k \right. \right)\]
@@ -2381,39 +2381,44 @@ Si espongono, di seguito, nuovi modelli per spazi di probabilità discreti, part
 
 \vspace{1em}
 \noindent
-\textbf{Esempio}: Si consideri l'esperimento seguente: lanciando $n$ volte una moneta, per la quale è $q \in (0,1)$ la probabilità di ottenere testa (per cui il fatto che $q \neq 0.5$ significa che la moneta non è equilibrata, e ovviamente la probabilità di ottenere croce sarà $p=1-q$). Si assuma, durante l'esperimento, che ogni lancio non influenzi gli altri, cioè che i risultati dei singoli lanci siano indipendenti tra loro.\\
+\textbf{Esempio}: Si consideri l'esperimento seguente: lanciando $n$ volte una moneta, per la quale è $q \in (0,1)$ la probabilità di ottenere testa (per cui il fatto che $q \neq 0.5$ significa che la moneta non è equilibrata, e ovviamente la probabilità di ottenere croce sarà $p=1-q$). Si assuma, durante l'esperimento, che ogni lancio non influenzi gli altri, cioè che i risultati dei \textbf{singoli lanci siano indipendenti tra loro}.\\
 Si determini con che probabilità sia ottenibile una certa $n$-pla di risultati; per esempio, se $n=7$, si vorrebbe sapere con che probabilità esce il risultato ($1$,$1$,$0$,$0$,$0$,$1$,$0$), dove per semplicità si è etichettato testa con $1$ e croce con $0$.\\
 Si consideri come spazio degli eventi elementari
 \[\Omega=\{0,1\}^n\]
-cioé l'insieme di tutte le $n$-uple costituite da $0$ e $1$. Come di consueto, bisogna stabilire una probabilità $p : \mathcal{A} \longrightarrow [0,1]$, dove $\mathcal{A}$ è la $\sigma$-algebra di tutti i sottoinsieme di $\Omega$. Analogamente, è sufficiente definire $p$ sugli eventi elementari, ossia quanto vale $p(\{\omega\}), \hspace{1em} \forall \omega \in \Omega$ e poi porre
+cioé l'insieme di tutte le $n$-uple costituite da $0$ e $1$. Come di consueto, essendo $\Omega$ un insieme discreto, è possibile stabilire una probabilità $p : \mathcal{A} \longrightarrow [0,1]$, dove $\mathcal{A}$ è la $\sigma$-algebra di tutti i sottoinsieme di $\Omega$, e poi procedere a definire $p$ sugli eventi elementari, ossia quanto vale $p(\{\omega\}), \forall \omega \in \Omega$ e poi porre
 \[p(A) = \sum_{\omega \in A} p(\{\omega\}) \hspace{1em} \forall A \in \mathcal{A}\]
 Nel caso specifico considerato, siccome $n=7$ e $\omega=(1,1,0,0,0,1,0)$, si considerino gli eventi
-\[A := \text{\quotes{esce 1 al lancio i-esimo}} i = 1,...,7\]
-Naturalmente si ha che $\{\omega\}=A_1 \cap A_2 \cap A_3^c \cap A_4^c \cap A_5^c \cap A_6 \cap A_7^c$
+\[A := \text{\quotes{esce 1 al lancio i-esimo}} \hspace{1em} \text{con} \hspace{1em} i = 1,...,7\]
+Naturalmente, in funzione di tali eventi, è possibile reinterpretare l'evento elementare $\{\omega\}$ come segue:
+\[\{\omega\}=A_1 \cap A_2 \cap A_3^c \cap A_4^c \cap A_5^c \cap A_6 \cap A_7^c\]
 Visto che la probabilità di ottenere $1$ (cioé testa) in un singolo lancio è $q$, sarà sufficiente porre
-\[p(A_i)=q \hspace{1em} i=1,...,7\]
-Poiché gli eventi $\{A_1,...,A_7\}$ sono indipendenti, lo sono anche gli eventi $\{A_1,A_2,A_3^c,A_4^c,A_5^c,A_6,A_7^c\}$ (per quanto già dimostrato nella proposizione su famiglie di eventi dipendenti precedenti). Pertanto si ha che
+\[p(A_i)=q \hspace{1em} \text{e} \hspace{1em} p(A_i^c)=1-q \hspace{1em} \text{con} \hspace{1em} i=1,...,7\]
+Poiché gli eventi $\{A_1,...,A_7\}$ sono indipendenti, lo sono anche gli eventi $\{A_1,A_2,A_3^c,A_4^c,A_5^c,A_6,A_7^c\}$ (per quanto già dimostrato nella proposizione su famiglie di eventi dipendenti precedente, in cui si è visto come l'indipendentza commuta col complementare di eventi). Pertanto, essendo tali eventi indipendenti, la probabilità della loro intersezione (e quindi dell'evento $\{\omega\}$), per definizione di eventi indipendenti, è data dal prodotto delle probabilità dei singoli eventi:
 \[p(\{\omega\}) = p(A_1) \cdot p(A_2) \cdot p(A_3^c) \cdot p(A_4^c) \cdot p(A_5^c) \cdot p(A_6) \cdot p(A_7^c) = q^3 \cdot (1-q)^4\]
-in quanto $p(A_i^c)=1-q$ con $i=1,...,7$
-È possibile, quindi, generalizzare tale modello, indicando con $\omega_i$ la componente $i$-esima di un elemento $\omega \in \Omega$, cioé
+in quanto $p(A_i^c)=1-q$ con $i=1,...,7$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: È possibile, quindi, generalizzare tale modello, indicando con $\omega_i$ la componente $i$-esima di un elemento $\omega \in \Omega$, cioé
 \[\omega = (\omega_1,...,\omega_n)\]
 considerando il seguente modo formale di formare gli eventi
 \[A_i = \text{\quotes{esce 1 al lancio i-esimo}} = \{\omega \in \Omega : \omega_i = 1\}\]
 ponendo $p(A_i)=q$. Si noti che $p(A_i^c)=1-q$ e che
-\[A_i^c := \text{\quotes{esce 0 al lancio i-esimo}} = \{\omega \in \Omega : \omega_i = 0\}\]
-Fissato $\omega \in \Omega$ si divide l'insieme degli indici $\{1,...,n\}$ in due sottofamiglie
+\[A_i^c = \text{\quotes{esce 0 al lancio i-esimo}} = \{\omega \in \Omega : \omega_i = 0\}\]
+Fissato $\omega \in \Omega$ si divide l'insieme degli indici $I=\{1,...,n\}$ in due sottofamiglie
 \[I_1 := \{i \in \{1,...,n\} : \omega_i = 1\}\]
-\[I_2 := \{i \in \{1,...,n\} : \omega_i = 0\}\]
+\[I_0 := \{i \in \{1,...,n\} : \omega_i = 0\}\]
 Nel caso sepcifico visto in precedenza, cioé $\omega=(1,1,0,0,0,1,0)$, si ottiene
 \[I_1=\{1,2,6\} \hspace{1em} \text{e} \hspace{1em} I_0=\{3,4,5,7\}\]
 per cui si può scrivere $\{\omega\}$ come intersezioni di $A_i$ e dei suoi complementari, ovvero
 \[\{\omega\} = \bigcap_{i \in I_1} A_i \bigcap_{i \in I_0} A_i^c\]
- e quindi per l'indipendenza degli eventi $A_i$ e $A_i^c$ si ottiene che
- \[p(\{\omega\})= \prod_{i \in I_1} p(A_i) \cdot \prod_{i \in I_0} p(A_i^c) = q^{\vert I_1 \vert} \cdot (1-q)^{\vert I_0 \vert}\]
- In cui è facile osservare come
- \[\vert I_1 \vert = \sum_{i=1}^n \omega_i \hspace{1em} \text{e} \hspace{1em} \vert I_0 \vert = n - \sum_{i=1}^n \omega_i\]
- per cui, in definitiva, si può scrivere che
- \[p(\{\omega\})=q^{\sum_{i=1}^n \omega_i} \cdot (1-q)^{n-\sum_{i=1}^n \omega_i}\]
+e quindi per l'indipendenza degli eventi $A_i$ e $A_i^c$ si ottiene che
+\[p(\{\omega\})= \prod_{i \in I_1} p(A_i) \cdot \prod_{i \in I_0} p(A_i^c) = q^{\vert I_1 \vert} \cdot (1-q)^{\vert I_0 \vert}\]
+In cui è facile osservare come
+\[\vert I_1 \vert = \sum_{i=1}^n \omega_i \hspace{1em} \text{e} \hspace{1em} \vert I_0 \vert = n - \sum_{i=1}^n \omega_i\]
+per cui, in definitiva, si può scrivere che
+\[\boxed{p(\{\omega\})=q^{\displaystyle{\sum_{i=1}^n \omega_i}} \cdot (1-q)^{\displaystyle{n-\sum_{i=1}^n \omega_i}}}\]
+una espressione fondamentale che porta alla seguente definizione:
 
  % Tabella per le definizione di concetti, etc...
  \vspace{1em}
@@ -2429,61 +2434,77 @@ per cui si può scrivere $\{\omega\}$ come intersezioni di $A_i$ e dei suoi comp
      \hline
  \end{tabularx}
 
- \vspace{1em}
- \noindent
- Tale spazio di probabilità viene utilizzato non solo per il lancio della moneta, ma in generale in esperimenti costitui da $n$ prove ripetute ed indipendenti, che possono avere solo due esiti possibili, etichettati con $1$ e $0$, e detti convenzionalmente \quotes{successo}
- ed \quotes{insuccesso}
-
- ... continua ...
-
- \vspace{1em}
- \noindent
- \textbf{Osservazione}: L'evento \quotes{nessuna delle $n$ prove ha successo} si scrive formalmente come
- \[A=\{\omega \in \Omega : \omega_i \neq 1 \text{ per ogni } i=1,...,n\} = \{(0,...,0)\}\]
- ed ha una probabilità
- \[p(A)=(1-q)^n\]
- l'evento completamentare $A^c$, cioé \quotes{almeno una delle $n$ prove ha successo}, ha quindi probabilità
- \[p(A^c)=1-(1-q)^n\]
- Inoltre, quale che sia $q>0$ fissato, si ha che
- \[\lim_{n \to +\infty} (1-q)^n = 0\]
- Dunque, per quanto sia piccola la probabilità $q$ relativa alla singola prova, con un numero abbastanza grande di prove c'è una quasi certezza di ottenere un sucesso: fissato $\epsilon > 0$, esiste $n_0(\epsilon)$ tale che se $n \geq n_0$ allora $1-q^{n}<\epsilon$ e quindi $p(A^c)>1-\epsilon$
-
- \vspace{1em}
- \noindent
- \textbf{Esempio}: Si supponga di mettere una scimmia davanti al vostro laptop (modernizziamo l'esempio). Si dica se riuscirà pigiando i stati a caso a comporre il primo capitolo di Harry Potter.\\
- Sulla tastiera, vi sono $25$ tasti e si supponga che ogni tasto abbia la stessa probabilità di essere premuto. Il primo capitolo è costituito da $5000$ caratteri (compresi gli spazi). Per scriverla bisogna effettuare una specifica sequenza di battitura dei $25$ tasti, è possibile descriverla come una disposizione con ripetizione di classe $5000$ su $25$ elementi. Le possibili disposizioni sono
- \[25^{5000} \cong 10^{7000}\]
- visto che ogni tasto ha la stessa probabilità di essere premuto, ogni disposizione di tasti ha la stessa probabilità di essere battuta, ed è
- \[q=25^{-5000}\]
- Taluna è la probabilità che la scimmia ha di scrivere il primo capitolo al primo colpo.\\
- Dopo tale prima prova, potrebbe provare una seconda volta, e così via. Per quanto detto precedentemente, prendendo $\epsilon=\frac{1}{10^4}$, si ha che esisto un $n_0$ tale che se la scimmia fa $n \geq n_0$ tentativi, allora $(1-q)^n < \frac{1}{10^4}$ e quindi $p(A^c) > 1 - \frac{1}{10^4}$, cioé la probabilità di scrivere il primo capitolo è maggiore di $99.99\%$. Sembra strano, ma la verità è che la soglia $n_0$ è terribilmente alta: $(1-q)^{n_0} < \frac{1}{10^4}$ significa
- \[n_0 \cdot \log(1-q) < \log \left( \frac{1}{10^4}\right)\]
- Stimando dall'alto $\log \left(\frac{1}{10^4}\right)$ con $-8$ e dal basso $\log(1-q)$ con $-29$ si ottiene che deve essere almeno
- \[n_0 > \frac{4}{9} = 4 \cdot 25^{5000}\]
+\vspace{1em}
+\noindent
+Tale spazio di probabilità viene utilizzato non solo per il lancio della moneta, ma in generale in esperimenti costitui da \textbf{$\boldsymbol{n}$ prove ripetute ed indipendenti}, che possono avere solo due esiti possibili, etichettati con $1$ e $0$, e detti convenzionalmente \quotes{successo} ed \quotes{insuccesso}.\\
+Ovviamente, affinché quello appena definito possa essere ritenuto uno spazio di probabilità, si sarebbe dovuto verificare che $p(\Omega)=1$, cioé che
+\[\sum_{\omega \in \Omega} p \left(\{\omega\}\right)=1\]
+che è certamente vero e si può verificare per induzione: infatti, per $n=1$, si possono identificare due possibili eventi $\omega_1=(1)$ e $\omega_2=(0)$, il primo con probabilità $q$, il secondo con probabilità $1-q$; allora, si ha che:
+\[p(\Omega)=\sum_{\omega \in \Omega} p \left(\{\omega\}\right)=q+(1-q)=1\]
+Supposta vera tale proprietà per $n$, si dimostri sia vera per $n+1$: naturalmente, aggiungendo una prova in più, si raddoppia il numero di eventi $\omega$ che si potevano considerare con sole $n$ prove, per cui, se la probabilità del singolo evento $\{\omega\}$ è
+\[p(\{\omega\})=q^{\displaystyle{\sum_{i=1}^{n+1} \omega_i}} \cdot (1-q)^{\displaystyle{n+1-\sum_{i=1}^{n+1} \omega_i}}=q^{\displaystyle{\sum_{i=1}^n \omega_i}} \cdot q^{\omega_{n+1}} \cdot (1-q)^{\displaystyle{n-\sum_{i=1}^n \omega_i}} \cdot (1-q)^{1-\omega_{n+1}}\]
+Ma è immediato evincere come
+\[q^{\omega_{n+1}} \cdot (1-q)^{1-\omega_{n+1}}\]
+possa essere valutato in funzione del valore di $\omega_{n+1}$: esso varrà $1$ per $2^n$ volte e $0$ per $2^n$ volte. Ciò significa che, impiegando l'ipotesi induttiva
+\[p(\Omega)=\sum_{\omega \in \Omega} p \left(\{\omega\}\right)=
+2^n k \cdot q + 2^n k \cdot (1-q) = 2^n k \cdot (q+1-q) = 2^n \cdot k\]
+indicando con $k$
+\[k=p(\{\omega\})=q^{\displaystyle{\sum_{i=1}^n \omega_i}} \cdot (1-q)^{\displaystyle{n-\sum_{i=1}^n \omega_i}}\]
+l'espressione per determinare la probabilità di un evento $\omega$ costituito da $n$ prove; Siccome l'ipotesi induttiva permette di affermare che $2^n k = 1$, da ciò segue la tesi.
 
 \vspace{1em}
 \noindent
-\textbf{Esercizio $\boldsymbol{1}$}: Relativamente ad uno schema di $n$ prove indipendenti e ripetute, con probabilità di successo $1$, si determini la probabilità che il primo successo avvenga alla $j$-esima prova, con $j \in \{1,...,n\}$ fissato.\\
+\textbf{Osservazione}: L'evento \quotes{nessuna delle $n$ prove ha successo} si scrive formalmente come
+\[A=\{\omega \in \Omega : \omega_i \neq 1 \text{ per ogni } i=1,...,n\} = \{(0,...,0)\}\]
+ed ha una probabilità
+\[p(A)=(1-q)^n\]
+l'evento completamentare $A^c$, cioé \quotes{almeno una delle $n$ prove ha successo}, ha quindi probabilità
+\[p(A^c)=1-(1-q)^n\]
+Inoltre, quale che sia $q>0$ fissato, si ha che
+\[\lim_{n \to +\infty} (1-q)^n = 0\]
+essendo $0<1-q<1$. Come naturale conseguenza, pertanto, si ha che
+\[\lim_{n \to +\infty} 1-(1-q)^n = 1\]
+Dunque, per quanto sia piccola la probabilità $q$ relativa alla singola prova, con un numero abbastanza grande di prove c'è una quasi certezza di ottenere un sucesso: fissato $\epsilon > 0$, esiste $n_0(\epsilon)$ tale che se $n \geq n_0$ allora $1-q^{n}<\epsilon$ e quindi $p(A^c)>1-\epsilon$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio - Scimmai di Borel}: Si supponga di porre una scimmia davanti ad un laptop (modernizzando l'esempio): si dica se riuscirà, pigiando i stati a caso, a comporre il primo capitolo di Harry Potter.\\
+Per ipotesi, sulla tastiera vi sono $25$ tasti e si suppone che ogni tasto abbia la stessa probabilità di essere premuto; inoltre, il primo capitolo è costituito da $5000$ caratteri (compresi gli spazi). Per scriverlo bisogna effettuare una specifica sequenza di battitura dei $25$ tasti, per cui è possibile descrivere tale operazione come una disposizione con ripetizione di classe $5000$ su $25$ elementi. Le possibili disposizioni, quindi, sono
+\[25^{5000} \cong 10^{7000}\]
+visto che ogni tasto ha la stessa probabilità di essere premuto, ogni disposizione di tasti ha la stessa probabilità di essere battuta, ed è
+\[q=25^{-5000}\]
+Taluna è la probabilità che la scimmia ha di scrivere il primo capitolo al primo colpo; dopo tale prima prova, però, essa potrebbe provare una seconda volta, e così via. Per quanto detto precedentemente, prendendo $\epsilon=\frac{1}{10^4}$, si ha che esiste un $n_0$ tale che se la scimmia fa $n \geq n_0$ tentativi, allora $(1-q)^n < \frac{1}{10^4}$ e quindi $p(A^c) > 1 - \frac{1}{10^4}$, cioé la probabilità di scrivere il primo capitolo è maggiore di $99.99\%$. Sembra strano, ma la verità è che la soglia $n_0$ è terribilmente alta: $(1-q)^{n_0} < \frac{1}{10^4}$ significa
+\[n_0 \cdot \log(1-q) < \log \left( \frac{1}{10^4}\right)\]
+Stimando dall'alto $\log \left(\frac{1}{10^4}\right)$ con $-8$ e dal basso $\log(1-q)$ con $-2q$ si ottiene che deve essere \textbf{almeno}
+\[n_0 > \frac{4}{q} = 4 \cdot 25^{5000}\]
+che è un valore altissimo di tentativi, concretamente impraticabile.
+
+\vspace{1em}
+\noindent
+\textbf{Esercizio $\boldsymbol{1}$}: Relativamente ad uno schema di $n$ prove indipendenti e ripetute, con probabilità di successo $q$, si determini la probabilità che il primo successo avvenga alla $j$-esima prova, con $j \in \{1,...,n\}$ fissato.\\
 L'evento che si sta considerando è il seguente:
 \[C_j = \text{\quotes{il primo successo si verifica alla j-esima prova}} = \{\omega \in \Omega : \omega_1=...=\omega_{j-1}=0 \text{ e } \omega_j=1\}\]
-che si può esprimere come intersezione seguente
+che si può esprimere come intersezione degli eventi indipendenti seguente
 \[C_j = A_1^c \cap ... \cap A_{j-1}^c \cap A_j\]
-e la sua probabilità vale
+e la sua probabilità vale, sfruttando l'indipendenza degli eventi stessi come
 \[p(C_j) = p(A_1^c) \cdot ... \cdot p(A_{j-1}^c) \cdot p(A_j) = (1-q)^{j-1} \cdot q\]
-Da notare la \textbf{non dipendenza} da $n$ e si noti che tale risultato era già stato ottenuto in precedenza quando $q=\frac{1}{2}$
+Da notare la \textbf{non dipendenza} da $n$ (che è ovvio in quanto il successo oggetto di interesse riguarda $j \leq n$ prove, quindi le $n-j$ prove successive sono ininfluenti) e si noti che tale risultato era già stato ottenuto in precedenza quando $q=\frac{1}{2}$.
 
 \vspace{1em}
 \noindent
 \textbf{Esercizio $\boldsymbol{2}$}: Relativamente ad uno schema di $n$ prove indipendenti e ripetute, con probabilità di successo $q$, si determini la probabilità che $k$ prove abbiano successo, con $k \in \{1,...,n\}$ fissato.\\
 L'evento che si sta considerando è
-\[C_k = \text{\quotes{k prove hanno successo}} = \{\omega \in \Omega : k \text{ componenti di } \omega \text{ valgono } 1\}\]
-È possibile associato ad un dato $\omega in C_k$ la famiglia di indici
-\[M:=\{h \in \{1,...,n\} : \omega_h = 1\}\]
-Chiaramente $\vert H \vert = k$; viceversa, dato $M \subset \{1,...,n\}$ con $\vert H \vert = k$, è possibile associare ad $H$ l'evento $\omega = (\omega_1,...,\omega_2)$ con $\omega_h=1$ se $h \in H$ e $\omega_h=0$ se $h \notin H$. Chiaramente $\omega \in C_k$, per cui in questo modo è stata creata una corrispondenza biunivoca tra gli elementi di $C_k$ e ele combinazioni di classe $k$ su $\{1,...,n\}$. Si è provato che, quindi
+\[C_k = \text{\quotes{k prove hanno successo}} = \{\omega \in \Omega : k \text{ componenti di } \omega \text{ valgono } 1 \text{ (e } n-k \text{ valgono }0)\}\]
+Quindi $\omega \in C_k$ \textbf{se e solo se} esiste una sottofamiglia di indici $H\subset \{1,...,n\}$ con $\vert H \vert = k$ (cioè csotituita da $k$ indici), in modo tale da descrivere $\omega$ come
+\[\omega \in \bigcap_{h \in H} A_h \cap \bigcap_{h \in H^c} A_h^c\]
+dove $H^c=\{1,...,n\} - H$. Per esempio, se $H=\{1,...,k\}$ allora si ha che
+\[\bigcap_{h \in H} A_h \cap \bigcap_{h \in H^c} A_h^c = \{\omega \in \Omega : \omega_i=...=\omega_k=1, \omega_{k+1}=...=\omega_n=0\} = \{(\underbrace{1,...,1}_{k \text{ volte}},\underbrace{0,...,0}_{n-k \text{ volte}})\}\]
+Dal momento che ogni elemento di $C_k$ presenta $k$ componenti non nulle, se $\omega \in C_k$, allora
+\[p \left(\{\omega\}\right)=q^k \cdot (1-q)^{n-k}\]
+Giacché è possibile associare ad $H$ l'evento $\omega = (\omega_1,...,\omega_2)$ con $\omega_h=1$ se $h \in H$ e $\omega_h=0$ se $h \notin H$. Chiaramente $\omega \in C_k$, per cui in questo modo è stata creata una corrispondenza biunivoca tra gli elementi di $C_k$ e e le combinazioni di classe $k$ su $\{1,...,n\}$. Si è provato che, quindi
 \[\vert C_k \vert = \binom{n}{k}\]
-si osservi anche che se $\omega \in C_k$, avendo precisamente $k$ componenti non nulle
-\[p(\{\omega\}) = q^k \cdot (1-q)^{n-k}\]
-mettendo le due informazioni insieme si ottiene
+ovvero il numero di elementi di $C_k$ è dato dal numero di sottoinsiemi di $k$ elementi su $\{1,..,n\}$.\\
+Si è così ottenuto che
 \[\boxed{p(C_k)=\sum_{\omega \in C_k} p(\{\omega\}) = \binom{n}{k} \cdot q^k \cdot (1-q)^{n-k}}\]
 E ancora una volta tale quesito era stato già ottenuto in precedenza: la probabilità che effettuando $n$ estrazioni con reimmissione da un'urna contenente $M$ palline bianche ed $N-M$ palline nere (quindi $N$ in totale) è proprio data dalla formula seguente:
 \[\binom{n}{k} s^k \cdot (1-s)^{n-k} \hspace{1em} \text{dove} \hspace{1em} s=\frac{M}{N}\]
@@ -2491,7 +2512,171 @@ In effetti, tale tipo di estrazion può essere visto come uno schema di $n$ prov
 \[s=\frac{M}{N}\]
 per ogni singola estrazione. Per tale ragione la formula ottenuta in precedenza restituisce per $q=s$ lo stesso risultato.
 
+\newpage
+\begin{center}
+  4 aprile 2022
+\end{center}
+Fino a questo momento, in $\mathbb{R}^2$ era stata considerata la $\sigma$-algebra di Borel seguente
+\[\left\{
+  \text{ogni sottoinsieme di } \mathbb{R}^3 \text{ per cui abbia senso il concetto di area}
+\right\}\]
+Non avendo, però, ancora gli strumenti matematici per formalizzare tale concetto, ma avendo in mente il concetto intuitivo per cui un sottoinsieme \quotes{decente} nel piano è possibile approssimarlo in area con una famiglia di rettangoli, si opta per la seguente definizione formale, chiamando \textbf{$\boldsymbol{\sigma}$-algebra di Borel in $\boldsymbol{\mathbb{R}^2}$} la più piccola $\sigma$-algebra che contiene tutti i rettangoli, cioé che contiene la famiglia
+\[\{(a,b) \times (c,d) : a,b,c,d \in \mathbb{R}\}\]
+Si indica, allora, tale $\sigma$-algebra con il simbolo $\mathcal{B}(\mathbb{R}^2)$. Com'è noto, ogni sottoinsieme di $\mathbb{R}^2$ di cui è possibile misurare l'area (quindi in particolar modo le figure geometriche classiche) appartiene a $\mathcal{B}(\mathbb{R}^2)$.\\
+Analogamente, si può definire la $\sigma$-algebra di Borel in $\mathbb{R}^3$: la più piccola $\sigma$-algebra che contiene la famiglia dei parallelepipedi
+\[\left\{\prod_{k=1}^{3} (a_k,b_k) : a_k,b_k \in \mathbb{R}, \text{ con } k=1,2,3\right\}\]
+Si definisce, invece, la $\sigma$-algebra di Borel su $\mathbb{R}$ la più piccola $\sigma$-algebra che contiene la famiglia degli intervalli
+\[\{(a,b):a,b \in \mathbb{R}\}\]
+È utile designare tali $\sigma$-algebre con $\mathcal{B}(\mathbb{R}^3)$ e $\mathcal{B}(\mathbb{R})$ o più semplicemente con $\mathcal{B}$ quando la dimensione è implicita nel contesto.\\
+Incominciando ad analizzare $\mathcal{B}=\mathcal{B}(\mathbb{R})$: dalle proprietà di una $\sigma$-algebra, segue che $\mathcal{B}$ contiene anche
+\begin{itemize}
+  \item intervalli del tipo $(-\infty,a),(a,+\infty)$, in quanto
+  \[(-\infty,a) = \bigcup_{k=1}^{\infty} (a-k,a) \hspace{3em} (a,+\infty) = \bigcup_{k=1}^{\infty} (a,a+k)\]
+  \item intervalli del tipo $(-\infty,a],[a,+\infty]$ in quanto
+  \[(-\infty,a]=\mathbb{R}-(a,+\infty) \hspace{3em} [a,+\infty)=\mathbb{R}-(-\infty,a)\]
+  essendo l'algebra di Borel chiusa rispetto al complementare.
+  \item intervalli del tipo $[a,b]$ in quanto
+  \[[a,b]=(-\infty,b]\cap[a,+\infty)\]
+\end{itemize}
 
+\vspace{1em}
+\noindent
+\subsection{Variabile aleatoria}
+Di seguito si espone la definizione di \textbf{variabile aleatoria}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{VARIABILE ALEATORIA}}\\
+    \parbox{\linewidth}{Sia $(\Omega,\mathcal{A},p)$ uno spazio di probabilità. Allora si chiamerà \textbf{variabile aleatoria} un'applicazione
+    \[\mathcal{X} : \Omega \longrightarrow \mathbb{R}\]
+    tale per cui, $\forall B \in \mathcal{B}$
+    \[\mathcal{X}^{-1}(B) = \{\omega \in \Omega : \mathcal{X}(\omega) \in B\} \in \mathcal{A}\]
+    \vspace{1mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+In altre parole, una variabile aleatoria consente di considerare un sottoinsieme di $\mathbb{R}$ (che sia almeno decente, cioé in $\mathcal{B}$) e riportarlo su $\Omega$ dentro la famiglia $\mathcal{A}$ così da poterlo misurare tramite $p$ (cioé assegnargli una probabilità)
+
+\begin{lemma}
+  Una funzione
+  \[\mathcal{X} : \Omega \longrightarrow \mathbb{R}\]
+  è una variabile aleatoria \textbf{se e solo se} una delle seguenti conidizioni è soddisfatta
+  \begin{itemize}
+    \item $\mathcal{X}^{-1} \left((a,b)\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in (a,b)\} \in \mathcal{A}, \hspace{1em} \forall a,b \in \mathbb{R}$
+    \item $\mathcal{X}^{-1} \left([a,b]\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in [a,b]\} \in \mathcal{A}, \hspace{1em} \forall a,b \in \mathbb{R}$
+    \item $\mathcal{X}^{-1} \left((-\infty,a)\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in (-\infty,a)\} \in \mathcal{A}, \hspace{1em} \forall a \in \mathbb{R}$
+    \item $\mathcal{X}^{-1} \left((-\infty,a]\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in (-infty,a]\} \in \mathcal{A}, \hspace{1em} \forall a \in \mathbb{R}$
+  \end{itemize}
+\end{lemma}
+
+\vspace{1em}
+\noindent
+Sfruttando il fatto che unione, intersezione e passaggio al complementare commutano con $\mathcal{X}^{-1}$, si vede facilmente che e \textbf{quattro condizioni sono equivalenti}.\\
+Per esempio:
+\[\mathcal{X}^{-1} \left((-\infty,a)\right) = \mathcal{X}^{-1} \left( \bigcup_{k=1}^\infty (a-k,a)\right) = \bigcup_{k=1}^\infty \mathcal{X}^{-1} \left((a-k,a)\right)\]
+dal momento che l'unione commuta.\\
+Quindi se $\mathcal{X}^{-1} \left((a-k,a)\right) \in \mathcal{A}$ per ogni $k \in \mathbb{N}$, allora anche $\mathcal{X}^{-1} \left(-\infty,a\right) \in \mathcal{A}$. Ciò prova che il primo punto implica il secondo.\\
+Appurato che le quattro condizioni sono equivalenti, va verificato che la prima implica che $\mathcal{X}$ è una variabile aleatoria (il viceversa diviene banale).\\
+Ciò permette di affermare che la famiglia
+\[\mathcal{X}^{-1}(\mathcal{B}) := \{\mathcal{X}^{-1}(B) : B \in \mathcal{B}\}\]
+è a sua volta una $\sigma$-algebra su $\Omega$. Dire che $\mathcal{X}$ è una variabile aleatoria significa, per definizione, che $\mathcal{X}^{-1}(\mathcal{B}) \subset \mathcal{A}$. Ora, così come $\mathcal{B}$ è la più piccola $\sigma$-algebra includente $\{(a,b) : a,b \in \mathbb{R}\}$, $\mathcal{X}^{-1}(\mathcal{B})$ è la più piccola $\sigma$-algebra includente $\{\mathcal{X}^{-1}((a,b)) : a,b \in \mathbb{R}\}$. Quindi, se $\{\mathcal{X}^{-1}((a,b)) : a,b \in \mathbb{R}\}$ è inclusa in $\mathcal{A}$, automaticamente lo è $\mathcal{X}^{-1}(\mathcal{B})$ per minimalità.
+
+\vspace{1em}
+\noindent
+\textbf{Notazione}: Per comodità, si usano le notazioni
+\begin{itemize}
+  \item $\{\mathcal{X} \in B\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in B\}$
+  \item $\{a < \mathcal{X} < b\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in (a,b)\}$
+  \item $\{\mathcal{X} < a\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in (-\infty,a)\}$
+\end{itemize}
+e così via. Data una variabile aleatoria $\mathcal{X}$, gli eventi $\{\mathcal{X} \in B, B \in \mathcal{B}\}$ sono detti \textbf{generati} da $\mathcal{X}$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che $\forall a \in \mathbb{R}$, $\{a\} = (-\infty,a] \cap [a,+\infty) \in \mathcal{B}$, quindi se $\mathcal{X}$ è una variabile aleatoria, allora
+\[\{\omega \in \Omega : \mathcal{X}(\omega) = a\} \in \mathcal{A}\]
+Anche in questo caso si impiegherà la notazione semplificata $\{\mathcal{X}=a\}$ per indicare tale insieme.\\
+Data una variabile aleatoria $\mathcal{X}$, è possibile considerare su $\mathcal{B}$ la probabilità $p_{\mathcal{X}}(B)=p \left(\{\mathcal{X} \in B\}\right)$. Tale definizione ha senso giaché $\{\mathcal{X} \in B\} \in \mathcal{A}$, per cui $p_{\mathcal{X}}$ è detta \textbf{legge} (o \textbf{distribuzione}) di $\mathcal{X}$, in quando permette di capire quale sia la probabilità che $\mathcal{X}$ assuma i valori di un insieme $B$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Quando $(\Omega, \mathcal{A}, p)$ è uno spazio di probabilità discreto
+
+\newpage
+\begin{center}
+  7 aprile 2022
+\end{center}
+La densità di una variabile aleatoria è l'elemento fondamentale per determinare la probabilità associata ad un particolare evento assunto da una variabile aleatoria.
+
+\vspace{1em}
+\subsection{Densità ipergeometrica}
+Di seguito si espone la definizione di \textbf{densità ipergeometrica}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DENSITÀ IPERGEOMETRICA}}\\
+    \parbox{\linewidth}{Siano $a$, $b$, $n$ tre numeri interi strettamente positivi tali che $n \leq a+b$. Si ponga
+    \[k_1=\text{max}(n-b,0) \hspace{1em} \text{e} \hspace{1em} k_2=\text{min}(a,n)\]
+    in cui, chiaramente, $k_1 \leq k_2$. Si chiama, allora, \textbf{densità ipergeometrica} di parametri $a$, $b$, $n$ la funzione così definita
+    \[
+      q(x) = \left\{
+      \begin{array}{ll}
+        \dfrac{\displaystyle{\binom{a}{x}\binom{b}{n-x}}}{\displaystyle{\binom{a+b}{n}}} & x=k_1,k_1+1,...,k_2\\
+        0 & \text{altrimenti}
+      \end{array}
+      \right.
+    \]
+    che spesso viene indicata con il simbolo IPER($n$,$a$,$b$).
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Si osservi che $x \geq k_1$ implica che $x \geq 0$ ed $n-x \leq b$, mentre $x \leq k_2$ implica $x \leq a$ ed $n-x \geq 0$. Quindi i coefficienti binomiali hanno senso e sono non nulli.\\
+È possibile, inoltre, dimostrare tramite \textbf{induzione} che
+\[\sum_{x \in \mathbb{R}} q(x) = 1\]
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si supponga, ancora una volta, di disporre di un'urna con $N$ palline di due colori: $M$ bianche ed $N-M$ nere. Si supponga di effettuare $n$ estrazioni sucessive senza reimmissione.\\
+È noto che lo spazio da considerare al fine di moddellizzare tale situazione è
+\[\Omega = \{\text{combinazione di classe } n \text{ su } N \text{ oggetti}\}\]
+numerando le palline ed identificando ogni possibile combinaizone, ed assegnando la probabilità uniforme:
+\[p \left(\{\omega\}\right) = \frac{1}{\vert \Omega \vert} = \frac{1}{\displaystyle{\binom{N}{n}}} \hspace{1em} \forall \omega \in \Omega\]
+Si consideri, ora, la variabile aleatoria $\mathcal{X} : \Omega \longrightarrow \mathbb{R}$ definita da
+\[\mathcal{X}(\omega) = \text{ numero di palline bianche estratte}\]
+È immediato osservare che $\mathcal{X}$ assume valori interi e taluni sono minori di $k_2= \text{min}\{n,M\}$ (in quanto le palline bianche estratte non possono essere più delle palline bianche totali) e maggiori di $k_1=\text{max}\{0,n-(N-M)\}$ (in quanto le palline nere estratte non possono essere più delle palline nere totali, e quindi quelle bianche estratte non possono essere meno di $n-(N-M)$).\\
+Calcolando, ora, la densità di $\mathcal{X}$, si ottiene che $\{\mathcal{X=x}\}$ è non vuoto solo se $x$ è un intero $k \in [k_1,k_2]$ per quanto visto in precedenza.\\
+L'evento $\{\mathcal{X}=k\}$ corrisponde alla situazione in cui $k$ palline estratte sono bianche. Ne è stata già calcolato in precedenza la probabilità:
+\[p \left(\{\mathcal{X}=k\}\right)=\dfrac{\displaystyle{\binom{N}{k}\binom{N-M}{n-k}}}{\displaystyle{\binom{N}{n}}}\]
+quindi la densità di $\mathcal{X}$ è di tipo ipergeometrico con parametri $a=M$, $b=N-M$, $n$.
+
+\vspace{1em}
+\subsection{Densità}
+Si consideri l'esempio seguente:
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si consideri uno schema di $n$ prove indipendenti, ognuna avente probabilità di successo $q$. Lo spazio di probabà discreto è
+\[\Omega=\{0,1\}^n \text{ con probabilità } p(\{\omega\}) = q^{\sum_{i=1}^n \omega_i} \cdot (1-q)^{n-\sum_{i=1}^n \omega_i}\]
+Già in precedenza era stata valutata la probabilità dei due eventi
+\[A_k := \text{\quotes{ esattamente k prove hanno successo }} = \{\omega \in \Omega : \sum_{i=1}^n \omega_i = k\}\]
+\[B_j := \text{\quotes{ il primo successo si verifica alla j-esima prova }} = \{\omega \in \Omega : \omega_i = 0 \hspace{1em} \text{con} i < j \hspace{1em} \text{e} \hspace{1em} \omega_j=1\}\]
 
 
 
