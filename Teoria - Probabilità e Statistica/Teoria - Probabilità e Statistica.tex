@@ -16,6 +16,7 @@
 \usepackage{tabularx}
 \usepackage{pgf-pie}
 \usepackage{tikz}
+\usepackage{tikz-cd}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{color, soul}
@@ -2506,7 +2507,7 @@ Giacché è possibile associare ad $H$ l'evento $\omega = (\omega_1,...,\omega_2
 ovvero il numero di elementi di $C_k$ è dato dal numero di sottoinsiemi di $k$ elementi su $\{1,..,n\}$.\\
 Si è così ottenuto che
 \[\boxed{p(C_k)=\sum_{\omega \in C_k} p(\{\omega\}) = \binom{n}{k} \cdot q^k \cdot (1-q)^{n-k}}\]
-E ancora una volta tale quesito era stato già ottenuto in precedenza: la probabilità che effettuando $n$ estrazioni con reimmissione da un'urna contenente $M$ palline bianche ed $N-M$ palline nere (quindi $N$ in totale) è proprio data dalla formula seguente:
+E ancora una volta tale quesito era stato già ottenuto in precedenza; la probabilità che effettuando $n$ estrazioni con reimmissione da un'urna contenente $M$ palline bianche ed $N-M$ palline nere (quindi $N$ in totale) è proprio data dalla formula seguente:
 \[\binom{n}{k} s^k \cdot (1-s)^{n-k} \hspace{1em} \text{dove} \hspace{1em} s=\frac{M}{N}\]
 In effetti, tale tipo di estrazion può essere visto come uno schema di $n$ prove indipendenti. La probabilità di successo, cioé di estrarre una pallina bianca, è
 \[s=\frac{M}{N}\]
@@ -2516,32 +2517,34 @@ per ogni singola estrazione. Per tale ragione la formula ottenuta in precedenza 
 \begin{center}
   4 aprile 2022
 \end{center}
-Fino a questo momento, in $\mathbb{R}^2$ era stata considerata la $\sigma$-algebra di Borel seguente
+\section{Variabili aleatorie}
+Fino a questo momento, in $\mathbb{R}^2$ è sempre stata considerata la $\sigma$-algebra di Borel seguente
 \[\left\{
-  \text{ogni sottoinsieme di } \mathbb{R}^3 \text{ per cui abbia senso il concetto di area}
+  \text{ogni sottoinsieme di } \mathbb{R}^2 \text{ per cui abbia senso il concetto di area}
 \right\}\]
 Non avendo, però, ancora gli strumenti matematici per formalizzare tale concetto, ma avendo in mente il concetto intuitivo per cui un sottoinsieme \quotes{decente} nel piano è possibile approssimarlo in area con una famiglia di rettangoli, si opta per la seguente definizione formale, chiamando \textbf{$\boldsymbol{\sigma}$-algebra di Borel in $\boldsymbol{\mathbb{R}^2}$} la più piccola $\sigma$-algebra che contiene tutti i rettangoli, cioé che contiene la famiglia
 \[\{(a,b) \times (c,d) : a,b,c,d \in \mathbb{R}\}\]
-Si indica, allora, tale $\sigma$-algebra con il simbolo $\mathcal{B}(\mathbb{R}^2)$. Com'è noto, ogni sottoinsieme di $\mathbb{R}^2$ di cui è possibile misurare l'area (quindi in particolar modo le figure geometriche classiche) appartiene a $\mathcal{B}(\mathbb{R}^2)$.\\
-Analogamente, si può definire la $\sigma$-algebra di Borel in $\mathbb{R}^3$: la più piccola $\sigma$-algebra che contiene la famiglia dei parallelepipedi
+ciò non significa che tale famiglia sia una $\sigma$-algebra, ma che una $\sigma$-algebra di Borel la contiene necessariamente tutta: si indica, allora, tale $\sigma$-algebra con il simbolo $\mathcal{B}(\mathbb{R}^2)$. Dal momento che la $\sigma$-algebra è chiusa rispetto alle operazioni di unione e intersezione numerabili, è possibile interpretare gli elementi della $\sigma$-algebra come unioni o intersezioni numerabili di rettangoli: ciò significa che ogni sottoinsieme di $\mathbb{R}^2$ di cui è possibile misurare l'area (quindi in particolar modo le figure geometriche classiche) appartiene a $\mathcal{B}(\mathbb{R}^2)$.\\
+Analogamente, si può definire la $\sigma$-algebra di Borel in $\mathbb{R}^3$ come la più piccola $\sigma$-algebra che contiene la famiglia dei parallelepipedi
 \[\left\{\prod_{k=1}^{3} (a_k,b_k) : a_k,b_k \in \mathbb{R}, \text{ con } k=1,2,3\right\}\]
-Si definisce, invece, la $\sigma$-algebra di Borel su $\mathbb{R}$ la più piccola $\sigma$-algebra che contiene la famiglia degli intervalli
+Similmente si definisce la $\sigma$-algebra di Borel su $\mathbb{R}$ la più piccola $\sigma$-algebra che contiene la famiglia degli intervalli limitati e aperti seguente
 \[\{(a,b):a,b \in \mathbb{R}\}\]
 È utile designare tali $\sigma$-algebre con $\mathcal{B}(\mathbb{R}^3)$ e $\mathcal{B}(\mathbb{R})$ o più semplicemente con $\mathcal{B}$ quando la dimensione è implicita nel contesto.\\
-Incominciando ad analizzare $\mathcal{B}=\mathcal{B}(\mathbb{R})$: dalle proprietà di una $\sigma$-algebra, segue che $\mathcal{B}$ contiene anche
+Incominciando ad analizzare $\mathcal{B}=\mathcal{B}(\mathbb{R})$, dalle proprietà di una $\sigma$-algebra, segue che $\mathcal{B}$ contiene anche
 \begin{itemize}
   \item intervalli del tipo $(-\infty,a),(a,+\infty)$, in quanto
   \[(-\infty,a) = \bigcup_{k=1}^{\infty} (a-k,a) \hspace{3em} (a,+\infty) = \bigcup_{k=1}^{\infty} (a,a+k)\]
+  essendo la $\sigma$-algebra di Borel chiusa rispetto all'unione numerabile.
   \item intervalli del tipo $(-\infty,a],[a,+\infty]$ in quanto
   \[(-\infty,a]=\mathbb{R}-(a,+\infty) \hspace{3em} [a,+\infty)=\mathbb{R}-(-\infty,a)\]
-  essendo l'algebra di Borel chiusa rispetto al complementare.
+  essendo la $\sigma$-algebra di Borel chiusa rispetto al complementare.
   \item intervalli del tipo $[a,b]$ in quanto
   \[[a,b]=(-\infty,b]\cap[a,+\infty)\]
+  essendo la $\sigma$-algebra di Borel chiusa rispetto all'intersezione numerabile.
 \end{itemize}
 
-\vspace{1em}
+\newpage
 \noindent
-\subsection{Variabile aleatoria}
 Di seguito si espone la definizione di \textbf{variabile aleatoria}:
 
 % Tabella per le definizione di concetti, etc...
@@ -2557,58 +2560,252 @@ Di seguito si espone la definizione di \textbf{variabile aleatoria}:
     \[\mathcal{X} : \Omega \longrightarrow \mathbb{R}\]
     tale per cui, $\forall B \in \mathcal{B}$
     \[\mathcal{X}^{-1}(B) = \{\omega \in \Omega : \mathcal{X}(\omega) \in B\} \in \mathcal{A}\]
-    \vspace{1mm}}\\
+    \vspace{-1mm}}\\
     \hline
 \end{tabularx}
 
 \vspace{1em}
 \noindent
-In altre parole, una variabile aleatoria consente di considerare un sottoinsieme di $\mathbb{R}$ (che sia almeno decente, cioé in $\mathcal{B}$) e riportarlo su $\Omega$ dentro la famiglia $\mathcal{A}$ così da poterlo misurare tramite $p$ (cioé assegnargli una probabilità)
+In altre parole, una variabile aleatoria consente di considerare un sottoinsieme di $\mathbb{R}$, chiamato $B$ (che sia almeno decente, cioé in $\mathcal{B}$) e riportarlo su $\Omega$ dentro la famiglia $\mathcal{A}$ così da poterlo misurare tramite $p$ (cioé assegnargli la probabilità $p \left(\mathcal{X}^{-1}(B)\right)$).
 
 \begin{lemma}
   Una funzione
   \[\mathcal{X} : \Omega \longrightarrow \mathbb{R}\]
   è una variabile aleatoria \textbf{se e solo se} una delle seguenti conidizioni è soddisfatta
-  \begin{itemize}
-    \item $\mathcal{X}^{-1} \left((a,b)\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in (a,b)\} \in \mathcal{A}, \hspace{1em} \forall a,b \in \mathbb{R}$
-    \item $\mathcal{X}^{-1} \left([a,b]\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in [a,b]\} \in \mathcal{A}, \hspace{1em} \forall a,b \in \mathbb{R}$
-    \item $\mathcal{X}^{-1} \left((-\infty,a)\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in (-\infty,a)\} \in \mathcal{A}, \hspace{1em} \forall a \in \mathbb{R}$
-    \item $\mathcal{X}^{-1} \left((-\infty,a]\right) = \{\omega \in \Omega : \mathcal{X}(\omega) \in (-infty,a]\} \in \mathcal{A}, \hspace{1em} \forall a \in \mathbb{R}$
-  \end{itemize}
+  \[
+    \rowcolors{1}{white}{white}
+    \begin{array}{llll}
+      \mathcal{X}^{-1} \left((a,b)\right) & = \{\omega \in \Omega : \mathcal{X}(\omega) \in (a,b)\} \in \mathcal{A}, & \hspace{1em} \forall a,b \in \mathbb{R}\\
+      \mathcal{X}^{-1} \left([a,b]\right) & = \{\omega \in \Omega : \mathcal{X}(\omega) \in [a,b]\} \in \mathcal{A}, & \hspace{1em} \forall a,b \in \mathbb{R}\\
+      \mathcal{X}^{-1} \left((-\infty,a)\right) &= \{\omega \in \Omega : \mathcal{X}(\omega) \in (-\infty,a)\} \in \mathcal{A}, & \hspace{1em} \forall a \in \mathbb{R}\\
+      \mathcal{X}^{-1} \left((-\infty,a]\right) &= \{\omega \in \Omega : \mathcal{X}(\omega) \in (-\infty,a]\} \in \mathcal{A}, & \hspace{1em} \forall a \in \mathbb{R}\\
+    \end{array}
+  \]
+  ossia la controimmagine attravero $\mathcal{X}^{-1}$ di un intervallo di cui sopra è un evento, ossia appartiene a $\mathcal{A}$.
 \end{lemma}
 
 \vspace{1em}
 \noindent
-Sfruttando il fatto che unione, intersezione e passaggio al complementare commutano con $\mathcal{X}^{-1}$, si vede facilmente che e \textbf{quattro condizioni sono equivalenti}.\\
+\textbf{Osservazione}: Si osservi che solo apparentemente le condizioni esposte all'interno dell Lemma precedente sono meno restrittive rispetto a quelle della definizione: infatti, nella definizione si richiede che la condizione sia soddisfatta per tutti gli elementi della $\sigma$-algebra dei boreliani (ovvero $\forall B \in \mathcal{B}$), mentre nel Lemma si fa riferimento solamente ad alcuni particolari insiemi $B \in \mathcal{B}$, che sono sempre contenuti nella $\sigma$-algebra dei boreliani.\\
+Ciò comporta che ognuna delle quattro condizioni esposte nel Lemma sono necessarie per affinché una funzione $\mathcal{X}$ sia una variabile aleatoria.
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Sfruttando il fatto che unione, intersezione e passaggio al complementare commutano con $\mathcal{X}^{-1}$, si vede facilmente che e \textbf{quattro condizioni sono equivalenti}.\\
 Per esempio:
 \[\mathcal{X}^{-1} \left((-\infty,a)\right) = \mathcal{X}^{-1} \left( \bigcup_{k=1}^\infty (a-k,a)\right) = \bigcup_{k=1}^\infty \mathcal{X}^{-1} \left((a-k,a)\right)\]
-dal momento che l'unione commuta.\\
-Quindi se $\mathcal{X}^{-1} \left((a-k,a)\right) \in \mathcal{A}$ per ogni $k \in \mathbb{N}$, allora anche $\mathcal{X}^{-1} \left(-\infty,a\right) \in \mathcal{A}$. Ciò prova che il primo punto implica il secondo.\\
-Appurato che le quattro condizioni sono equivalenti, va verificato che la prima implica che $\mathcal{X}$ è una variabile aleatoria (il viceversa diviene banale).\\
-Ciò permette di affermare che la famiglia
+dal momento che unione e $\mathcal{X}^{-1}$ commutano. Quindi se $\mathcal{X}^{-1} \left((a-k,a)\right) \in \mathcal{A}$ per ogni $k \in \mathbb{N}$, allora anche $\mathcal{X}^{-1} \left(-\infty,a\right) \in \mathcal{A}$. Ciò prova che il primo punto implica il secondo.\\
+Appurato che le quattro condizioni sono equivalenti, va verificato che la prima implica che $\mathcal{X}$ è una variabile aleatoria (mentre il viceversa diviene banale, dal momento che, per quanto detto, ognuno dei quattro intervalli considerati è necessariamente contenuto nella $\sigma$-algebra dei boreliani). Si osservi, allora, che la famiglia
 \[\mathcal{X}^{-1}(\mathcal{B}) := \{\mathcal{X}^{-1}(B) : B \in \mathcal{B}\}\]
-è a sua volta una $\sigma$-algebra su $\Omega$. Dire che $\mathcal{X}$ è una variabile aleatoria significa, per definizione, che $\mathcal{X}^{-1}(\mathcal{B}) \subset \mathcal{A}$. Ora, così come $\mathcal{B}$ è la più piccola $\sigma$-algebra includente $\{(a,b) : a,b \in \mathbb{R}\}$, $\mathcal{X}^{-1}(\mathcal{B})$ è la più piccola $\sigma$-algebra includente $\{\mathcal{X}^{-1}((a,b)) : a,b \in \mathbb{R}\}$. Quindi, se $\{\mathcal{X}^{-1}((a,b)) : a,b \in \mathbb{R}\}$ è inclusa in $\mathcal{A}$, automaticamente lo è $\mathcal{X}^{-1}(\mathcal{B})$ per minimalità.
+è a sua volta una $\sigma$-algebra su $\Omega$. Ma se $\mathcal{B}$, come da definizione, è la più piccola $\sigma$-algebra che contiene gli intervalli aperti e limitati $\{(a,b)\}$, allora $\mathcal{X}^{-1}(\mathcal{B})$ è la più piccola $\sigma$-algebra che contiene $\{\mathcal{X}^{-1}(a,b)\}$. Ma allora, se è soddisfatta la prima condizione delle quattro esposte, significa che $\mathcal{X}^{-1}(a,b) \subset \mathcal{A}$ ed essendo $\mathcal{X}^{-1}(\mathcal{B})$ la più piccola $\sigma$-algebra che contiene $\{\mathcal{X}^{-1}(a,b)\}$, per \textbf{minimalità} deve essere che $\mathcal{X}^{\mathcal{B}} \subset \mathcal{A}$.\\
+In altre parole, dire che $\mathcal{X}$ è una variabile aleatoria significa, per definizione, che $\mathcal{X}^{-1}(\mathcal{B}) \subset \mathcal{A}$. Ora, così come $\mathcal{B}$ è la più piccola $\sigma$-algebra includente $\{(a,b) : a,b \in \mathbb{R}\}$, $\mathcal{X}^{-1}(\mathcal{B})$ è la più piccola $\sigma$-algebra includente $\{\mathcal{X}^{-1}((a,b)) : a,b \in \mathbb{R}\}$. Quindi, se $\{\mathcal{X}^{-1}((a,b)) : a,b \in \mathbb{R}\}$ è inclusa in $\mathcal{A}$, automaticamente lo è $\mathcal{X}^{-1}(\mathcal{B})$ per \textbf{minimalità}.
 
 \vspace{1em}
 \noindent
 \textbf{Notazione}: Per comodità, si usano le notazioni
 \begin{itemize}
-  \item $\{\mathcal{X} \in B\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in B\}$
-  \item $\{a < \mathcal{X} < b\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in (a,b)\}$
-  \item $\{\mathcal{X} < a\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in (-\infty,a)\}$
+  \item $\{\mathcal{X} \in B\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in B\}$ o similmente per $\mathcal{X}^{-1}(B)$ con $B \in \mathcal{B}$;
+  \item $\{a < \mathcal{X} < b\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in (a,b)\}$ o similmente per $\mathcal{X}^{-1}((a,b))$ con $a,b \in \mathbb{R}$;
+  \item $\{\mathcal{X} < a\}$ per $\{\omega \in \Omega : \mathcal{X}(\omega) \in (-\infty,a)\}$ similmente per $\mathcal{X}^{-1}((-\infty,a))$ con $a \in \mathbb{R}$.
 \end{itemize}
-e così via. Data una variabile aleatoria $\mathcal{X}$, gli eventi $\{\mathcal{X} \in B, B \in \mathcal{B}\}$ sono detti \textbf{generati} da $\mathcal{X}$.
+e così via.\\
+Inoltre, data una variabile aleatoria $\mathcal{X}$, gli eventi $\{\mathcal{X} \in B\}$ con $B \in \mathcal{B}$ sono detti \textbf{generati} da $\mathcal{X}$.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Si osservi che $\forall a \in \mathbb{R}$, $\{a\} = (-\infty,a] \cap [a,+\infty) \in \mathcal{B}$, quindi se $\mathcal{X}$ è una variabile aleatoria, allora
+\textbf{Osservazione $\boldsymbol{1}$}: Si osservi che $\forall a \in \mathbb{R}$, $\{a\} = (-\infty,a] \cap [a,+\infty) \in \mathcal{B}$, quindi se $\mathcal{X}$ è una variabile aleatoria, allora
 \[\{\omega \in \Omega : \mathcal{X}(\omega) = a\} \in \mathcal{A}\]
-Anche in questo caso si impiegherà la notazione semplificata $\{\mathcal{X}=a\}$ per indicare tale insieme.\\
-Data una variabile aleatoria $\mathcal{X}$, è possibile considerare su $\mathcal{B}$ la probabilità $p_{\mathcal{X}}(B)=p \left(\{\mathcal{X} \in B\}\right)$. Tale definizione ha senso giaché $\{\mathcal{X} \in B\} \in \mathcal{A}$, per cui $p_{\mathcal{X}}$ è detta \textbf{legge} (o \textbf{distribuzione}) di $\mathcal{X}$, in quando permette di capire quale sia la probabilità che $\mathcal{X}$ assuma i valori di un insieme $B$.
+Anche in questo caso si impiegherà la notazione semplificata $\{\mathcal{X}=a\}$ per indicare tale insieme, ossia l'evento aggregato costituito dagli eventi elementari che presentano immagine $a$ attraverso la funzione $\mathcal{X}$.
 
 \vspace{1em}
 \noindent
-\textbf{Osservazione}: Quando $(\Omega, \mathcal{A}, p)$ è uno spazio di probabilità discreto
+\textbf{Osservazione $\boldsymbol{2}$}: Data una variabile aleatoria $\mathcal{X}$, è possibile considerare su $\mathcal{B}$ la probabilità $p_{\mathcal{X}}(B)=p \left(\{\mathcal{X} \in B\}\right)$:
+\[
+  \begin{tikzcd}
+    \underset{\displaystyle{\mathcal{A}}}{\Omega} \arrow{r}{\mathcal{X}} \arrow[swap]{dr}{p} & \underset{\displaystyle{\mathcal{B}}}{\mathbb{R}} \arrow{d}{p_{\mathcal{X}}}\\
+     & {[0,1]}
+  \end{tikzcd}
+\]
+È facile capire come tale definizione abbia senso, giacchè $\{\mathcal{X} \in B\} = \mathcal{X}^{-1}(B) \in \mathcal{A}$.\\
+Inoltre, $p_{\mathcal{X}}$ è detta \textbf{legge} (o \textbf{distribuzione}) di $\mathcal{X}$, in quando permette di capire quale sia la probabilità che $\mathcal{X}$ assuma i valori di un insieme boreliano $B$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione $\boldsymbol{3}$}: Quando $(\Omega, \mathcal{A}, p)$ è uno spazio di \textbf{probabilità discreto} e la $\sigma$-algebra $\mathcal{A}$ è la famiglia di tutti i sottoinsiemi di $\Omega$, banalmente ogni funzione
+\[\mathcal{X} : \Omega \longrightarrow \mathbb{R}\]
+è una variabile aleatoria, in quanto, ovviamente
+\[\{\mathcal{X} \in B\} \in \mathcal{A} \hspace{1em} \forall B \in \mathcal{B}\]
+Tuttavia, non sempre si opera su uno spazio di probabilità discreto, per cui bisogna impiegare il Lemma precedente al fine di verificare che una funzione $\mathcal{X}$ sia a tutti gli effetti una variabile aleatoria.
+
+\vspace{1em}
+\subsection{Variabili aleatorie discrete}
+La prima categoria di variabili aleatorie che vengono considerate riguarda le \textbf{variabili aleatorie discrete}, di cui di seguito si fornisce la definizione:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{VARIABILE ALEATORIA DISCRETA}}\\
+    \parbox{\linewidth}{Una \textbf{variabile aleatoria} $\mathcal{X}$ si definisce \textbf{discreta} quando assume al più una quantità numerabile di valori, ossia $\mathcal{X}(\Omega)=\{x_1,...,x_n,...\}$ (ossia il codominio di $\mathcal{X}$ è un insieme finito o al più numerabile).\vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\subsubsection{Densità associata ad una variabile aleatoria discreta}
+Data una \textbf{variabile aleatoria} $\mathcal{X}$, considerando la funzione $q : \mathbb{R} \longrightarrow [0,1]$ definita da
+\[q(x) = p \left(\{\mathcal{X}=x\}\right)\]
+si ha che
+\begin{itemize}
+  \item $q(x)=0$ con eccezione dei valori $x_1,...,x_n,...$ assunti da $\mathcal{X}$ (ossia la funzione $q$ è quasi sempre nulla tranne che per i valori assunti da $\mathcal{X}$), in quanto se $x \notin \{x_1,...,x_n,...\}$ allora si ha che $\{\omega \in \Omega : \mathcal{X}(\omega)=x\}=\varnothing$ ed essendo un insieme vuoto ha probabilità nulla;
+  \item $\displaystyle{\sum_{x \in \mathbb{R}} q(x) = \sum_n q(x_n) = \sum_n p \left(\{\mathcal{X}=x_n\}\right) = p \left(\bigcup_{n} \{\mathcal{X}=x_n\}\right)} = p(\Omega)=1$\\\\
+  La quale è una somma di un numero finito o al più numerabile di valori (ossia una somma finita o serie).
+\end{itemize}
+Tenuto conto che gli insiemi $\{\mathcal{X}=x_n\}$ sono digiunti e la loro unione copre totalmente $\Omega$. La funzione $q$ è detta \textbf{densità} associata a $\mathcal{X}$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Tramite la densità $q$ è possibile calcolare $p_{\mathcal{X}}$, ossia la legge o distribuzione di $\mathcal{X}$. Infatti, tenuto conto che, dato un $B \in \mathcal{B}$
+\[\{\mathcal{X} \in B\} = \{\omega \in \Omega : \mathcal{X}(\omega) \in B\} = \bigcup_{x \in B} \{\omega \in \Omega : \mathcal{X}(\omega)=x\} = \bigcup_{x \in B} \{\mathcal{X}=x\}\]
+è possibile affermare che
+\[p_{\mathcal{X}}(B) =p \left(\{\mathcal{X}\in B\}\right) = \sum_{x \in B} p \left(\{\mathcal{X} = x\}\right) = \sum_{x \in B} q(x)\]
+essendo una \textbf{sommatoria contabile}, per quanto già detto, di eventi $\{\mathcal{X}=x\}$ ovviamente \textbf{disgiunti} (per cui la probabilità dell'unione è data dalla somma delle probabilità dei singoli eventi).\\
+In pratica è una naturale estensione di quanto già si faceva in precedenza, quando si definiva la probabilità sugli eventi elementari $p(\{\omega\})$ con $\omega \in \Omega$ e e poi si definiva la probabilità di eventi aggregati $A$ come
+\[p(A)=\sum_{\omega \in A} p(\{\omega\})\]
+Pertanto, al fine di stabilire la probabilità che \quotes{$\mathcal{X}$ assuma determinati valori} non è necessario conoscere completamente $\mathcal{X}$, ma solo sapere qual è la sua densità $q$.
+
+\vspace{1em}
+\noindent
+\begin{lemma}
+  Dato uno spazio di probabilità ($\Omega$, $\mathcal{A}$, $p$) e una funzione $\mathcal{X} : \Omega \longrightarrow \mathbb{R}$ che assume un \textbf{numero di valori al più numerabile}, $\mathcal{X}$ risulta essere una variabile aleatoria \textbf{se e solo se} $\{\mathcal{X}=x\} \in \mathcal{A}, \forall x \in \mathbb{R}$.
+\end{lemma}
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Ovviamente, se $\mathcal{X}$ è una \textbf{variabile aleatoria}, allora $\{\mathcal{X}=x\} \in \mathcal{A}$, in quanto $\{x\} \in \mathcal{B}$ (essendo $\{x\}=[x,x]$).\\
+Viceversa, dato $B \in \mathcal{B}$, è possibile scrivere, per quanto già visto in precedenza,
+\[\{\mathcal{X} \in B\} = \bigcup_{x \in B \cap \mathcal{X}(\Omega)} \{\mathcal{X}=x\}\]
+che appartiene necessariamente ad $\mathcal{A}$ essendo l'unione al più numerabile di eventi (disgiunti) del tipo $\{\mathcal{X}=x\}$ che per ipotesi appartengono ad $\mathcal{A}$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione $\boldsymbol{1}$}: Per lo stesso motivo, se $\mathcal{X} : \Omega \longrightarrow \mathbb{R}$ è una variabile aleatoria discreta, allora $\{\mathcal{X} \in B\} \in \mathcal{A}$ quale che sia $B \in \mathbb{R}$, anche se tale $B \notin \mathcal{B}$, sempre perché
+\[\{\mathcal{X} \in B\} = \bigcup_{x \in B \cap \mathcal{X}(\Omega)} \{\mathcal{X}=x\}\]
+ossia l'evento $\{\mathcal{X} \in B\}$ si esprime come unione finita o al più numerabile di eventi che per ipotesi, essendo $\mathcal{X}$ variabile aleatoria, appartengono a $\mathcal{A}$.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione $\boldsymbol{2}$}: Per quanto già osservato, è sufficiente conoscere la densità $q$ di $\mathcal{X}$ al fine di manipolare $\mathcal{X}$, senza determinare specificatamente $\mathcal{X}$; non solo, ma addirittura è sufficiente solamente disporre di $q$, senza nemmeno $\mathcal{X}$ per poter ottenere la legge o distribuzione associata, come esposto nella seguente proposizione:
+
+\vspace{1em}
+\noindent
+\textbf{Proposizione}: Sia $q : \mathbb{R} \longrightarrow [0,1]$ una funzione tale che
+\begin{enumerate}
+  \item $q=0$ tranne che su una quantità al più numerabile di punti;
+  \item $\displaystyle{\sum_{x \in \mathbb{R}} q(x)=1}$ (la quale è una sommatoria che ha significato, essendo una somma finita o al più numerabile, quindi una serie, per quanto già esposto in precedenza);
+\end{enumerate}
+Allora esiste uno spazio di probabilità ($\Omega$, $\mathcal{A}$, $p$) e una variabile aleatoria $\mathcal{X} : \Omega \longrightarrow \mathbb{R}$ avente $q$ come densità.
+
+\vspace{1em}
+\noindent
+\textbf{Dimostrazione}: Sia $\Omega := \{x \in \mathbb{R} : q(x) \neq 0\}$. Per il primo punto della proposizione, si ha che $\Omega$ è necessariamente finito o al più numerabile. Questo fatto permette di considerare su $\Omega$ la $\sigma$-algebra $\mathcal{A}$ costituita da tutti i sottoinsiemi di $\Omega$.\\
+Dopodichè si definisce una probabilità $p : \mathcal{A} \longrightarrow [0,1]$, ponendo
+\[p \left(\{x\}\right) = q(x) \hspace{1em} \forall x \in \Omega\]
+e poi estendendo come al solito
+\[p(A) = \sum_{x \in A} p \left(\{x\}\right) \hspace{1em} \forall A \in \mathcal{A}\]
+Per l'ipotesi assunta al secondo punto della proposizione, taluna è effettivamente una probabilità (giacché $p(\Omega)=\displaystyle{\sum_{x \in \mathbb{R}} p \left(\{\omega\}\right) = \sum q(x)=1}$).\\
+Infine è sufficiente definire una mappa $\mathcal{X} : \Omega \longrightarrow \mathbb{R}$ ponendo
+\[\mathcal{X}(\omega) = \omega \hspace{1em} \forall \omega \in \Omega\]
+ossia l'applicazione identica. Dal momento che la $\sigma$-algebra $\mathcal{A}$ comprende tutti i sottoinsiemi di $\Omega$, $\mathcal{X}$ è banalmente una variabile aleatoria (per quanto già osservato in precedenza, in quanto $\{\mathcal{X} \in B\} \in \mathcal{A} \forall B \in \mathcal{B}$).\\
+Pertanto, per costruzione
+\[p \left(\{\mathcal{X}=x\}\right) = p \left(\{\omega \in \Omega : \mathcal{X}(\omega) = x\}\right) = p \left(\{x\}\right) = q(x)\]
+essendo $\mathcal{X}$ l'applicazione identica, per cui $\omega=x$. Pertanto $q(x)$ è a tutti gli effetti la densità della variabile aleatoria $\mathcal{X}$ definita in precedenza.\\
+Quindi una densità non solo individua la distribuzione di una variabile aleatoria, ma è sostanzialmente l'attore principale.
+
+\newpage
+\noindent
+\subsection{Densità binomiale}
+Di seguito si espone la definizione di \textbf{densità binomiale}:
+
+% Tabella per le definizione di concetti, etc...
+\vspace{1em}
+\rowcolors{1}{black!5}{black!5}
+\setlength{\tabcolsep}{14pt}
+\renewcommand{\arraystretch}{2}
+\noindent
+\begin{tabularx}{\textwidth}{@{}|P|@{}}
+    \hline
+    {\textbf{DENSITÀ BINOMIALE}}\\
+    \parbox{\linewidth}{Siano $n \in \mathbb{N}$ e $q \in (0,1)$ due numeri fissati. Si chiamerà, allora, \textbf{densità binomiale} di parametri $n$ e $q$ la funzione così definita
+    \[
+      q(x) = \left\{
+      \begin{array}{ll}
+        \displaystyle{\binom{n}{x} \cdot q^x \cdot (1-q)^{n-x}} & x=0,1,...,n\\
+        0 & \text{altrimenti}
+      \end{array}
+      \right.
+    \]
+    denotata con il simbolo $\mathcal{B}(n,q)$.
+    \vspace{3mm}}\\
+    \hline
+\end{tabularx}
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: Per verificare che a tutti gli effetti tale funzione $q(x)$ sia una densità, bisognerebbe dimostrare le due proprietà precedentemente esposte:
+\begin{enumerate}
+  \item $q=0$ tranne che su una quantità al più numerabile di punti (che è ovvio per la costruzione di $q(x)$);
+  \item $\displaystyle{\sum_{x \in \mathbb{R}} q(x)=1}$
+\end{enumerate}
+che sono certamente verificate e lo si può dimostrare per induzione.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: Si riconsideri lo schema delle prove indipendenti, per un numero $n$ di ripetizioni ognuna con probabilità $q$ di successo. Lo spazio di probabilità discreto, in questo caso, è
+\[\Omega = \{0,1\}^n\]
+per cui allo $0$ si associa l'insuccesso, mentre a $1$ il successo. La probabilità $p$, invece, è determinata da
+\[p(\{\omega\})=q^{\displaystyle{\sum_{i=1}^n \omega_i}} \cdot (1-q)^{\displaystyle{n-\sum_{i=1}^n \omega_i}} \hspace{1em} \forall \omega \in \Omega\]
+con $\omega_i$ la componente $i$-esima di $\omega$. Sarà, ora, sufficiente definire la mappa $\mathcal{X} : \Omega \longrightarrow \mathbb{R}$ tramite
+\[\mathcal{X}(\omega) = \sum_{i=1}^n \omega_i = \left\{\text{ quante volte compare } 1 \text{ nella }n\text{-upla } \omega \right\}\]
+cioé $\mathcal{X}$ conta in un evento elementare $\omega$. Taluna, inoltre, è sicuramente una variabile aleatoria (siccome si sta operando su uno spazio di probabilità discreto in cui la $\sigma$-algebra $\mathcal{A}$ è data da tutti i sottoinsiemi di $\Omega$).\\
+Per determinare la densità di $\mathcal{X}$, si osserva che dato $x \in \mathbb{R}$
+\[\{\mathcal{X}=x\}= \left\{\omega \in \Omega : \sum_{i=1}^n \omega_i = x \right\}\]
+cioè l'evento costituito dalle $n$-uple avventi come somma delle componenti $x$. Dal momento che $\omega$ ha componenti che sono $0$ oppure $1$, $\{\mathcal{X}=x\}$ sarà non vuoto solamente quando $x$ è un intero compreso tra $0$ ed $n$, per cui rientra nella definizione fornita:
+\[
+  q(x) = \left\{
+  \rowcolors{1}{white}{white}
+  \begin{array}{ll}
+    \displaystyle{\binom{n}{x} \cdot q^x \cdot (1-q)^{n-x}} & x=0,1,...,n\\
+    0 & \text{altrimenti}
+  \end{array}
+  \right.
+\]
+Fissato $k \in [0,1,...,n]$, ognuno degli eventi elementari $\omega \in \{\mathcal{X}=k\}$ ha probabilità
+\[p(\{\omega\})=q^{\displaystyle{\sum_{i=1}^n \omega_i}} \cdot (1-q)^{\displaystyle{n-\sum_{i=1}^n \omega_i}} = q^k \cdot (1-q)^{n-k}\]
+dal momento che, essendo $\omega \in \{\mathcal{X}=k\}$, il numero di $1$ presenti nella $n$-upla è proprio dato da
+\[k=\sum_{i=1}^n \omega_i\]
+Inoltre è noto che il numero totale degli elementi in $\{\mathcal{X}=k\}$ è pari alle combinazioni semplici di classe $k$ su $n$ oggetti: è sufficiente, infatti, decidere all'interno della $n$-upla dove collocare $k$ \quotes{$1$} (ed $n-k$ \quotes{$0$}). Si è, quindi, ottenuto che
+\[\left \vert \{\mathcal{X}=k\}\right \vert=\binom{n}{k} \hspace{1em} \text{e} \hspace{1em} p \left(\{\mathcal{X}=k\}\right)=\binom{n}{k}q^k(1-q)^{n-k}\]
+che è un risultato già ottenuto in precedenza, trattando dello schema delle prove indipendenti.
+
+\vspace{1em}
+\noindent
+\textbf{Osservazione}: È stato dunque provato che $p\{\mathcal{X}=x\}=q(x), \forall x \in \mathbb{R}$.\\
+È interessante, inoltre, osservare che il significato della distribuzione $p_{\mathcal{X}}$ associata ad $\mathcal{X}$ sta proprio nella probabilità di ottenere successo nelle operazioni sperimentali: dato un range di valori $B \subset \mathbb{R}$, si ha che $p_{\mathcal{X}}(B)=p\left(\{\mathcal{X}\in B\}\right)$ è proprio la probabilità di ottenere esperimenti con un numero di successi nel range di $B$.
+
+\vspace{1em}
+\noindent
+\textbf{Esempio}: I bulloni prodotti da una ditta rissultano difettosi con probabilità del $20 \%$ e vengono messi in commercio in confesioni da $3$ pezzi ciascuna. Si determini, allora, la probabilità che in una confezione vi sia al più un bullone difettoso.\\
+Supponendo che l'essere uno dei bulloni difettosi sia indipendente dal fatto che lo siano gli altri, è possibile inquadrare il problema nello schema delle prove ripetute. Precisamente, tre prove in cui il successo significa bullone a norma ed insuccesso bullone difettoso. La variabile aleatoria che si adopererà è quella appena introdottoa, cioè $\mathcal{X} : \Omega \longrightarrow \mathbb{R}$ definita da
+\[\mathcal{X}(\omega)=\sum_{i=1}^3 \omega_i\]
+Dal momento che viene richiesto che vi siano almeno due bulloni a norma nella confezione, si sta considerando il range $B=[2,+\infty)$. Ovviamente, però, è noto che $q(x)=0$ quando $x \neq 0,1,2,3$, per cui il range effetivo diviene $B=[2,3]$. Inoltre, la probabilitù che il singolo bullone sia a norma è, ovviamente $20\%=\frac{4}{5}$, quindi
+\[p_{\mathcal{X}}(B) = p \left(\{\mathcal{X}\in B\}\right) = \sum_{x \in B} q(x)=q(2)+q(3)\]
+ciò, naturalment, corrisponde a
+\[\underbrace{\binom{3}{2} \cdot \left(\frac{4}{5}\right)^2 \cdot \left(1-\frac{4}{5}\right)^1}_{k=2} + \underbrace{\binom{3}{2} \cdot \left(\frac{4}{5}\right)^3 \cdot \left(1-\frac{4}{5}\right)^0}_{k=3}=0.896\]
+in quanto la densità $q(x)$ di $\mathcal{X}$ è la densità binomiale $\displaystyle{\mathcal{B} \left(3,\frac{4}{5}\right)}$.
 
 \newpage
 \begin{center}

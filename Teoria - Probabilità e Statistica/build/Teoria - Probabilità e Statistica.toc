@@ -38,6 +38,9 @@
 \contentsline {subsection}{\numberline {5.5}Formula di Bayes}{52}{}%
 \contentsline {subsection}{\numberline {5.6}Indipendenza di eventi generalizzata}{55}{}%
 \contentsline {subsection}{\numberline {5.7}Schema delle prove indipendenti}{59}{}%
-\contentsline {subsection}{\numberline {5.8}Variabile aleatoria}{63}{}%
-\contentsline {subsection}{\numberline {5.9}Densità ipergeometrica}{65}{}%
-\contentsline {subsection}{\numberline {5.10}Densità}{66}{}%
+\contentsline {section}{\numberline {6}Variabili aleatorie}{63}{}%
+\contentsline {subsection}{\numberline {6.1}Variabili aleatorie discrete}{65}{}%
+\contentsline {subsubsection}{\numberline {6.1.1}Densità associata ad una variabile aleatoria discreta}{66}{}%
+\contentsline {subsection}{\numberline {6.2}Densità binomiale}{68}{}%
+\contentsline {subsection}{\numberline {6.3}Densità ipergeometrica}{70}{}%
+\contentsline {subsection}{\numberline {6.4}Densità}{71}{}%
